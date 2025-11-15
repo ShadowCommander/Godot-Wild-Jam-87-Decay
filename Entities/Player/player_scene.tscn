@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmxrn4vki27cn"]
+
+[ext_resource type="Script" uid="uid://by183cv0mah2j" path="res://Entities/Player/player.gd" id="1_yew1x"]
+[ext_resource type="Resource" uid="uid://ctpyyhn7pjkx7" path="res://Entities/Player/Controls/camera.tres" id="2_txgsh"]
+[ext_resource type="Resource" uid="uid://c1qfvjake04uj" path="res://Entities/Player/Controls/player_movement.tres" id="3_1ggpk"]
+[ext_resource type="Script" uid="uid://46qda0mmje2y" path="res://Entities/Player/guide_init.gd" id="4_1ggpk"]
+[ext_resource type="Resource" uid="uid://cdnffgfq406fh" path="res://Entities/Player/Controls/player_movement_keyboard_context.tres" id="5_xgxpr"]
+[ext_resource type="Resource" uid="uid://dp1hk6y7gduq5" path="res://Entities/Player/Controls/keyboard_menu_context.tres" id="6_t0j73"]
+[ext_resource type="Resource" uid="uid://cknatnjtxatoj" path="res://Entities/Player/Controls/toggle_cursor.tres" id="7_e4pf2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_deg86"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yew1x"]
+
+[node name="PlayerScene" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("yaw_pivot", "pitch_pivot")]
+script = ExtResource("1_yew1x")
+look_relative = ExtResource("2_txgsh")
+movement = ExtResource("3_1ggpk")
+yaw_pivot = NodePath("CameraYawPivot")
+pitch_pivot = NodePath("CameraYawPivot/CameraPitchPivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_deg86")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_yew1x")
+
+[node name="CameraYawPivot" type="Node3D" parent="Player"]
+
+[node name="CameraPitchPivot" type="Node3D" parent="Player/CameraYawPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraYawPivot/CameraPitchPivot"]
+
+[node name="GUIDEInit" type="Node" parent="."]
+script = ExtResource("4_1ggpk")
+player_movement_keyboard_context = ExtResource("5_xgxpr")
+keyboard_menu = ExtResource("6_t0j73")
+toggle_cursor = ExtResource("7_e4pf2")

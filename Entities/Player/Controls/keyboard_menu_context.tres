@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=13 format=3 uid="uid://dp1hk6y7gduq5"]
+
+[ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_q6ro6"]
+[ext_resource type="Resource" uid="uid://cknatnjtxatoj" path="res://Entities/Player/Controls/toggle_cursor.tres" id="2_2il1a"]
+[ext_resource type="Script" uid="uid://dsa1dnifd6w32" path="res://addons/guide/guide_mapping_context.gd" id="2_yt78m"]
+[ext_resource type="Script" uid="uid://mtx1unc2aqn7" path="res://addons/guide/guide_input_mapping.gd" id="3_1rw5e"]
+[ext_resource type="Script" uid="uid://cw71o87tvdx3q" path="res://addons/guide/inputs/guide_input_key.gd" id="4_7eveo"]
+[ext_resource type="Script" uid="uid://bl8rjl4oaldje" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_uylsf"]
+[ext_resource type="Script" uid="uid://x74mnwgr08a7" path="res://addons/guide/triggers/guide_trigger.gd" id="6_88xpf"]
+[ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="7_x5mvl"]
+
+[sub_resource type="Resource" id="Resource_lclje"]
+script = ExtResource("4_7eveo")
+key = 4194328
+
+[sub_resource type="Resource" id="Resource_axujb"]
+script = ExtResource("7_x5mvl")
+
+[sub_resource type="Resource" id="Resource_u07qt"]
+script = ExtResource("3_1rw5e")
+input = SubResource("Resource_lclje")
+triggers = Array[ExtResource("6_88xpf")]([SubResource("Resource_axujb")])
+
+[sub_resource type="Resource" id="Resource_5od10"]
+script = ExtResource("1_q6ro6")
+action = ExtResource("2_2il1a")
+input_mappings = Array[ExtResource("3_1rw5e")]([SubResource("Resource_u07qt")])
+
+[resource]
+script = ExtResource("2_yt78m")
+mappings = Array[ExtResource("1_q6ro6")]([SubResource("Resource_5od10")])
+metadata/_custom_type_script = "uid://dsa1dnifd6w32"
