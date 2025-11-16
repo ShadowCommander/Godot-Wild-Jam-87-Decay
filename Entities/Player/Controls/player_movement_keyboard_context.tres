@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=40 format=3 uid="uid://cdnffgfq406fh"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=45 format=3 uid="uid://cdnffgfq406fh"]
 
 [ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_cbgq8"]
 [ext_resource type="Resource" uid="uid://c1qfvjake04uj" path="res://Entities/Player/Controls/player_movement.tres" id="2_aev1r"]
@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://cknatnjtxatoj" path="res://Entities/Player/Controls/toggle_cursor.tres" id="13_qk66o"]
 [ext_resource type="Resource" uid="uid://coy17d48rb7o3" path="res://Entities/Player/Controls/interact.tres" id="14_6dfjd"]
 [ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="14_je4as"]
+[ext_resource type="Resource" uid="uid://g0l3livcgac" path="res://Entities/Player/Controls/shoot.tres" id="15_faddq"]
+[ext_resource type="Script" uid="uid://vgjlx6p007lp" path="res://addons/guide/inputs/guide_input_mouse_button.gd" id="16_ftqo2"]
 
 [sub_resource type="Resource" id="Resource_qi3hx"]
 script = ExtResource("4_8kmrq")
@@ -114,7 +116,19 @@ script = ExtResource("1_cbgq8")
 action = ExtResource("14_6dfjd")
 input_mappings = Array[ExtResource("3_bi0px")]([SubResource("Resource_ftqo2")])
 
+[sub_resource type="Resource" id="Resource_e3chn"]
+script = ExtResource("16_ftqo2")
+
+[sub_resource type="Resource" id="Resource_dg5xc"]
+script = ExtResource("3_bi0px")
+input = SubResource("Resource_e3chn")
+
+[sub_resource type="Resource" id="Resource_r50ot"]
+script = ExtResource("1_cbgq8")
+action = ExtResource("15_faddq")
+input_mappings = Array[ExtResource("3_bi0px")]([SubResource("Resource_dg5xc")])
+
 [resource]
 script = ExtResource("2_p5dll")
-mappings = Array[ExtResource("1_cbgq8")]([SubResource("Resource_3aj6a"), SubResource("Resource_ot4ll"), SubResource("Resource_uhqur"), SubResource("Resource_c8qwg")])
+mappings = Array[ExtResource("1_cbgq8")]([SubResource("Resource_3aj6a"), SubResource("Resource_ot4ll"), SubResource("Resource_uhqur"), SubResource("Resource_c8qwg"), SubResource("Resource_r50ot")])
 metadata/_custom_type_script = "uid://dsa1dnifd6w32"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbl6oo5w7hcej"]
+[gd_scene load_steps=6 format=3 uid="uid://b77bbilpkmmbm"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_kx3w5"]
-[ext_resource type="PackedScene" uid="uid://brl3t3xgg42fj" path="res://Map/monster_testing_map_scene.tscn" id="2_5jdlw"]
+[ext_resource type="PackedScene" uid="uid://isocck6nv1yp" path="res://Map/monster_testing_map_scene.tscn" id="2_5jdlw"]
 [ext_resource type="PackedScene" uid="uid://b54cfdq4yv4p6" path="res://Systems/object_pooler.tscn" id="3_e1e8b"]
 [ext_resource type="PackedScene" uid="uid://b5pdi8ncpveux" path="res://Entities/Monsters/Monster.tscn" id="4_e1e8b"]
 [ext_resource type="PackedScene" uid="uid://c4esj6tprgijl" path="res://Systems/wave_spawner.tscn" id="5_1g5qh"]

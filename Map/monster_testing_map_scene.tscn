@@ -1,5 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://brl3t3xgg42fj"]
+[gd_scene load_steps=2 format=3 uid="uid://isocck6nv1yp"]
 
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="1_m34n4"]
 
 [node name="MapScene" instance=ExtResource("1_m34n4")]
+
+[node name="Bunker" parent="." index="7"]
+visible = false
