@@ -22,7 +22,7 @@ height = 0.2
 
 [node name="PlayerScene" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("yaw_pivot", "pitch_pivot")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("yaw_pivot", "pitch_pivot") groups=["player_body"]]
 script = ExtResource("1_yew1x")
 look_relative = ExtResource("2_txgsh")
 movement = ExtResource("3_1ggpk")

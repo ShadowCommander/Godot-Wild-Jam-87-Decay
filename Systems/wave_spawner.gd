@@ -6,14 +6,23 @@ var spawn_radius: float = 5
 
 var spawn_points: Array
 
-
+var wave_timer: Timer
 
 func _ready() -> void:
 	spawn_points = get_children().filter(func(n): return n is Marker3D)
 	assert(len(spawn_points) != 0, "There must be at least one spawn point.")
 	assert(pool, "WaveSpawner requires a NodePool")
-	spawn_wave(100)
+	
+	
+	wave_timer = Timer.new()
+	wave_timer.set_wait_time(1)
+	wave_timer.autostart = true
+	add_child(wave_timer)
+	wave_timer.timeout.connect(spawn_wave.bind(5))
+	
+	
 	pass
+
 
 # Spawns n amount of an enemy
 func spawn_wave(n: int) -> void:

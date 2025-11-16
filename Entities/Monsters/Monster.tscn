@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5pdi8ncpveux"]
+[gd_scene load_steps=7 format=3 uid="uid://b5pdi8ncpveux"]
 
+[ext_resource type="Script" uid="uid://dcs0hjajg25kj" path="res://Entities/Monsters/monster.gd" id="1_ao0gl"]
 [ext_resource type="Script" uid="uid://bfysm32vw1klr" path="res://Systems/Damage/hurtbox.gd" id="1_e302m"]
 [ext_resource type="Script" uid="uid://b1rw4oecqfq61" path="res://Systems/Damage/health.gd" id="2_a5dle"]
 
@@ -11,7 +12,10 @@ material = SubResource("StandardMaterial3D_rhkak")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a5dle"]
 
-[node name="Monster" type="Node3D"]
+[node name="Monster" type="Node3D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_ao0gl")
+health_component = NodePath("HealthComponent")
+MOVEMENT_SPEED = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_rhkak")
@@ -19,6 +23,7 @@ mesh = SubResource("SphereMesh_rhkak")
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 4
 collision_mask = 4
+monitoring = false
 script = ExtResource("1_e302m")
 health_component = NodePath("../HealthComponent")
 

@@ -4,3 +4,5 @@
 
 [node name="WaveSpawner" type="Node"]
 script = ExtResource("1_lmrox")
+
+[node name="Timer" type="Timer" parent="."]
