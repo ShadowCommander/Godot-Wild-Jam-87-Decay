@@ -21,12 +21,12 @@ func _physics_process(delta: float) -> void:
 	
 #region Movement
 
-func process_movement(delta: float) -> void:
+func process_movement(_delta: float) -> void:
 	var input = movement.value_axis_2d.normalized()
 	var movement_z = yaw_pivot.basis.z * -input.y
 	var movement_x = yaw_pivot.basis.x * input.x
-	var movement = (movement_z + movement_x) * speed
-	velocity = movement
+	var movement_vec = (movement_z + movement_x) * speed
+	velocity = movement_vec
 	move_and_slide()
 
 #endregion

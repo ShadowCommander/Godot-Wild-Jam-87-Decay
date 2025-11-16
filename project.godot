@@ -23,6 +23,10 @@ GUIDE="*res://addons/guide/guide.gd"
 
 enabled=PackedStringArray("res://addons/guide/plugin.cfg")
 
+[layer_names]
+
+3d_physics/layer_8="Interactable"
+
 [physics]
 
 common/physics_interpolation=true

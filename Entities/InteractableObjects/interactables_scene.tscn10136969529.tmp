@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuoxeqfkqxmny"]
+[gd_scene load_steps=6 format=3 uid="uid://cuoxeqfkqxmny"]
 
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_e2evq"]
+[ext_resource type="Script" uid="uid://co1poyve2blvr" path="res://Entities/InteractableObjects/interactable_outline.gd" id="2_r3on0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
 size = Vector3(1, 2, 1)
@@ -9,7 +10,7 @@ size = Vector3(1, 2, 1)
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
-size = Vector3(1.1, 2, 1.1)
+size = Vector3(1, 2, 1)
 
 [node name="InteractablesScene" type="Node3D"]
 
@@ -23,10 +24,14 @@ shape = SubResource("BoxShape3D_r3on0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_x1elf")
 
-[node name="InteractableArea" type="Area3D" parent="Dispenser" node_paths=PackedStringArray("mesh")]
+[node name="InteractableArea" type="Area3D" parent="Dispenser"]
+collision_layer = 128
+collision_mask = 0
 script = ExtResource("1_e2evq")
-mesh = NodePath("../MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dispenser/InteractableArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_x1elf")
+
+[node name="InteractableOutline" type="Node" parent="Dispenser/InteractableArea"]
+script = ExtResource("2_r3on0")
