@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4esj6tprgijl"]
+
+[ext_resource type="Script" uid="uid://cs8lw7mjxbkls" path="res://Systems/wave_spawner.gd" id="1_lmrox"]
+
+[node name="WaveSpawner" type="Node"]
+script = ExtResource("1_lmrox")

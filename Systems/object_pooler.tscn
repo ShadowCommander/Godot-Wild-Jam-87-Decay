@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b54cfdq4yv4p6"]
+
+[ext_resource type="Script" uid="uid://jprj00yy6p41" path="res://Systems/object_pooler.gd" id="1_xql6c"]
+
+[node name="ObjectPooler" type="Node"]
+script = ExtResource("1_xql6c")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbl6oo5w7hcej"]
+
+[ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_kx3w5"]
+[ext_resource type="PackedScene" uid="uid://brl3t3xgg42fj" path="res://Map/monster_testing_map_scene.tscn" id="2_5jdlw"]
+[ext_resource type="PackedScene" uid="uid://b54cfdq4yv4p6" path="res://Systems/object_pooler.tscn" id="3_e1e8b"]
+[ext_resource type="PackedScene" uid="uid://b5pdi8ncpveux" path="res://Entities/Monsters/Monster.tscn" id="4_e1e8b"]
+[ext_resource type="PackedScene" uid="uid://c4esj6tprgijl" path="res://Systems/wave_spawner.tscn" id="5_1g5qh"]
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="PlayerScene" parent="World" instance=ExtResource("1_kx3w5")]
+
+[node name="MapScene" parent="World" instance=ExtResource("2_5jdlw")]
+
+[node name="ObjectPooler" parent="World" instance=ExtResource("3_e1e8b")]
+pooled_scene = ExtResource("4_e1e8b")
+
+[node name="WaveSpawner" parent="World" node_paths=PackedStringArray("pool") instance=ExtResource("5_1g5qh")]
+pool = NodePath("../ObjectPooler")
+
+[node name="Marker3D" type="Marker3D" parent="World/WaveSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.791626, 2.1758566, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="World/WaveSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.206112, 2.1758566, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="World/WaveSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6910758, 2.1758566, 23.765705)
+
+[node name="Marker3D4" type="Marker3D" parent="World/WaveSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020652771, 2.1758566, -23.58105)
