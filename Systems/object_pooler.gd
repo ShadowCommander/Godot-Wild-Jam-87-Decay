@@ -77,7 +77,7 @@ func set_pooled_active(node: Node, value: bool, increment_counter: bool = true) 
 		## HACK This is an easy way to not have to deal with disabling/enabling
 		## elements of a pooled node that can impact things if it remains nearby
 		## but hidden
-		node.global_transform.origin = Vector3.UP * 500
+		node.global_transform.origin = Vector3.DOWN * 500
 		
 		if increment_counter:
 			active_counter[0] -= 1

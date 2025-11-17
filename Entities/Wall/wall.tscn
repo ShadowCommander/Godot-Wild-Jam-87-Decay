@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b42f2wvuq44tc"]
+
+[ext_resource type="Script" uid="uid://dljnns4j5bq1" path="res://Entities/Wall/wall.gd" id="1_2ww3e"]
+[ext_resource type="Script" uid="uid://b1rw4oecqfq61" path="res://Systems/Damage/health.gd" id="2_5giek"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7mntq"]
+size = Vector3(1, 2.5, 16)
+
+[node name="Wall" type="Node3D" node_paths=PackedStringArray("health_component") groups=["wall"]]
+script = ExtResource("1_2ww3e")
+health_component = NodePath("HealthComponent")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7mntq")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_5giek")
+MAX_HEALTH = 1000
+metadata/_custom_type_script = "uid://b1rw4oecqfq61"

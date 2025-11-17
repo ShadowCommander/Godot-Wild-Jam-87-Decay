@@ -27,17 +27,22 @@ func _ready() -> void:
 # Spawns n amount of an enemy
 func spawn_wave(n: int) -> void:
 	for _i in range(n):
-		var o = pool.get_pooled()
-		o.global_transform.origin = get_spawn_position()
+		var o = pool.get_pooled() as BaseMonster
+		
+		var rdm_spawn_point: SpawnPoint =\
+		spawn_points[randi() % spawn_points.size()]
+		
+		o.global_transform.origin = get_spawn_position(rdm_spawn_point)
+		o.target = rdm_spawn_point.target_wall
+		
 	pass
 
+
+
+
 # Gets a random spawn position aligned to a cardinal direction grid.
-func get_spawn_position() -> Vector3:
-	var rdm_spawn_point: Marker3D =\
-	spawn_points[randi() % spawn_points.size()]
-	
-	var origin: Vector3 =\
-	rdm_spawn_point.global_transform.origin
+func get_spawn_position(spawn_point: SpawnPoint) -> Vector3:
+	var origin: Vector3 = spawn_point.global_transform.origin
 	
 	var dir_to_center: Vector3 = snap_to_grid(origin.normalized())
 	
@@ -64,3 +69,8 @@ func snap_to_grid(dir: Vector3) -> Vector3:
 		return Vector3.ZERO
 	
 	return Vector3(sign(dir.x), 0,0) if abs(dir.x) > abs(dir.z) else Vector3(0,0,sign(dir.z))
+
+
+func _on_wall_dead_wall() -> void:
+	wave_timer.stop()
+	pass # Replace with function body.

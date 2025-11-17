@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b77bbilpkmmbm"]
+[gd_scene load_steps=8 format=3 uid="uid://b77bbilpkmmbm"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_kx3w5"]
 [ext_resource type="PackedScene" uid="uid://isocck6nv1yp" path="res://Map/monster_testing_map_scene.tscn" id="2_5jdlw"]
 [ext_resource type="PackedScene" uid="uid://b54cfdq4yv4p6" path="res://Systems/object_pooler.tscn" id="3_e1e8b"]
 [ext_resource type="PackedScene" uid="uid://b5pdi8ncpveux" path="res://Entities/Monsters/Monster.tscn" id="4_e1e8b"]
 [ext_resource type="PackedScene" uid="uid://c4esj6tprgijl" path="res://Systems/wave_spawner.tscn" id="5_1g5qh"]
+[ext_resource type="Script" uid="uid://ckq145gedwee7" path="res://Systems/spawn_marker.gd" id="6_l5n4v"]
+[ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="7_usvvm"]
 
 [node name="Main" type="Node"]
 
 [node name="World" type="Node3D" parent="."]
 
 [node name="PlayerScene" parent="World" instance=ExtResource("1_kx3w5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2978115, 0, 4.7665854)
 
 [node name="MapScene" parent="World" instance=ExtResource("2_5jdlw")]
 
@@ -20,14 +23,39 @@ pooled_scene = ExtResource("4_e1e8b")
 [node name="WaveSpawner" parent="World" node_paths=PackedStringArray("pool") instance=ExtResource("5_1g5qh")]
 pool = NodePath("../ObjectPooler")
 
-[node name="Marker3D" type="Marker3D" parent="World/WaveSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.791626, 2.1758566, 0)
+[node name="SpawnMarker" type="Marker3D" parent="World/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.791626, 0.5753951, 0)
+script = ExtResource("6_l5n4v")
+target_wall = NodePath("../../Wall")
 
-[node name="Marker3D2" type="Marker3D" parent="World/WaveSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.206112, 2.1758566, 0)
+[node name="SpawnMarker2" type="Marker3D" parent="World/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23939896, 0.5753951, 24.060246)
+script = ExtResource("6_l5n4v")
+target_wall = NodePath("../../Wall2")
 
-[node name="Marker3D3" type="Marker3D" parent="World/WaveSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6910758, 2.1758566, 23.765705)
+[node name="SpawnMarker3" type="Marker3D" parent="World/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23939896, 0.5753951, -24.266167)
+script = ExtResource("6_l5n4v")
+target_wall = NodePath("../../Wall3")
 
-[node name="Marker3D4" type="Marker3D" parent="World/WaveSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020652771, 2.1758566, -23.58105)
+[node name="SpawnMarker4" type="Marker3D" parent="World/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.672836, 0.5753951, -0.403965)
+script = ExtResource("6_l5n4v")
+target_wall = NodePath("../../Wall4")
+
+[node name="Wall" parent="World" instance=ExtResource("7_usvvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.25, 0)
+
+[node name="Wall2" parent="World" instance=ExtResource("7_usvvm")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48732662, 1.25, 8.30211)
+
+[node name="Wall3" parent="World" instance=ExtResource("7_usvvm")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48732662, 1.25, -8.025527)
+
+[node name="Wall4" parent="World" instance=ExtResource("7_usvvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.029257, 1.25, 0)
+
+[connection signal="dead_wall" from="World/Wall" to="World/WaveSpawner" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/Wall2" to="World/WaveSpawner" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/Wall3" to="World/WaveSpawner" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/Wall4" to="World/WaveSpawner" method="_on_wall_dead_wall"]
