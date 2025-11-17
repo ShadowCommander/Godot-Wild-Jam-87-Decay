@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmxrn4vki27cn"]
+[gd_scene load_steps=16 format=3 uid="uid://cmxrn4vki27cn"]
 
 [ext_resource type="Script" uid="uid://by183cv0mah2j" path="res://Entities/Player/player.gd" id="1_yew1x"]
 [ext_resource type="Resource" uid="uid://ctpyyhn7pjkx7" path="res://Entities/Player/Controls/camera.tres" id="2_txgsh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dp1hk6y7gduq5" path="res://Entities/Player/Controls/keyboard_menu_context.tres" id="6_t0j73"]
 [ext_resource type="Resource" uid="uid://cknatnjtxatoj" path="res://Entities/Player/Controls/toggle_cursor.tres" id="7_e4pf2"]
 [ext_resource type="Resource" uid="uid://g0l3livcgac" path="res://Entities/Player/Controls/shoot.tres" id="7_sl4om"]
+[ext_resource type="Texture2D" uid="uid://dbjnro38dejk1" path="res://Entities/Player/HUD/dot_small.png" id="12_qn4ih"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_deg86"]
 
@@ -69,3 +70,30 @@ script = ExtResource("4_1ggpk")
 player_movement_keyboard_context = ExtResource("5_xgxpr")
 keyboard_menu = ExtResource("6_t0j73")
 toggle_cursor = ExtResource("7_e4pf2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_qn4ih")
