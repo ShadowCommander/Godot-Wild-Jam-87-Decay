@@ -63,9 +63,8 @@ func set_pooled_active(node: Node, value: bool, increment_counter: bool = true) 
 	node.set_process(value)
 	node.set_physics_process(value)
 	
-
-
-	
+	if node.has_method("enable_components"):
+		node.enable_components(value)
 	
 	if value:
 		node.show()

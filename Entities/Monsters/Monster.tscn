@@ -70,9 +70,10 @@ material = SubResource("ShaderMaterial_cfrxl")
 [sub_resource type="SphereShape3D" id="SphereShape3D_a5dle"]
 radius = 0.62
 
-[node name="Monster" type="Node3D" node_paths=PackedStringArray("health_component")]
+[node name="Monster" type="Node3D" node_paths=PackedStringArray("health_component", "hurtbox_component")]
 script = ExtResource("1_ao0gl")
 health_component = NodePath("HealthComponent")
+hurtbox_component = NodePath("Hurtbox")
 MOVEMENT_SPEED = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

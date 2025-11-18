@@ -4,6 +4,8 @@ const MIN_DISTANCE: float = 2.5
 
 
 @export var health_component: HealthComponent
+@export var hurtbox_component: Hurtbox
+
 @export_range(1.0,5.0) var MOVEMENT_SPEED: float = 1.0
 
 # Monsters need a wall to target and will not 
@@ -11,11 +13,10 @@ var target: Wall = null
 
 
 func _ready() -> void:
-	
 	if health_component:
 		health_component.health_changed.connect(_on_health_changed)
-	
 	pass
+
 
 func _physics_process(delta: float) -> void:
 	if not target:
@@ -28,11 +29,14 @@ func _physics_process(delta: float) -> void:
 	if dis > MIN_DISTANCE:
 		_move(dir, delta)
 	else:
-		if target and target.has_method("get_health_component"):
-			var h: HealthComponent = target.get_health_component()
-			h.take_damage(1)
-	
-	
+		_attack()
+	pass
+
+
+func _attack():
+	if target and target.has_method("get_health_component"):
+		var h: HealthComponent = target.get_health_component()
+		h.take_damage(1)
 	pass
 
 
@@ -46,5 +50,9 @@ func _on_health_changed(health: int):
 	if health <= 0:
 		emit_signal("return_to_pool", self)
 		health_component.reset()
-	
+	pass
+
+
+func enable_components(b: bool):
+	hurtbox_component.set_monitorable.call_deferred(b)
 	pass
