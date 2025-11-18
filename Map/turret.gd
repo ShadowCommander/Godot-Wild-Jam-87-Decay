@@ -1,41 +1,66 @@
-extends Node
-
-const BULLET_TRACER = preload("uid://bwwahw1qukqlr")
+extends Node3D
 
 const BULLET_COLLISION_MASK = 0b100
 const RAY_LENGTH = 1000
 
-@export var shoot: GUIDEAction
-@export var camera: Camera3D
-@export var player_body: CharacterBody3D
-@export var origin_node: Node3D
-@export var shot_visuals_mesh: MeshInstance3D
 
-# Since mouse input detection of 3D objects is currently broken when mouse mode is captured, we need to raycast manually to detect things clicked on.
-# https://github.com/godotengine/godot/issues/29727
+const BULLET_TRACER = preload("uid://bwwahw1qukqlr")
+const HITSCAN_TRACER = preload("uid://cbt8wa4rdgia4")
+
+@export var pivot: Node3D
+@export var muzzle: Node3D
+@export var player_body: CharacterBody3D
+
+var targets: Dictionary = {}
 
 var space_state: PhysicsDirectSpaceState3D
 var viewport: Viewport
 var query: PhysicsRayQueryParameters3D
 
-#region Setup
-
 func _ready() -> void:
-	shoot.triggered.connect(handle_shoot)
-	shoot.completed.connect(handle_shoot_completed)
-	space_state = camera.get_world_3d().direct_space_state
+	space_state = get_world_3d().direct_space_state
 	viewport = get_viewport()
 	query = PhysicsRayQueryParameters3D.create(Vector3.ZERO, Vector3.ZERO, BULLET_COLLISION_MASK)
 
-#endregion
+func _on_enemy_detection_area_area_shape_entered(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
+	targets[area_rid] = area
+
+func _on_enemy_detection_area_area_shape_exited(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
+	targets.erase(area_rid)
+
+# Fire at target until dead
+# Turn to enemy that takes the least amount of rotation.
+
+# Preditive targeting
+var old_target_pos: Vector3
+
+func _physics_process(delta: float) -> void:
+	turret_process()
+
+func turret_process() -> void:
+	if targets.size() <= 0:
+		return
+	var target: Node3D = null
+	for area in targets:
+		if target == null:
+			target = targets[area]
+	
+	aim_at_target(target)
+	if global_position.angle_to(target.global_position) > 0.01:
+		handle_shoot((target.global_position - muzzle.global_position).normalized() * RAY_LENGTH)
+	else:
+		handle_shoot_completed()
+
+func aim_at_target(target: Node3D) -> void:
+	pivot.look_at(target.global_position)
 
 #region Utilities
 
-func raycast(max_iterations: int = 1) -> Array[Dictionary]:
+func raycast(target_vector: Vector3, max_iterations: int = 1) -> Array[Dictionary]:
 	#var new_pos = cursor.value_axis_3d
 	var mousepos = get_viewport().get_visible_rect().size / 2
-	var origin = camera.project_ray_origin(mousepos)
-	var end = origin + camera.project_ray_normal(mousepos) * RAY_LENGTH
+	var origin = muzzle.global_position
+	var end = origin + target_vector
 	#var end = origin + new_pos * RAY_LENGTH
 	query.from = origin
 	query.to = end
@@ -68,10 +93,10 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-var damage: int = 1000
+var damage: int = 50
 var pierce_count: int = 1
 
-var rounds_per_minute: float = 600
+var rounds_per_minute: float = 1200
 var milliseconds_per_round: int = int(60000 / rounds_per_minute)
 var shots_fired: int = 0
 var next_fire_time: int = 0
@@ -81,7 +106,7 @@ var held: bool = false
 var tracer_rate: int = 1
 var bullets_fired: int = 0
 
-func handle_shoot() -> void:
+func handle_shoot(target_vector: Vector3) -> void:
 	if Time.get_ticks_msec() < next_fire_time:
 		return
 	if held:
@@ -90,7 +115,7 @@ func handle_shoot() -> void:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
 	held = true
 	
-	var results = raycast(pierce_count)
+	var results = raycast(target_vector, pierce_count)
 	var end_position: Vector3 = query.to
 	for result in results:
 		var collided: Area3D = result.get("collider")
@@ -108,12 +133,14 @@ func handle_shoot_completed() -> void:
 	held = false
 
 func show_shoot_visuals(target_point: Vector3) -> void:
-	if origin_node.global_position.distance_squared_to(target_point) < min_distance_sq:
+	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
 		return
 	shots_fired += 1
-	var tracer: BulletTracer = BULLET_TRACER.instantiate()
-	tracer.target_pos = target_point
-	tracer.look_at_from_position(origin_node.global_position, target_point)
+	#var tracer: BulletTracer = BULLET_TRACER.instantiate()
+	#tracer.target_pos = target_point
+	#tracer.look_at_from_position(muzzle.global_position, target_point)
+	var tracer: HitscanTracer = HITSCAN_TRACER.instantiate()
+	tracer.init(muzzle.global_position, target_point)
 	get_tree().root.add_child(tracer)
 
 #endregion

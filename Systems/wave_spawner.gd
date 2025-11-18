@@ -2,20 +2,21 @@ class_name WaveSpawner extends Node
 
 
 @export var pool: NodePool
+@export var spawn_delay: float = 1:
+	set(value):
+		wave_timer.set_wait_time(value)
+@export var wave_spawn_count: int = 5
 var spawn_radius: float = 5
 
 var spawn_points: Array
 
-var wave_timer: Timer
+var wave_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	spawn_points = get_children().filter(func(n): return n is Marker3D)
 	assert(len(spawn_points) != 0, "There must be at least one spawn point.")
 	assert(pool, "WaveSpawner requires a NodePool")
 	
-	
-	wave_timer = Timer.new()
-	wave_timer.set_wait_time(1)
 	wave_timer.autostart = true
 	add_child(wave_timer)
 	wave_timer.timeout.connect(spawn_wave.bind(5))
