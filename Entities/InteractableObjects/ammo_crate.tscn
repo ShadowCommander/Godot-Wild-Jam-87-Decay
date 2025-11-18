@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dse4nfhb7y6sc"]
+
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_q0maj"]
+[ext_resource type="Script" uid="uid://c3c8e24u6o68c" path="res://Entities/InteractableObjects/dispenser_component.gd" id="2_0ueow"]
+[ext_resource type="PackedScene" uid="uid://brgxyu1ya7lhb" path="res://Entities/Items/AmmoBox/ammo_box.tscn" id="3_p7jop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ueow"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6eqs"]
+size = Vector3(2.1, 1, 1.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj20j"]
+albedo_color = Color(0.29411766, 0.3254902, 0.1254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_88cas"]
+material = SubResource("StandardMaterial3D_oj20j")
+size = Vector3(2, 1, 1)
+
+[node name="AmmoCrate" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0ueow")
+
+[node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_q0maj")
+mesh = NodePath("../MeshInstance3D")
+metadata/_custom_type_script = "uid://chthxqwjmw8p4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_x6eqs")
+
+[node name="DispenserComponent" type="Node" parent="InteractableArea"]
+script = ExtResource("2_0ueow")
+dispensed_scene = ExtResource("3_p7jop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_88cas")

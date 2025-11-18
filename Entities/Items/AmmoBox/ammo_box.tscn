@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://brgxyu1ya7lhb"]
+
+[ext_resource type="Script" uid="uid://d2jp5scjyt5p" path="res://Entities/Items/AmmoBox/ammo_box.gd" id="1_5ggii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ggii"]
+albedo_color = Color(0.29411766, 0.3254902, 0.1254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_md2gd"]
+material = SubResource("StandardMaterial3D_5ggii")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="AmmoBox" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_md2gd")
+script = ExtResource("1_5ggii")

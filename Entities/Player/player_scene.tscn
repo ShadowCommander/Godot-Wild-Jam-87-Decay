@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmxrn4vki27cn"]
+[gd_scene load_steps=17 format=3 uid="uid://cmxrn4vki27cn"]
 
 [ext_resource type="Script" uid="uid://by183cv0mah2j" path="res://Entities/Player/player.gd" id="1_yew1x"]
 [ext_resource type="Resource" uid="uid://ctpyyhn7pjkx7" path="res://Entities/Player/Controls/camera.tres" id="2_txgsh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://dp1hk6y7gduq5" path="res://Entities/Player/Controls/keyboard_menu_context.tres" id="6_t0j73"]
 [ext_resource type="Resource" uid="uid://cknatnjtxatoj" path="res://Entities/Player/Controls/toggle_cursor.tres" id="7_e4pf2"]
 [ext_resource type="Resource" uid="uid://g0l3livcgac" path="res://Entities/Player/Controls/shoot.tres" id="7_sl4om"]
+[ext_resource type="Script" uid="uid://lds3mxldws7p" path="res://Entities/Player/hand_system.gd" id="9_5e743"]
 [ext_resource type="Texture2D" uid="uid://dbjnro38dejk1" path="res://Entities/Player/HUD/dot_small.png" id="12_qn4ih"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_deg86"]
@@ -76,6 +77,9 @@ shoot = ExtResource("7_sl4om")
 camera = NodePath("../CameraYawPivot/CameraPitchPivot/Camera3D")
 player_body = NodePath("..")
 origin_node = NodePath("../CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group/group2/plane/Muzzle")
+
+[node name="HandSystem" type="Node" parent="Player"]
+script = ExtResource("9_5e743")
 
 [node name="GUIDEInit" type="Node" parent="."]
 script = ExtResource("4_1ggpk")

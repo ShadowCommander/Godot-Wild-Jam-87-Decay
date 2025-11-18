@@ -1,7 +1,7 @@
 extends Node
 class_name InteractionSystem
 
-const RAYCAST_COLLISION_MASK = 0x8
+const RAYCAST_COLLISION_MASK = 0b10000000
 
 class InteractionAttemptEvent:
 	var cancelled: bool = false

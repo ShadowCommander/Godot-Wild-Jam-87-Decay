@@ -14,6 +14,8 @@ const OUTLINE_SHADER_MATERIAL = preload("uid://dep3tllk45lhr")
 # Pressed
 
 func _ready() -> void:
+	collision_layer = InteractionSystem.RAYCAST_COLLISION_MASK
+	collision_mask = InteractionSystem.RAYCAST_COLLISION_MASK
 	setup_signals_on_parent()
 	connect_signals_on_parent()
 

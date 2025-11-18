@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuoxeqfkqxmny"]
+[gd_scene load_steps=11 format=3 uid="uid://cuoxeqfkqxmny"]
 
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_e2evq"]
+[ext_resource type="PackedScene" uid="uid://dse4nfhb7y6sc" path="res://Entities/InteractableObjects/ammo_crate.tscn" id="2_r3on0"]
+[ext_resource type="Script" uid="uid://cjka1bwdkciop" path="res://Entities/InteractableObjects/ammo_item_receiver_component.gd" id="3_x1elf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
 size = Vector3(1, 2, 1)
@@ -10,6 +12,19 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
 size = Vector3(1.1, 2, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g38i"]
+albedo_color = Color(0.29411766, 0.3254902, 0.1254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_37oqe"]
+material = SubResource("StandardMaterial3D_1g38i")
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1g38i"]
+size = Vector3(0.6, 1, 0.6)
 
 [node name="InteractablesScene" type="Node3D"]
 
@@ -31,3 +46,27 @@ mesh = NodePath("../MeshInstance3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dispenser/InteractableArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_x1elf")
+
+[node name="AmmoCrate" parent="." instance=ExtResource("2_r3on0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.949741)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ptvhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_37oqe")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="InteractableArea" type="Area3D" parent="StaticBody3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_e2evq")
+mesh = NodePath("../MeshInstance3D")
+metadata/_custom_type_script = "uid://chthxqwjmw8p4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/InteractableArea"]
+shape = SubResource("BoxShape3D_1g38i")
+
+[node name="AmmoItemReceiverComponent" type="Node" parent="StaticBody3D/InteractableArea"]
+script = ExtResource("3_x1elf")

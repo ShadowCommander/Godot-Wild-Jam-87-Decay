@@ -15,6 +15,15 @@ const CAMERA_X_ROT_MAX := deg_to_rad(90)
 
 func _ready() -> void:
 	look_relative.triggered.connect(on_look_relative)
+	var children = get_children()
+	var components = children.filter(func(child): return child is Component)
+	for child: Component in components:
+		child.entity = self
+		child.setup_signals_on_parent()
+	for child: Component in components:
+		child.connect_signals_on_parent()
+	for child: Component in components:
+		child.component_init()
 
 func _physics_process(delta: float) -> void:
 	process_movement(delta)
