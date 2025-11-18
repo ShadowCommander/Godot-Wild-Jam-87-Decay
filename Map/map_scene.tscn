@@ -99,19 +99,18 @@ environment = SubResource("Environment_q1sw5")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1019816, 0)
-visible = false
 light_color = Color(0.91, 0.87724, 0.6643, 1)
 light_energy = 11.12
 omni_range = 17.685
 
 [node name="DebugLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.94700307, -0.091340244, -0.30796462, 0.09732632, -0.83206815, 0.546068, -0.30612552, -0.54710114, -0.7790812, 0, 20.164745, -20.217762)
+visible = false
 light_color = Color(0.90920806, 0.8177348, 0.8101067, 1)
 shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.94700307, -0.09134023, -0.30796462, 0.09732632, -0.83206815, 0.546068, -0.30612552, -0.54710114, -0.7790812, 0, 20.164745, -20.217762)
-visible = false
 light_color = Color(0.90920806, 0.8177348, 0.8101067, 1)
 light_energy = 0.005
 shadow_enabled = true
