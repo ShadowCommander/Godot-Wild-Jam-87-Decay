@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://kwix4x2quwfv"]
+
+[ext_resource type="PackedScene" uid="uid://bvs7aj4uw3f2c" path="res://Entities/Player/Hand/handgun.gltf" id="1_hj3fx"]
+
+[node name="blockbench_export" instance=ExtResource("1_hj3fx")]
+
+[node name="group" parent="." index="0"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Skeleton3D" parent="armature" index="0"]
+bones/0/position = Vector3(-0.2, 0.67500436, -1.5628275)
+bones/0/rotation = Quaternion(0.7448795, 0.13805524, 0.118956015, 0.64182925)
+bones/1/rotation = Quaternion(0.05784611, 0.6735076, -0.05300619, 0.73500454)
+bones/2/rotation = Quaternion(0, 0, -0.14780942, 0.9890159)
+bones/4/rotation = Quaternion(0, 0, 0.087155744, 0.9961947)
+bones/5/rotation = Quaternion(0.56640625, 0, 0, 0.82412624)
+bones/6/rotation = Quaternion(-0.27358282, 0.03359174, 0.117148325, 0.9540966)
+bones/10/rotation = Quaternion(-0.034766693, -0.003041692, 0.08710265, 0.9955878)

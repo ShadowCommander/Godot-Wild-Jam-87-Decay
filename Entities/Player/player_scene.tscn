@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://c1qfvjake04uj" path="res://Entities/Player/Controls/player_movement.tres" id="3_1ggpk"]
 [ext_resource type="Script" uid="uid://46qda0mmje2y" path="res://Entities/Player/guide_init.gd" id="4_1ggpk"]
 [ext_resource type="Script" uid="uid://ckartwn3bwlnn" path="res://Entities/Player/interaction_component.gd" id="4_e4pf2"]
+[ext_resource type="PackedScene" uid="uid://bvs7aj4uw3f2c" path="res://Entities/Player/Hand/handgun.gltf" id="4_smbhw"]
 [ext_resource type="Resource" uid="uid://coy17d48rb7o3" path="res://Entities/Player/Controls/interact.tres" id="5_cgmrs"]
 [ext_resource type="Resource" uid="uid://cdnffgfq406fh" path="res://Entities/Player/Controls/player_movement_keyboard_context.tres" id="5_xgxpr"]
 [ext_resource type="Script" uid="uid://doo4s686a2jrv" path="res://Entities/Player/gun_system.gd" id="6_bxf2e"]
@@ -16,10 +17,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_deg86"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yew1x"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_sl4om"]
-radius = 0.1
-height = 0.2
 
 [node name="PlayerScene" type="Node3D"]
 
@@ -36,6 +33,7 @@ shape = SubResource("CapsuleShape3D_deg86")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_yew1x")
 
 [node name="CameraYawPivot" type="Node3D" parent="Player"]
@@ -44,12 +42,26 @@ mesh = SubResource("CapsuleMesh_yew1x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraYawPivot/CameraPitchPivot"]
+current = true
+fov = 60.0
 
 [node name="Hand" type="Node3D" parent="Player/CameraYawPivot/CameraPitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42766201, -0.2410624, -0.5539102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10139954, -0.18859696, -0.63183284)
 
-[node name="HandMesh" type="MeshInstance3D" parent="Player/CameraYawPivot/CameraPitchPivot/Hand"]
-mesh = SubResource("SphereMesh_sl4om")
+[node name="Node3D" type="Node3D" parent="Player/CameraYawPivot/CameraPitchPivot/Hand"]
+transform = Transform3D(1, 0, 0, 0, 0.97814775, -0.20791173, 0, 0.20791173, 0.97814775, 0, 0, 0)
+
+[node name="blockbench_export" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D" instance=ExtResource("4_smbhw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.09780055, -0.6463177, -0.81134397)
+
+[node name="group" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, -0.0125, -0.15, -0.175)
+
+[node name="group2" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group" index="3"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.090625, 0.75, -0.29375)
+
+[node name="Muzzle" type="Node3D" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group/group2/plane" index="0"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="InteractionSystem" type="Node" parent="Player" node_paths=PackedStringArray("camera", "player_body")]
 script = ExtResource("4_e4pf2")
@@ -63,7 +75,7 @@ script = ExtResource("6_bxf2e")
 shoot = ExtResource("7_sl4om")
 camera = NodePath("../CameraYawPivot/CameraPitchPivot/Camera3D")
 player_body = NodePath("..")
-origin_node = NodePath("../CameraYawPivot/CameraPitchPivot/Hand")
+origin_node = NodePath("../CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group/group2/plane/Muzzle")
 
 [node name="GUIDEInit" type="Node" parent="."]
 script = ExtResource("4_1ggpk")
@@ -97,3 +109,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("12_qn4ih")
+
+[editable path="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export"]
