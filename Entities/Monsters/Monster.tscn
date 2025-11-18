@@ -70,10 +70,11 @@ material = SubResource("ShaderMaterial_cfrxl")
 [sub_resource type="SphereShape3D" id="SphereShape3D_a5dle"]
 radius = 0.62
 
-[node name="Monster" type="Node3D" node_paths=PackedStringArray("health_component", "hurtbox_component")]
+[node name="Monster" type="Node3D" node_paths=PackedStringArray("health_component", "hurtbox_component", "attack_timer")]
 script = ExtResource("1_ao0gl")
 health_component = NodePath("HealthComponent")
 hurtbox_component = NodePath("Hurtbox")
+attack_timer = NodePath("AttackSpeed")
 MOVEMENT_SPEED = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -91,4 +92,8 @@ shape = SubResource("SphereShape3D_a5dle")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_a5dle")
+MAX_HEALTH = 5000
 metadata/_custom_type_script = "uid://b1rw4oecqfq61"
+
+[node name="AttackSpeed" type="Timer" parent="."]
+one_shot = true

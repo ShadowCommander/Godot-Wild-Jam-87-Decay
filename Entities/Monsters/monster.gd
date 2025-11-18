@@ -5,6 +5,8 @@ const MIN_DISTANCE: float = 2.5
 
 @export var health_component: HealthComponent
 @export var hurtbox_component: Hurtbox
+@export var attack_timer: Timer
+@export var ATK_DAMAGE: int = 700
 
 @export_range(1.0,5.0) var MOVEMENT_SPEED: float = 1.0
 
@@ -15,6 +17,8 @@ var target: Wall = null
 func _ready() -> void:
 	if health_component:
 		health_component.health_changed.connect(_on_health_changed)
+	if attack_timer:
+		attack_timer.timeout.connect(_start_attack)
 	pass
 
 
@@ -26,17 +30,25 @@ func _physics_process(delta: float) -> void:
 	var dir: Vector3 = origin.direction_to(target.global_transform.origin)
 	var dis: float = origin.distance_squared_to(target.global_transform.origin)
 	
+
 	if dis > MIN_DISTANCE:
 		_move(dir, delta)
 	else:
-		_attack()
+		if attack_timer.is_stopped():
+			attack_timer.start()
+	pass
+
+
+func _start_attack():
+	_attack()
+	attack_timer.start()
 	pass
 
 
 func _attack():
 	if target and target.has_method("get_health_component"):
 		var h: HealthComponent = target.get_health_component()
-		h.take_damage(1)
+		h.take_damage(ATK_DAMAGE)
 	pass
 
 

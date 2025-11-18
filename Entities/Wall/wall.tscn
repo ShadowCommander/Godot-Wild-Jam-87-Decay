@@ -15,5 +15,5 @@ mesh = SubResource("BoxMesh_7mntq")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_5giek")
-MAX_HEALTH = 1000
+MAX_HEALTH = 100000
 metadata/_custom_type_script = "uid://b1rw4oecqfq61"
