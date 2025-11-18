@@ -14,6 +14,7 @@ size = Vector3(1.1, 2, 1.1)
 [node name="InteractablesScene" type="Node3D"]
 
 [node name="Dispenser" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.787579, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dispenser"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -18,9 +18,6 @@ var space_state: PhysicsDirectSpaceState3D
 var viewport: Viewport
 var query: PhysicsRayQueryParameters3D
 
-# Focus
-var focused_node: Node3D
-
 #region Setup
 
 func _ready() -> void:
@@ -51,10 +48,10 @@ func raycast(max_iterations: int = 1) -> Array[Dictionary]:
 ## Executes intersect_ray query repeatedly, penetrating through different objects until there are no hits left
 ## Returns an array of result dictionaries (see PhysicsDirectSpaceState3D.intersect_ray docs)
 ## https://github.com/godotengine/godot-proposals/discussions/6377#discussioncomment-12965646
-static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, query: PhysicsRayQueryParameters3D, max_iterations: int = 100) -> Array[Dictionary]:
-	var next_query = query
+static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: PhysicsRayQueryParameters3D, max_iterations: int = 100) -> Array[Dictionary]:
+	var next_query = _query
 	var hits: Array[Dictionary] = []
-	var exclusions: Array[RID] = query.exclude
+	var exclusions: Array[RID] = _query.exclude
 	var counter := 0
 	
 	while (next_query != null) and (not counter > max_iterations):
@@ -62,7 +59,7 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, query: Physic
 		if !result.is_empty():
 			hits.append(result.duplicate())
 			exclusions.append(result.rid)
-		next_query = null if result.is_empty() else PhysicsRayQueryParameters3D.create(query.from, query.to, query.collision_mask, exclusions)
+		next_query = null if result.is_empty() else PhysicsRayQueryParameters3D.create(_query.from, _query.to, _query.collision_mask, exclusions)
 		counter += 1
 	
 	return hits
@@ -71,19 +68,17 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, query: Physic
 
 #region Shoot
 
-var damage: int = 100
+var damage: int = 1000
 var pierce_count: int = 1
 
 var rounds_per_minute: float = 600
-var rounds_per_second: float = rounds_per_minute / 60
-var seconds_per_round: float = 1 / (rounds_per_minute / 60)
-var milliseconds_per_round: int = 60000 / rounds_per_minute
+var milliseconds_per_round: int = int(60000 / rounds_per_minute)
 var shots_fired: int = 0
 var next_fire_time: int = 0
 var held: bool = false
 # When new firing set new next_fire_time to `Time.get_ticks_msec() + milliseconds_per_round`
 # When continuous fire set next_fire_time to `next_fire_time + milliseconds_per_round`
-var tracer_rate: int = 3
+var tracer_rate: int = 1
 var bullets_fired: int = 0
 
 func handle_shoot() -> void:
