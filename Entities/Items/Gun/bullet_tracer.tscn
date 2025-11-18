@@ -21,8 +21,8 @@ emission_texture = SubResource("GradientTexture2D_rt542")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_44m1c"]
 material = SubResource("StandardMaterial3D_jd07p")
-size = 0.013
-sections = 2
+size = 0.02
+sections = 10
 section_length = 0.5
 section_segments = 1
 
@@ -30,5 +30,5 @@ section_segments = 1
 script = ExtResource("1_rt542")
 
 [node name="BulletTracer" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.5)
 mesh = SubResource("RibbonTrailMesh_44m1c")

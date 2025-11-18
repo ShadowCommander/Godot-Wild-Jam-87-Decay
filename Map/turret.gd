@@ -5,9 +5,11 @@ const RAY_LENGTH = 1000
 
 
 const BULLET_TRACER = preload("uid://bwwahw1qukqlr")
+const HITSCAN_TRACER = preload("uid://cbt8wa4rdgia4")
 
 @export var pivot: Node3D
 @export var muzzle: Node3D
+@export var player_body: CharacterBody3D
 
 var targets: Dictionary = {}
 
@@ -63,6 +65,8 @@ func raycast(target_vector: Vector3, max_iterations: int = 1) -> Array[Dictionar
 	query.from = origin
 	query.to = end
 	query.collide_with_areas = true
+	if player_body:
+		query.exclude = [player_body]
 
 	return multi_raycast(space_state, query, max_iterations)
 
@@ -89,10 +93,10 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-var damage: int = 100
+var damage: int = 50
 var pierce_count: int = 1
 
-var rounds_per_minute: float = 600
+var rounds_per_minute: float = 1200
 var milliseconds_per_round: int = int(60000 / rounds_per_minute)
 var shots_fired: int = 0
 var next_fire_time: int = 0
@@ -132,9 +136,11 @@ func show_shoot_visuals(target_point: Vector3) -> void:
 	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
 		return
 	shots_fired += 1
-	var tracer: BulletTracer = BULLET_TRACER.instantiate()
-	tracer.target_pos = target_point
-	tracer.look_at_from_position(muzzle.global_position, target_point)
+	#var tracer: BulletTracer = BULLET_TRACER.instantiate()
+	#tracer.target_pos = target_point
+	#tracer.look_at_from_position(muzzle.global_position, target_point)
+	var tracer: HitscanTracer = HITSCAN_TRACER.instantiate()
+	tracer.init(muzzle.global_position, target_point)
 	get_tree().root.add_child(tracer)
 
 #endregion

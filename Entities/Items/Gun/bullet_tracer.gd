@@ -13,7 +13,10 @@ var speed_sq = speed * speed
 func _process(delta: float) -> void:
 	var diff = target_pos - global_position
 	var add = diff.normalized() * speed * delta
-	if global_position.distance_squared_to(target_pos) < speed_sq:
+	#if global_position.distance_squared_to(target_pos) < speed_sq * delta:
+	var distance = global_position.distance_squared_to(target_pos)
+	var speed_delta_sq = (speed * delta) * (speed * delta)
+	if distance < speed_delta_sq:
 		queue_free()
 	global_position += add
 	if Time.get_ticks_msec() > death_time:
