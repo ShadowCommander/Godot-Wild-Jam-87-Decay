@@ -78,9 +78,11 @@ skeleton = NodePath("../DirectionalLight3D")
 
 [node name="Turrets" type="Node3D" parent="."]
 
-[node name="Turret" type="Node3D" parent="Turrets"]
+[node name="Turret" type="Node3D" parent="Turrets" node_paths=PackedStringArray("pivot", "muzzle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.235014, 0, 0)
 script = ExtResource("1_q1sw5")
+pivot = NodePath("Base/Pivot")
+muzzle = NodePath("Base/Pivot/Body/Barrel/Muzzle")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Turrets/Turret"]
 
