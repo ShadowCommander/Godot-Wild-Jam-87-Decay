@@ -4,13 +4,18 @@
 [ext_resource type="Script" uid="uid://b1rw4oecqfq61" path="res://Systems/Damage/health.gd" id="2_5giek"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7mntq"]
-size = Vector3(1, 2.5, 16)
+size = Vector3(1, 1, 32)
 
 [node name="Wall" type="Node3D" node_paths=PackedStringArray("health_component") groups=["wall"]]
 script = ExtResource("1_2ww3e")
 health_component = NodePath("HealthComponent")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_7mntq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4868691, 0)
 mesh = SubResource("BoxMesh_7mntq")
 
 [node name="HealthComponent" type="Node" parent="."]
