@@ -6,16 +6,16 @@ class_name WaveSpawner extends Node
 	set(value):
 		wave_timer.set_wait_time(value)
 @export var wave_spawn_count: int = 5
-var spawn_radius: float = 10
 
+var spawn_radius: float = 4
 var spawn_points: Array
-
 var wave_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	spawn_points = get_children().filter(func(n): return n is Marker3D)
 	assert(len(spawn_points) != 0, "There must be at least one spawn point.")
 	assert(pool, "WaveSpawner requires a NodePool")
+	
 	
 	
 	wave_timer.autostart = true
@@ -35,7 +35,10 @@ func spawn_wave(n: int) -> void:
 		spawn_points[randi() % spawn_points.size()]
 		
 		o.global_transform.origin = get_spawn_position(rdm_spawn_point)
-		o.target = rdm_spawn_point.target_wall
+		
+		o.spawn_info =\
+		BaseMonster.SpawnData.new(rdm_spawn_point, rdm_spawn_point.target_wall)
+		
 		
 	pass
 
@@ -50,7 +53,6 @@ func get_spawn_position(spawn_point: SpawnPoint) -> Vector3:
 	
 	var left = Vector3.UP.cross(dir_to_center) * randf_range(-spawn_radius,spawn_radius)
 	var right = dir_to_center.cross(Vector3.UP) * randf_range(-spawn_radius,spawn_radius)
-	
 	var offset: Vector3 = Vector3.UP
 	
 	if randi() % 2:
