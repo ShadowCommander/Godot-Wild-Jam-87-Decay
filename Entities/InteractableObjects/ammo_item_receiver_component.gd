@@ -1,5 +1,7 @@
 class_name AmmoItemReceiverComponent extends Component
 
+@export var turret_ammo_loader: TurretAmmoLoader
+
 func connect_signals_on_parent() -> void:
 	entity.connect("pressed", handle_pressed)
 
@@ -22,3 +24,4 @@ func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
 	
 	user.emit_signal("change_ammo", item.ammo_count)
 	print("Inserting ammo %d" % item.ammo_count)
+	turret_ammo_loader.add_ammo(item.ammo_count)
