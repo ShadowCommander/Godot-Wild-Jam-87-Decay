@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b77bbilpkmmbm"]
+[gd_scene load_steps=20 format=3 uid="uid://b77bbilpkmmbm"]
 
+[ext_resource type="PackedScene" uid="uid://duh6j84uthplp" path="res://Entities/Lights/floodlight.tscn" id="1_8u4bj"]
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_kx3w5"]
 [ext_resource type="PackedScene" uid="uid://isocck6nv1yp" path="res://Map/monster_testing_map_scene.tscn" id="2_5jdlw"]
 [ext_resource type="PackedScene" uid="uid://b54cfdq4yv4p6" path="res://Systems/object_pooler.tscn" id="3_e1e8b"]
@@ -7,10 +8,92 @@
 [ext_resource type="PackedScene" uid="uid://c4esj6tprgijl" path="res://Systems/wave_spawner.tscn" id="5_1g5qh"]
 [ext_resource type="Script" uid="uid://ckq145gedwee7" path="res://Systems/spawn_marker.gd" id="6_l5n4v"]
 [ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="7_usvvm"]
+[ext_resource type="PackedScene" uid="uid://d1m06n063nqxn" path="res://Entities/Lights/light_pole.tscn" id="8_l5n4v"]
+[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/generator.tscn" id="9_usvvm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1fl6"]
+sky_top_color = Color(0.6510485, 0.3365267, 0.40604553, 1)
+sky_horizon_color = Color(0.55270576, 0.19847593, 0.24967882, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_h037i"]
+sky_material = SubResource("ProceduralSkyMaterial_m1fl6")
+
+[sub_resource type="Environment" id="Environment_l5n4v"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_h037i")
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.48299998, 0.48299998, 1)
+ambient_light_energy = 0.02
+fog_mode = 1
+fog_light_color = Color(0.09, 0.031500004, 0.0225, 1)
+fog_density = 1.0
+fog_depth_curve = 9.849194
+fog_depth_begin = 3.0
+fog_depth_end = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5n4v"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.047058824)
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m1fl6"]
+material = SubResource("StandardMaterial3D_l5n4v")
+top_radius = 0.0
+bottom_radius = 11.027
+height = 26.885
+
+[sub_resource type="Gradient" id="Gradient_m1fl6"]
+offsets = PackedFloat32Array(0.35602096, 0.74345547)
+colors = PackedColorArray(0, 0, 0, 1, 0.05, 0.008500001, 0.020950008, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l5n4v"]
+gradient = SubResource("Gradient_m1fl6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1fl6"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = SubResource("GradientTexture2D_l5n4v")
+
+[sub_resource type="QuadMesh" id="QuadMesh_m1fl6"]
+material = SubResource("StandardMaterial3D_m1fl6")
+size = Vector2(20, 20)
 
 [node name="Main" type="Node"]
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_l5n4v")
+
+[node name="LightShaft2" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.39600325, 6.0999603, 1.1931987)
+visible = false
+mesh = SubResource("CylinderMesh_m1fl6")
+
+[node name="Floodlight" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
+power_generator = NodePath("../PowerGenerator")
+
+[node name="Floodlight2" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="Floodlight3" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="Floodlight4" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+power_generator = NodePath("../PowerGenerator")
 
 [node name="PlayerScene" parent="World" instance=ExtResource("1_kx3w5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2978115, 0, 4.7665854)
@@ -54,6 +137,41 @@ transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 
 
 [node name="Wall4" parent="World" instance=ExtResource("7_usvvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.530726, 1.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69027233, 1.4804201, -40.815315)
+mesh = SubResource("QuadMesh_m1fl6")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69027233, 1.4804201, 40.83957)
+mesh = SubResource("QuadMesh_m1fl6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 41.199917, 1.4804201, -0.48923492)
+mesh = SubResource("QuadMesh_m1fl6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -42.266865, 1.4804201, -0.48923492)
+mesh = SubResource("QuadMesh_m1fl6")
+
+[node name="LightPole" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_l5n4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.942978, 1.4229624, -7.6288443)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="LightPole2" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_l5n4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.942978, 1.4229624, 8.025568)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="LightPole3" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_l5n4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.165369, 1.4229624, 8.025568)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="LightPole4" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_l5n4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.165369, 1.4229624, -7.863611)
+power_generator = NodePath("../PowerGenerator")
+
+[node name="PowerGenerator" parent="World" instance=ExtResource("9_usvvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.576741, 0.5, -4.859321)
 
 [connection signal="dead_wall" from="World/Wall" to="World/WaveSpawner" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/Wall2" to="World/WaveSpawner" method="_on_wall_dead_wall"]
