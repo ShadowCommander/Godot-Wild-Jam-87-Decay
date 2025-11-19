@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://wxkfr2kif5n3"]
+[gd_scene load_steps=12 format=3 uid="uid://wxkfr2kif5n3"]
 
+[ext_resource type="Script" uid="uid://cr5fui6kvyrxk" path="res://Entities/InteractableObjects/generator.gd" id="1_jryob"]
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_usr04"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
@@ -26,7 +27,26 @@ height = 0.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
 size = Vector3(2.1, 1, 1.1)
 
-[node name="Generator" type="StaticBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1sbe"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.84313726)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5gdqg"]
+material = SubResource("StandardMaterial3D_f1sbe")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jryob"]
+material = SubResource("StandardMaterial3D_usr04")
+top_radius = 0.015
+bottom_radius = 0.015
+height = 0.28
+
+[node name="PowerGenerator" type="StaticBody3D"]
+script = ExtResource("1_jryob")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_r3on0")
@@ -44,3 +64,29 @@ mesh = NodePath("../MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("BoxShape3D_x1elf")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8575087, 0.51446944, 0, -0.51446944, 0.8575087, 0, 1.3164724, 1.2903603)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.8, 0)
+mesh = SubResource("CylinderMesh_5gdqg")
+skeleton = NodePath("OmniLight3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D2"]
+light_color = Color(1, 0.1254902, 0.1254902, 1)
+light_energy = 0.34
+light_bake_mode = 1
+omni_range = 2.0
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.64, 0)
+mesh = SubResource("CylinderMesh_jryob")
+skeleton = NodePath("")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

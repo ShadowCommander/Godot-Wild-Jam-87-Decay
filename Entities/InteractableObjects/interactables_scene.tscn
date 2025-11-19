@@ -1,33 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuoxeqfkqxmny"]
+[gd_scene load_steps=6 format=3 uid="uid://cuoxeqfkqxmny"]
 
 [ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/generator.tscn" id="1_ptvhj"]
 [ext_resource type="PackedScene" uid="uid://dse4nfhb7y6sc" path="res://Entities/InteractableObjects/ammo_crate.tscn" id="2_r3on0"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="3_x1elf"]
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="4_ptvhj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
-size = Vector3(0.1, 2, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g38i"]
-albedo_color = Color(0.49597043, 0.3603297, 2.8878452e-07, 1)
-metallic = 0.8
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_37oqe"]
-material = SubResource("StandardMaterial3D_1g38i")
-top_radius = 0.04
-bottom_radius = 0.04
-height = 1.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cigxe"]
-transparency = 1
-albedo_color = Color(0.46, 0.46, 0, 0.84313726)
-emission = Color(1, 1, 0.47843137, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_l6dfc"]
-material = SubResource("StandardMaterial3D_cigxe")
-top_radius = 0.06
-bottom_radius = 0.06
-height = 0.4
+[ext_resource type="PackedScene" uid="uid://d1m06n063nqxn" path="res://Entities/Lights/light_pole.tscn" id="5_1g38i"]
 
 [node name="InteractablesScene" type="Node3D"]
 
@@ -44,20 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2662466, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.235014, 0, 0)
 ammo_loader = NodePath("../TurretAmmoLoader")
 
-[node name="LightPole" type="StaticBody3D" parent="."]
+[node name="LightPole" parent="." node_paths=PackedStringArray("power_generator") instance=ExtResource("5_1g38i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8691714, 1, 0.444947)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPole"]
-shape = SubResource("BoxShape3D_ptvhj")
-
-[node name="Pole" type="MeshInstance3D" parent="LightPole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
-mesh = SubResource("CylinderMesh_37oqe")
-
-[node name="Light" type="MeshInstance3D" parent="LightPole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-mesh = SubResource("CylinderMesh_l6dfc")
-skeleton = NodePath("../Pole")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="LightPole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+power_generator = NodePath("../Generator")

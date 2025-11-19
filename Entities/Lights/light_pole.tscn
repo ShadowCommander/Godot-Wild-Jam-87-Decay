@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1m06n063nqxn"]
+
+[ext_resource type="Script" uid="uid://its5y1qhcuou" path="res://Entities/InteractableObjects/powered_light.gd" id="1_i8xqe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g38i"]
+albedo_color = Color(0.49597043, 0.3603297, 2.8878452e-07, 1)
+metallic = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_37oqe"]
+material = SubResource("StandardMaterial3D_1g38i")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cigxe"]
+transparency = 1
+albedo_color = Color(0.46, 0.46, 0, 0.84313726)
+emission_enabled = true
+emission = Color(1, 1, 0.47843137, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l6dfc"]
+material = SubResource("StandardMaterial3D_cigxe")
+top_radius = 0.06
+bottom_radius = 0.06
+height = 0.4
+
+[node name="LightPole" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
+script = ExtResource("1_i8xqe")
+light_mesh = NodePath("Light")
+light = NodePath("OmniLight3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ptvhj")
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+mesh = SubResource("CylinderMesh_37oqe")
+
+[node name="Light" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("CylinderMesh_l6dfc")
+skeleton = NodePath("../Pole")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+light_color = Color(1, 1, 0.8235294, 1)
+light_energy = 8.0
+light_size = 0.15
+omni_range = 8.0
