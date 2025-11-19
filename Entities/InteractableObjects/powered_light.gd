@@ -5,16 +5,16 @@ class_name PoweredLight extends StaticBody3D
 @export var light: Light3D
 
 func _ready() -> void:
-	power_generator.turn_off_lights.connect(handle_turn_off_lights)
-	power_generator.turn_on_lights.connect(handle_turn_on_lights)
+	power_generator.generator_turned_off.connect(handle_generator_turned_off)
+	power_generator.generator_turned_on.connect(handle_generator_turned_on)
 
-func handle_turn_off_lights() -> void:
+func handle_generator_turned_off() -> void:
 	light.hide()
 	var mat = light_mesh.mesh.material as StandardMaterial3D
 	if mat:
 		mat.emission_enabled = false
 	
-func handle_turn_on_lights() -> void:
+func handle_generator_turned_on() -> void:
 	light.show()
 	var mat = light_mesh.mesh.material as StandardMaterial3D
 	if mat:

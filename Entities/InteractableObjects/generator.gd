@@ -3,8 +3,8 @@ class_name PowerGenerator extends StaticBody3D
 @onready var timer: Timer = $Timer
 @onready var interactable_area: InteractableArea = $InteractableArea
 
-signal turn_off_lights
-signal turn_on_lights
+signal generator_turned_off
+signal generator_turned_on
 
 @export var min_time: float = 30
 @export var max_time: float = 60
@@ -18,8 +18,8 @@ func set_random_wait_time() -> void:
 	timer.start(randf_range(min_time, max_time))
 
 func _on_timer_timeout() -> void:
-	turn_off_lights.emit()
+	generator_turned_off.emit()
 	
 func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
-	turn_on_lights.emit()
+	generator_turned_on.emit()
 	set_random_wait_time()
