@@ -115,6 +115,9 @@ func handle_shoot(target_vector: Vector3) -> void:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
 	held = true
 	
+	if not can_fire():
+		return
+	
 	var results = raycast(target_vector, pierce_count)
 	var end_position: Vector3 = query.to
 	for result in results:
@@ -142,5 +145,16 @@ func show_shoot_visuals(target_point: Vector3) -> void:
 	var tracer: HitscanTracer = HITSCAN_TRACER.instantiate()
 	tracer.init(muzzle.global_position, target_point)
 	get_tree().root.add_child(tracer)
+
+#endregion
+
+#region Ammo
+
+@export var ammo_loader: TurretAmmoLoader
+
+func can_fire() -> bool:
+	if not ammo_loader.remove_ammo(1):
+		return false
+	return true
 
 #endregion

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://crqfkdoxh4oi"]
+[gd_scene load_steps=8 format=3 uid="uid://crqfkdoxh4oi"]
 
+[ext_resource type="Script" uid="uid://bndfo2x0f3f4g" path="res://Entities/InteractableObjects/turret_ammo_loader.gd" id="1_85w54"]
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_tx10y"]
 [ext_resource type="Script" uid="uid://cjka1bwdkciop" path="res://Entities/InteractableObjects/ammo_item_receiver_component.gd" id="2_85w54"]
 
@@ -17,6 +18,7 @@ size = Vector3(0.5, 1, 0.5)
 size = Vector3(0.6, 1, 0.6)
 
 [node name="TurretAmmoLoader" type="StaticBody3D"]
+script = ExtResource("1_85w54")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ptvhj")
@@ -33,5 +35,6 @@ metadata/_custom_type_script = "uid://chthxqwjmw8p4"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("BoxShape3D_1g38i")
 
-[node name="AmmoItemReceiverComponent" type="Node" parent="InteractableArea"]
+[node name="AmmoItemReceiverComponent" type="Node" parent="InteractableArea" node_paths=PackedStringArray("turret_ammo_loader")]
 script = ExtResource("2_85w54")
+turret_ammo_loader = NodePath("../..")
