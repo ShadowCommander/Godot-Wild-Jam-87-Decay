@@ -44,6 +44,9 @@ func turret_process() -> void:
 	for area in targets:
 		if target == null:
 			target = targets[area]
+			break
+	
+	# Disable when target dies
 	
 	aim_at_target(target)
 	if global_position.angle_to(target.global_position) > 0.01:
@@ -93,7 +96,7 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-var damage: int = 50
+var damage: int = 5000
 var pierce_count: int = 1
 
 var rounds_per_minute: float = 1200
