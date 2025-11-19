@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://wxkfr2kif5n3"]
+
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_usr04"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jryob"]
+albedo_color = Color(0.51, 0.51, 0.10199999, 1)
+metallic = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1elf"]
+material = SubResource("StandardMaterial3D_jryob")
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usr04"]
+albedo_color = Color(0.34781694, 0.34781697, 0.3478169, 1)
+metallic = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f1sbe"]
+material = SubResource("StandardMaterial3D_usr04")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
+size = Vector3(2.1, 1, 1.1)
+
+[node name="Generator" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_r3on0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x1elf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.6, 0)
+mesh = SubResource("CylinderMesh_f1sbe")
+
+[node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_usr04")
+mesh = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_x1elf")
