@@ -127,10 +127,10 @@ script = ExtResource("6_l5n4v")
 target_wall = NodePath("../../Wall4")
 
 [node name="Wall" parent="World" instance=ExtResource("7_usvvm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.788448, 1.25, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.788448, 1.25, 0)
 
 [node name="Wall2" parent="World" instance=ExtResource("7_usvvm")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48732662, 1.25, 15.173907)
+transform = Transform3D(1.192488e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 1.192488e-08, -0.48732662, 1.25, 15.173907)
 
 [node name="Wall3" parent="World" instance=ExtResource("7_usvvm")]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -0.48732662, 1.25, -16.022772)

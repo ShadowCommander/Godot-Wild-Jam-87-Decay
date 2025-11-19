@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://4e5c5vuxmh3q"]
+[gd_scene load_steps=15 format=3 uid="uid://4e5c5vuxmh3q"]
 
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_q1sw5"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_h037i"]
+[ext_resource type="PackedScene" uid="uid://c6yohiluunk14" path="res://Map/sidewalk.gltf" id="4_q4rai"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1sw5"]
 sky_top_color = Color(0.6510485, 0.3365267, 0.40604553, 1)
@@ -21,30 +22,22 @@ ambient_light_source = 2
 ambient_light_color = Color(0.7, 0.48299998, 0.48299998, 1)
 ambient_light_energy = 0.02
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysha1"]
-albedo_color = Color(0.27, 0.27, 0.27, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_rulln"]
-material = SubResource("StandardMaterial3D_ysha1")
-size = Vector2(80, 80)
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rulln"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rulln"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1sw5"]
-albedo_color = Color(0.07, 0.07, 0.07, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ysha1"]
+load_path = "res://.godot/imported/asphalt.png-6884e42666fa12ac8b0d5081dea6bce1.s3tc.ctex"
 
-[sub_resource type="BoxMesh" id="BoxMesh_q1sw5"]
-material = SubResource("StandardMaterial3D_q1sw5")
-size = Vector3(80, 1, 15.365)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4rai"]
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_ysha1")
+uv1_scale = Vector3(8, 8, 16)
+texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h037i"]
-albedo_color = Color(0.25, 0.25, 0.25, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ysha1"]
-material = SubResource("StandardMaterial3D_h037i")
-size = Vector3(37.5, 1, 4.53)
+[sub_resource type="PlaneMesh" id="PlaneMesh_26tof"]
+material = SubResource("StandardMaterial3D_q4rai")
+size = Vector2(20, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q4rai"]
 
@@ -59,28 +52,6 @@ size = Vector3(0.5, 7, 0.5)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q1sw5")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1019816, 0)
-visible = false
-light_color = Color(0.91, 0.87724, 0.6643, 1)
-light_energy = 11.12
-omni_range = 17.685
-
-[node name="DebugLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.94700307, -0.091340244, -0.30796462, 0.09732632, -0.83206815, 0.546068, -0.30612552, -0.54710114, -0.7790812, 0, 20.164745, -20.217762)
-visible = false
-light_color = Color(0.90920806, 0.8177348, 0.8101067, 1)
-shadow_enabled = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.94700307, -0.09134023, -0.30796462, 0.09732632, -0.83206815, 0.546068, -0.30612552, -0.54710114, -0.7790812, 0, 20.164745, -20.217762)
-light_color = Color(0.90920806, 0.8177348, 0.8101067, 1)
-light_energy = 0.005
-shadow_enabled = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_rulln")
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -89,17 +60,17 @@ shape = SubResource("WorldBoundaryShape3D_rulln")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.621627, 0.5, -11.303)
 mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("../DirectionalLight3D")
+skeleton = NodePath("")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.765879, 0.5, 3.9618282)
 mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("../DirectionalLight3D")
+skeleton = NodePath("")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0627527, 0.5, -4.7511168)
 mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("../DirectionalLight3D")
+skeleton = NodePath("")
 
 [node name="Turrets" type="Node3D" parent="."]
 
@@ -110,45 +81,41 @@ ammo_loader = NodePath("../TurretAmmoLoader")
 [node name="TurretAmmoLoader" parent="Turrets" instance=ExtResource("2_h037i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2662466, 0.5, 0)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32716465, 0)
-mesh = SubResource("BoxMesh_q1sw5")
+[node name="Street" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.32716465, 0)
-mesh = SubResource("BoxMesh_q1sw5")
+[node name="Street8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -20)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, 26.295061)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -40)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.958981, 0, 26.295061)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, -26.105066)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.958981, 0, -26.180943)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 0, 0)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.985, 0, 9.795061)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 0, 0)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.486525, 0, 9.795061)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, 0, 0)
+mesh = SubResource("PlaneMesh_26tof")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.985, 0, -9.634531)
-mesh = SubResource("BoxMesh_ysha1")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.486525, 0, -9.634531)
-mesh = SubResource("BoxMesh_ysha1")
+[node name="Street3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, 0)
+mesh = SubResource("PlaneMesh_26tof")
 
 [node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.90089, 0, 15.740192)
@@ -293,3 +260,39 @@ mesh = SubResource("BoxMesh_w5p2j")
 [node name="MeshInstance3D50" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, 10.215154, 3.5, 19.200748)
 mesh = SubResource("BoxMesh_w5p2j")
+
+[node name="SidewalkSection" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15423536, 0)
+
+[node name="blockbench_export" parent="SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+
+[node name="blockbench_export2" parent="SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+
+[node name="SidewalkSection2" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.15423536, 1.352561)
+
+[node name="blockbench_export" parent="SidewalkSection2" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+
+[node name="blockbench_export2" parent="SidewalkSection2" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+
+[node name="SidewalkSection3" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.15423536, 0)
+
+[node name="blockbench_export" parent="SidewalkSection3" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+
+[node name="blockbench_export2" parent="SidewalkSection3" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+
+[node name="SidewalkSection4" type="Node3D" parent="."]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, -0.15423536, -1.3464756)
+
+[node name="blockbench_export" parent="SidewalkSection4" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+
+[node name="blockbench_export2" parent="SidewalkSection4" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
