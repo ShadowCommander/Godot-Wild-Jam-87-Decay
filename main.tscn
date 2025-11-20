@@ -117,19 +117,31 @@ transform = Transform3D(0.7094231, 0, 0.7047828, 0, 1, 0, -0.7047828, 0, 0.70942
 
 [node name="Lights" type="Node3D" parent="World/DynamicObjects"]
 
+[node name="GlobalDimmingLight" type="Node3D" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator", "light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9009318, 0)
+script = ExtResource("10_w48qg")
+power_generator = NodePath("../../PowerGenerator")
+light = NodePath("OmniLight3D")
+metadata/_custom_type_script = "uid://its5y1qhcuou"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/DynamicObjects/Lights/GlobalDimmingLight"]
+light_energy = 2.0
+omni_range = 24.0
+
 [node name="Floodlight" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 power_generator = NodePath("../../PowerGenerator")
 
 [node name="Floodlight2" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_kek77")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0, 0)
 power_generator = NodePath("../../PowerGenerator")
 
 [node name="Floodlight3" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_kek77")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 10)
 power_generator = NodePath("../../PowerGenerator")
 
 [node name="Floodlight4" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("8_kek77")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -10, 0, 0)
 power_generator = NodePath("../../PowerGenerator")
 
 [node name="LightPole" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_4c57u")]
@@ -147,15 +159,6 @@ power_generator = NodePath("../../PowerGenerator")
 [node name="LightPole4" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.254399, 0, 0.8422394)
 power_generator = NodePath("../../PowerGenerator")
-
-[node name="GlobalDimmingLight" type="Node3D" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator", "light")]
-script = ExtResource("10_w48qg")
-power_generator = NodePath("../../PowerGenerator")
-light = NodePath("OmniLight3D")
-metadata/_custom_type_script = "uid://its5y1qhcuou"
-
-[node name="OmniLight3D" type="OmniLight3D" parent="World/DynamicObjects/Lights/GlobalDimmingLight"]
-omni_range = 23.507662
 
 [node name="EnemySpawners" type="Node3D" parent="World"]
 
