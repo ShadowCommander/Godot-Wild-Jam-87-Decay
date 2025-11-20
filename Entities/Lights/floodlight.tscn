@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cc38a0tay6d8w" path="res://floodlight.gd" id="1_y5j84"]
 [ext_resource type="PackedScene" uid="uid://c56g16i2ll360" path="res://Entities/Lights/stadiumlight.gltf" id="2_3pjsr"]
 [ext_resource type="PackedScene" uid="uid://c3i6qpshd5cy3" path="res://Entities/Lights/lightarray.gltf" id="3_foqtr"]
-[ext_resource type="ArrayMesh" uid="uid://banxcka3puroq" path="res://Entities/Lights/bulbmesh.res" id="4_0huoo"]
+[ext_resource type="ArrayMesh" uid="uid://c3pam0hlfw2b" path="res://Entities/Lights/bulbmesh.res" id="4_0huoo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5n4v"]
 transparency = 1
@@ -17,10 +17,9 @@ top_radius = 0.822
 bottom_radius = 11.027
 height = 26.885
 
-[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("power_generator", "light_mesh", "light")]
+[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_y5j84")
-power_generator = NodePath("")
-light_mesh = NodePath("LightShaft")
+light_mesh = NodePath("Head/LightShaft")
 light = NodePath("SpotLight3D")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -31,7 +30,7 @@ shadow_bias = 1.0
 shadow_opacity = 0.7
 distance_fade_enabled = true
 distance_fade_shadow = 40.0
-spot_range = 1200.0
+spot_range = 900.0
 spot_attenuation = -0.21
 spot_angle = 30.11
 
@@ -40,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 0.6749079, -0.737902, 0, 0.737902, 0.6749079
 omni_range = 3.3276727
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.311705, -0.14516973)
+transform = Transform3D(1, 0, 0, 0, 0.7760464, 0.6306758, 0, -0.6306758, 0.7760464, 0, 11.311705, -0.14516973)
 
 [node name="LightShaft" type="MeshInstance3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.71733093, -13.826675)
