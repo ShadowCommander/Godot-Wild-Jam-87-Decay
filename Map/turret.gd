@@ -30,7 +30,7 @@ func _on_enemy_detection_area_area_shape_entered(area_rid: RID, area: Area3D, _a
 func _on_enemy_detection_area_area_shape_exited(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
 	targets.erase(area_rid)
 	if target_rid == area_rid:
-		held = false
+		handle_shoot_completed()
 
 # Fire at target until dead
 # Turn to enemy that takes the least amount of rotation.
@@ -38,6 +38,7 @@ func _on_enemy_detection_area_area_shape_exited(area_rid: RID, area: Area3D, _ar
 # Preditive targeting
 var old_target_pos: Vector3
 var target_rid: RID = RID()
+var target: Node3D = null
 
 func _physics_process(delta: float) -> void:
 	turret_process()
@@ -45,14 +46,16 @@ func _physics_process(delta: float) -> void:
 func turret_process() -> void:
 	if targets.size() <= 0:
 		return
-	var target: Node3D = null
-	for rid in targets:
-		if target == null:
+	if target == null:
+		for rid in targets:
 			target = targets[rid]
 			target_rid = rid
 			break
 	
 	# Disable when target dies
+	
+	if not target.visible or global_position.distance_squared_to(target.global_position) > 160000:
+		return
 	
 	aim_at_target(target)
 	if global_position.angle_to(target.global_position) > 0.01:
@@ -105,7 +108,7 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 @export var damage: int = 2000
 @export var pierce_count: int = 1
 
-@export var rounds_per_minute: float = 240:
+@export var rounds_per_minute: float = 600:
 	set(value):
 		milliseconds_per_round = int(60000 / value)
 		rounds_per_minute = value
@@ -118,8 +121,7 @@ var held: bool = false
 var tracer_rate: int = 1
 var bullets_fired: int = 0
 
-
-@export var visual_accuracy_drift = 0.3
+@export var visual_accuracy_drift = 0.2
 
 func handle_shoot(target_vector: Vector3) -> void:
 	if Time.get_ticks_msec() < next_fire_time:
@@ -150,6 +152,7 @@ var min_distance_sq = 3 * 3
 
 func handle_shoot_completed() -> void:
 	held = false
+	target = null
 
 func show_shoot_visuals(target_point: Vector3) -> void:
 	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
