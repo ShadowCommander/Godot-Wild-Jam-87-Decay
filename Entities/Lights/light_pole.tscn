@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1m06n063nqxn"]
 
 [ext_resource type="Script" uid="uid://its5y1qhcuou" path="res://Entities/InteractableObjects/powered_light.gd" id="1_i8xqe"]
-[ext_resource type="ArrayMesh" uid="uid://banxcka3puroq" path="res://Entities/Lights/bulbmesh.res" id="3_xr7de"]
+[ext_resource type="ArrayMesh" uid="uid://c3pam0hlfw2b" path="res://Entities/Lights/bulbmesh.res" id="3_xr7de"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
 size = Vector3(0.1, 2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g38i"]
-albedo_color = Color(0.49597043, 0.3603297, 2.8878452e-07, 1)
+albedo_color = Color(0.34, 0.33274665, 0.31280002, 1)
 metallic = 0.8
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_37oqe"]
@@ -18,8 +18,8 @@ height = 1.6
 
 [node name="LightPole" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_i8xqe")
-light_mesh = NodePath("Bulb")
-light = NodePath("OmniLight3D")
+light_mesh = NodePath("Pole/Bulb")
+light = NodePath("Pole/OmniLight3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -29,14 +29,15 @@ shape = SubResource("BoxShape3D_ptvhj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("CylinderMesh_37oqe")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+[node name="OmniLight3D" type="OmniLight3D" parent="Pole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 light_color = Color(1, 1, 0.8235294, 1)
 light_energy = 2.0
 light_size = 0.3
 omni_range = 8.0
 omni_attenuation = 0.2
 
-[node name="Bulb" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 1.66, 0, 0, 0, 0.5, 0, 0.390593, 0)
+[node name="Bulb" type="MeshInstance3D" parent="Pole"]
+transform = Transform3D(0.5, 0, 0, 0, 1.66, 0, 0, 0, 0.5, 0, 0.575, 0)
 mesh = ExtResource("3_xr7de")
+skeleton = NodePath("../..")
