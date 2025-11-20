@@ -10,12 +10,12 @@ func _ready() -> void:
 
 func handle_generator_turned_off() -> void:
 	light.hide()
-	var mat = light_mesh.mesh.material as StandardMaterial3D
+	var mat = light_mesh.get_active_material(0) as StandardMaterial3D
 	if mat:
 		mat.emission_enabled = false
 	
 func handle_generator_turned_on() -> void:
 	light.show()
-	var mat = light_mesh.mesh.material as StandardMaterial3D
+	var mat = light_mesh.get_active_material(0) as StandardMaterial3D
 	if mat:
 		mat.emission_enabled = true

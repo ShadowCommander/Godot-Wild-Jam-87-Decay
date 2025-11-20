@@ -173,6 +173,8 @@ power_generator = NodePath("../PowerGenerator")
 
 [node name="PowerGenerator" parent="World" instance=ExtResource("9_usvvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.576741, 0.5, -4.859321)
+min_time = 1.0
+max_time = 5.0
 
 [connection signal="dead_wall" from="World/Wall" to="World/WaveSpawner" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/Wall2" to="World/WaveSpawner" method="_on_wall_dead_wall"]
