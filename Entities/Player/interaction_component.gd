@@ -46,7 +46,7 @@ func _ready() -> void:
 	mouse_movement.triggered.connect(handle_mouse_movement)
 	space_state = camera.get_world_3d().direct_space_state
 	viewport = get_viewport()
-	query = PhysicsRayQueryParameters3D.create(Vector3.ZERO, Vector3.ZERO)
+	query = PhysicsRayQueryParameters3D.create(Vector3.ZERO, Vector3.ZERO, RAYCAST_COLLISION_MASK)
 
 #endregion
 
