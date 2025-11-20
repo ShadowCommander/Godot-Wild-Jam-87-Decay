@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_q1sw5"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_h037i"]
+[ext_resource type="Texture2D" uid="uid://dcqsnvrnifcqt" path="res://Map/asphalt.png" id="3_26tof"]
 [ext_resource type="PackedScene" uid="uid://dv1hxef0j080b" path="res://Map/sidewalk_mesh.tscn" id="3_q4rai"]
 [ext_resource type="PackedScene" uid="uid://djkwkj7a4ber5" path="res://Map/building_section.tscn" id="4_q4rai"]
 
@@ -29,13 +30,9 @@ ambient_light_energy = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_q4rai"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ysha1"]
-load_path = "res://.godot/imported/asphalt.png-6884e42666fa12ac8b0d5081dea6bce1.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4rai"]
 specular_mode = 1
-albedo_texture = SubResource("CompressedTexture2D_ysha1")
-uv1_scale = Vector3(8, 8, 16)
+albedo_texture = ExtResource("3_26tof")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_26tof"]

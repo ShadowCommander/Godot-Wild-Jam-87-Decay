@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://duh6j84uthplp"]
+[gd_scene load_steps=4 format=3 uid="uid://duh6j84uthplp"]
 
 [ext_resource type="Script" uid="uid://cc38a0tay6d8w" path="res://floodlight.gd" id="1_y5j84"]
+[ext_resource type="PackedScene" uid="uid://c56g16i2ll360" path="res://Entities/Lights/stadiumlight.gltf" id="2_3pjsr"]
+[ext_resource type="PackedScene" uid="uid://c3i6qpshd5cy3" path="res://Entities/Lights/lightarray.gltf" id="3_foqtr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5n4v"]
 transparency = 1
@@ -10,19 +12,18 @@ disable_receive_shadows = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m1fl6"]
 material = SubResource("StandardMaterial3D_l5n4v")
-top_radius = 0.0
+top_radius = 0.822
 bottom_radius = 11.027
 height = 26.885
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_y5j84"]
-
-[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
+[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("power_generator", "light_mesh", "light")]
 script = ExtResource("1_y5j84")
+power_generator = NodePath("")
 light_mesh = NodePath("LightShaft")
 light = NodePath("SpotLight3D")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.6749079, 0.737902, 0, -0.737902, 0.6749079, 0.50209236, 9.7911825, -14.935925)
+transform = Transform3D(1, 0, 0, 0, 0.6749079, 0.737902, 0, -0.737902, 0.6749079, 0.10785675, 9.7911825, -4.596962)
 light_energy = 4.0
 shadow_enabled = true
 shadow_bias = 1.0
@@ -33,11 +34,17 @@ spot_range = 1200.0
 spot_attenuation = -0.21
 spot_angle = 30.11
 
-[node name="LightShaft" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.57304734, -0.81952226, 0, 0.81952226, 0.57304734, 0.3539176, 2.7379646, -21.617731)
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 0.6749079, -0.737902, 0, 0.737902, 0.6749079, -0.10785675, -0.15898418, 2.8691897)
+omni_range = 3.3276727
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.311705, -0.14516973)
+
+[node name="blockbench_export2" parent="Head" instance=ExtResource("3_foqtr")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="LightShaft" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.71733093, -13.826674)
 mesh = SubResource("CylinderMesh_m1fl6")
 skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -10)
-shape = SubResource("SphereShape3D_y5j84")
