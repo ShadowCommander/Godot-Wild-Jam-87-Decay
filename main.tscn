@@ -109,8 +109,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16,
 
 [node name="PowerGenerator" parent="World/DynamicObjects" instance=ExtResource("6_272bh")]
 transform = Transform3D(0.7289686, 0, -0.6845471, 0, 1, 0, 0.6845471, 0, 0.7289686, -5.7007933, -4.7683716e-07, 5.6904774)
-min_time = 3.0
-max_time = 3.0
 
 [node name="AmmoCrate" parent="World/DynamicObjects" instance=ExtResource("7_5vw27")]
 transform = Transform3D(0.7094231, 0, 0.7047828, 0, 1, 0, -0.7047828, 0, 0.7094231, 6.2928667, 0, 5.2400174)
@@ -164,6 +162,8 @@ power_generator = NodePath("../../PowerGenerator")
 
 [node name="WaveSpawner" parent="World/EnemySpawners" node_paths=PackedStringArray("pool") instance=ExtResource("10_efxa6")]
 pool = NodePath("../ObjectPooler")
+spawn_delay = 0.3
+wave_spawn_count = 20
 
 [node name="SpawnPoint" type="Marker3D" parent="World/EnemySpawners/WaveSpawner" node_paths=PackedStringArray("target_wall")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
