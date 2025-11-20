@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cc38a0tay6d8w" path="res://floodlight.gd" id="1_y5j84"]
 [ext_resource type="PackedScene" uid="uid://c56g16i2ll360" path="res://Entities/Lights/stadiumlight.gltf" id="2_3pjsr"]
 [ext_resource type="PackedScene" uid="uid://c3i6qpshd5cy3" path="res://Entities/Lights/lightarray.gltf" id="3_foqtr"]
-[ext_resource type="PackedScene" uid="uid://duvrrvgq7w05c" path="res://Entities/Lights/bulb.gltf" id="4_sl7hi"]
+[ext_resource type="ArrayMesh" uid="uid://banxcka3puroq" path="res://Entities/Lights/bulbmesh.res" id="4_0huoo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5n4v"]
 transparency = 1
@@ -49,22 +49,28 @@ skeleton = NodePath("../../..")
 [node name="LightArrayBack" parent="Head" instance=ExtResource("3_foqtr")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Lights2" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.99241304, 0.4599619, -0.3660035)
+[node name="Bulb" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, 0.9763861, 1.097683, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
-[node name="Lights3" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.14175671, 1.0131178, -0.3660035)
+[node name="Bulb2" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, 0.9763861, 0.4262352, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
-[node name="Lights4" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.14175671, 0.4599619, -0.3660035)
+[node name="Bulb3" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, -0.0025037527, 1.097683, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
-[node name="Lights5" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -0.833045, 1.0131178, -0.3660035)
+[node name="Bulb4" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, -0.0025037527, 0.4262352, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
-[node name="Lights6" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -0.833045, 0.4599619, -0.3660035)
+[node name="Bulb5" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, -0.97313404, 1.097683, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
-[node name="Lights7" parent="Head" instance=ExtResource("4_sl7hi")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.99241304, 1.0131178, -0.36600256)
+[node name="Bulb6" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, -0.97313404, 0.4262352, -0.72637033)
+mesh = ExtResource("4_0huoo")
 
 [node name="Pole" parent="." instance=ExtResource("2_3pjsr")]
