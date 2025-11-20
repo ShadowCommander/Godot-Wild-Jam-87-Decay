@@ -4,4 +4,3 @@
 
 [node name="GlobalVars" type="Node"]
 script = ExtResource("1_wcy7q")
-debug = true
