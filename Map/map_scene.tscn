@@ -1,7 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://4e5c5vuxmh3q"]
+[gd_scene load_steps=13 format=3 uid="uid://4e5c5vuxmh3q"]
 
-[ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_q1sw5"]
-[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_h037i"]
 [ext_resource type="Texture2D" uid="uid://dcqsnvrnifcqt" path="res://Map/asphalt.png" id="3_26tof"]
 [ext_resource type="PackedScene" uid="uid://dv1hxef0j080b" path="res://Map/sidewalk_mesh.tscn" id="3_q4rai"]
 [ext_resource type="PackedScene" uid="uid://djkwkj7a4ber5" path="res://Map/building_section.tscn" id="4_q4rai"]
@@ -73,15 +71,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.90089, 0, 15.740192)
 mesh = SubResource("BoxMesh_q4rai")
 skeleton = NodePath("../..")
-
-[node name="Turrets" type="Node3D" parent="."]
-
-[node name="Turret" parent="Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("1_q1sw5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.235014, 0, 0)
-ammo_loader = NodePath("../TurretAmmoLoader")
-
-[node name="TurretAmmoLoader" parent="Turrets" instance=ExtResource("2_h037i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2662466, 0.5, 0)
 
 [node name="Street" type="Node3D" parent="."]
 
