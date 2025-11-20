@@ -20,9 +20,11 @@ size = Vector3(2, 1, 1)
 [node name="AmmoCrate" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_0ueow")
 
 [node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_q0maj")
 mesh = NodePath("../MeshInstance3D")
 metadata/_custom_type_script = "uid://chthxqwjmw8p4"
@@ -35,4 +37,5 @@ script = ExtResource("2_0ueow")
 dispensed_scene = ExtResource("3_p7jop")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_88cas")

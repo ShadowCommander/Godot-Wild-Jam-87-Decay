@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://4e5c5vuxmh3q"]
+[gd_scene load_steps=15 format=3 uid="uid://4e5c5vuxmh3q"]
 
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_q1sw5"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_h037i"]
 [ext_resource type="PackedScene" uid="uid://dv1hxef0j080b" path="res://Map/sidewalk_mesh.tscn" id="3_q4rai"]
-[ext_resource type="PackedScene" uid="uid://c6yohiluunk14" path="res://Map/sidewalk.gltf" id="4_q4rai"]
+[ext_resource type="PackedScene" uid="uid://djkwkj7a4ber5" path="res://Map/building_section.tscn" id="4_q4rai"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1sw5"]
 sky_top_color = Color(0.6510485, 0.3365267, 0.40604553, 1)
@@ -42,11 +42,8 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_q4rai")
 size = Vector2(20, 20)
 
-[sub_resource type="BoxMesh" id="BoxMesh_26tof"]
-size = Vector3(10, 16, 10)
-
 [sub_resource type="BoxMesh" id="BoxMesh_w5p2j"]
-size = Vector3(0.5, 7, 0.5)
+size = Vector3(0.4, 8, 0.4)
 
 [node name="MapScene" type="Node3D"]
 
@@ -96,237 +93,349 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 mesh = SubResource("PlaneMesh_26tof")
 skeleton = NodePath("../..")
 
-[node name="Street8" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -20)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
+[node name="Corner" type="Node3D" parent="Street"]
 
-[node name="Street9" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -40)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
+[node name="SidewalkSection" type="Node3D" parent="Street/Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
 
-[node name="Street6" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
+[node name="BuildingSection" parent="Street/Corner/SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 50)
 
-[node name="Street7" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
+[node name="StreetLights" type="Node3D" parent="Street/Corner/SidewalkSection"]
 
-[node name="Street4" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 0, 0)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="Street5" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 0, 0)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="Street2" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, 0, 0)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="Street3" type="MeshInstance3D" parent="Street"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, 0)
-mesh = SubResource("PlaneMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="Buildings" type="Node3D" parent="."]
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.577599, 8, 18.66213)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.577599, 8, 33.29757)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.463287, 3.452034, 33.29757)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D19" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.463287, 8, 19.969074)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D20" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.577599, 8, -33.11049)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D21" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.577599, 8, -18.475048)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D22" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.463287, 3.452034, -18.475048)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D23" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.463287, 8, -31.803543)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D24" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.59829, 8, -33.11049)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D25" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.59829, 8, -18.475048)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D26" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7126, 3.452034, -18.475048)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D27" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7126, 8, -31.803543)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D28" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.59829, 8, 18.191727)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D29" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.59829, 8, 32.827168)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D30" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7126, 3.452034, 32.827168)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D31" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7126, 8, 19.498672)
-mesh = SubResource("BoxMesh_26tof")
-skeleton = NodePath("../..")
-
-[node name="StreetLights" type="Node3D" parent="."]
-
-[node name="MeshInstance3D32" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.949436, 3.5, -8.518008)
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.2, 4, 10)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D33" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.14603, 3.5, -8.518008)
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.2, 4, 30)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D36" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.949436, 3.5, 8.751674)
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.1999998, 4, 70)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D37" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.14603, 3.5, 8.751674)
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1999998, 4, 50)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D38" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.202713, 3.5, -8.518008)
+[node name="StreetLights2" type="Node3D" parent="Street/Corner/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -10, 4, 1.2)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D41" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.399307, 3.5, 8.751674)
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -30, 4, 1.2)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D42" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.202713, 3.5, 8.751674)
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -50, 4, 1.2)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D43" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -9.356086, 3.5, -18.924343)
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -70, 4, 1.2)
 mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D44" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -9.356086, 3.5, -34.262535)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D45" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, 10.215154, 3.5, -18.924343)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D46" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, 10.215154, 3.5, -34.262535)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D47" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -9.356086, 3.5, 34.53894)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D48" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -9.356086, 3.5, 19.200748)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D49" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, 10.215154, 3.5, 34.53894)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D50" type="MeshInstance3D" parent="StreetLights"]
-transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, 10.215154, 3.5, 19.200748)
-mesh = SubResource("BoxMesh_w5p2j")
-skeleton = NodePath("../..")
-
-[node name="SidewalkSection" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
-
-[node name="SidewalkMesh" parent="SidewalkSection" instance=ExtResource("3_q4rai")]
+[node name="SidewalkMesh" parent="Street/Corner/SidewalkSection" instance=ExtResource("3_q4rai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="SidewalkMesh2" parent="SidewalkSection" instance=ExtResource("3_q4rai")]
+[node name="SidewalkMesh3" parent="Street/Corner/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 40)
+
+[node name="SidewalkMesh2" parent="Street/Corner/SidewalkSection" instance=ExtResource("3_q4rai")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44, 0, 4)
 
-[node name="SidewalkSection2" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.15423536, 1.352561)
+[node name="SidewalkMesh4" parent="Street/Corner/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -80, 0, 4)
 
-[node name="blockbench_export" parent="SidewalkSection2" instance=ExtResource("4_q4rai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+[node name="Street" type="Node3D" parent="Street/Corner"]
 
-[node name="blockbench_export2" parent="SidewalkSection2" instance=ExtResource("4_q4rai")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+[node name="Street" type="MeshInstance3D" parent="Street/Corner/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
 
-[node name="SidewalkSection3" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.15423536, 0)
+[node name="Street2" type="MeshInstance3D" parent="Street/Corner/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
 
-[node name="blockbench_export" parent="SidewalkSection3" instance=ExtResource("4_q4rai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+[node name="Street3" type="MeshInstance3D" parent="Street/Corner/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 60)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
 
-[node name="blockbench_export2" parent="SidewalkSection3" instance=ExtResource("4_q4rai")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+[node name="Street4" type="MeshInstance3D" parent="Street/Corner/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 80)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
 
-[node name="SidewalkSection4" type="Node3D" parent="."]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, -0.15423536, -1.3464756)
+[node name="Corner2" type="Node3D" parent="Street"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="blockbench_export" parent="SidewalkSection4" instance=ExtResource("4_q4rai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.562733, 0.29293716, 10.068376)
+[node name="SidewalkSection" type="Node3D" parent="Street/Corner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
 
-[node name="blockbench_export2" parent="SidewalkSection4" instance=ExtResource("4_q4rai")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.56, 0.293, 13.948)
+[node name="BuildingSection2" parent="Street/Corner2/SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -49.999996, 0, 50.000004)
+
+[node name="StreetLights" type="Node3D" parent="Street/Corner2/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.2, 4, 10)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.2, 4, 30)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.1999998, 4, 70)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1999998, 4, 50)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLights2" type="Node3D" parent="Street/Corner2/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -10, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -30, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -50, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner2/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -70, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="SidewalkMesh" parent="Street/Corner2/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="SidewalkMesh3" parent="Street/Corner2/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 40)
+
+[node name="SidewalkMesh2" parent="Street/Corner2/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44, 0, 4)
+
+[node name="SidewalkMesh4" parent="Street/Corner2/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -80, 0, 4)
+
+[node name="Street" type="Node3D" parent="Street/Corner2"]
+
+[node name="Street" type="MeshInstance3D" parent="Street/Corner2/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street2" type="MeshInstance3D" parent="Street/Corner2/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street3" type="MeshInstance3D" parent="Street/Corner2/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 60)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street4" type="MeshInstance3D" parent="Street/Corner2/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 80)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Corner3" type="Node3D" parent="Street"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="SidewalkSection" type="Node3D" parent="Street/Corner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="BuildingSection3" parent="Street/Corner3/SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -50.000004, 0, 49.999996)
+
+[node name="StreetLights" type="Node3D" parent="Street/Corner3/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.2, 4, 10)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.2, 4, 30)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.1999998, 4, 70)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1999998, 4, 50)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLights2" type="Node3D" parent="Street/Corner3/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -10, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -30, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -50, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner3/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -70, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="SidewalkMesh" parent="Street/Corner3/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="SidewalkMesh3" parent="Street/Corner3/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 40)
+
+[node name="SidewalkMesh2" parent="Street/Corner3/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44, 0, 4)
+
+[node name="SidewalkMesh4" parent="Street/Corner3/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -80, 0, 4)
+
+[node name="Street" type="Node3D" parent="Street/Corner3"]
+
+[node name="Street" type="MeshInstance3D" parent="Street/Corner3/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street2" type="MeshInstance3D" parent="Street/Corner3/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street3" type="MeshInstance3D" parent="Street/Corner3/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 60)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street4" type="MeshInstance3D" parent="Street/Corner3/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 80)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Corner4" type="Node3D" parent="Street"]
+transform = Transform3D(1.1924881e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="SidewalkSection" type="Node3D" parent="Street/Corner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="BuildingSection4" parent="Street/Corner4/SidewalkSection" instance=ExtResource("4_q4rai")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -50, 0, 50)
+
+[node name="StreetLights" type="Node3D" parent="Street/Corner4/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.2, 4, 10)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.2, 4, 30)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -1.1999998, 4, 70)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.1999998, 4, 50)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLights2" type="Node3D" parent="Street/Corner4/SidewalkSection"]
+
+[node name="StreetLight" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -10, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight2" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -30, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight3" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights2"]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -50, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="StreetLight4" type="MeshInstance3D" parent="Street/Corner4/SidewalkSection/StreetLights2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -70, 4, 1.2)
+mesh = SubResource("BoxMesh_w5p2j")
+skeleton = NodePath("../../../../..")
+
+[node name="SidewalkMesh" parent="Street/Corner4/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="SidewalkMesh3" parent="Street/Corner4/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 40)
+
+[node name="SidewalkMesh2" parent="Street/Corner4/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44, 0, 4)
+
+[node name="SidewalkMesh4" parent="Street/Corner4/SidewalkSection" instance=ExtResource("3_q4rai")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -80, 0, 4)
+
+[node name="Street" type="Node3D" parent="Street/Corner4"]
+
+[node name="Street" type="MeshInstance3D" parent="Street/Corner4/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street2" type="MeshInstance3D" parent="Street/Corner4/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 40)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street3" type="MeshInstance3D" parent="Street/Corner4/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 60)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")
+
+[node name="Street4" type="MeshInstance3D" parent="Street/Corner4/Street"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 80)
+mesh = SubResource("PlaneMesh_26tof")
+skeleton = NodePath("../../../..")

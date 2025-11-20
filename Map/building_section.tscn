@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://djkwkj7a4ber5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ysha1"]
+size = Vector2(92, 92)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ysha1"]
+size = Vector3(20, 16, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dlxyc"]
+size = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xfv2e"]
+size = Vector3(20, 24, 20)
+
+[node name="BuildingSection" type="Node3D"]
+
+[node name="BuildingFloor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ysha1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 8, -36)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 10, -12)
+mesh = SubResource("BoxMesh_dlxyc")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 12)
+mesh = SubResource("BoxMesh_dlxyc")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 12, 36)
+mesh = SubResource("BoxMesh_xfv2e")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, -36)
+mesh = SubResource("BoxMesh_xfv2e")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 8, 12)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, -36)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 10, -12)
+mesh = SubResource("BoxMesh_dlxyc")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 10, -36)
+mesh = SubResource("BoxMesh_dlxyc")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 10, 12)
+mesh = SubResource("BoxMesh_dlxyc")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 12, 36)
+mesh = SubResource("BoxMesh_xfv2e")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 12, -12)
+mesh = SubResource("BoxMesh_xfv2e")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, 12)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 8, 36)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, -12)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 36)
+mesh = SubResource("BoxMesh_ysha1")
+skeleton = NodePath("../../..")
