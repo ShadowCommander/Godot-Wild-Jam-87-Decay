@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://duh6j84uthplp"]
+[gd_scene load_steps=7 format=3 uid="uid://duh6j84uthplp"]
 
 [ext_resource type="Script" uid="uid://cc38a0tay6d8w" path="res://floodlight.gd" id="1_y5j84"]
 [ext_resource type="PackedScene" uid="uid://c56g16i2ll360" path="res://Entities/Lights/stadiumlight.gltf" id="2_3pjsr"]
 [ext_resource type="PackedScene" uid="uid://c3i6qpshd5cy3" path="res://Entities/Lights/lightarray.gltf" id="3_foqtr"]
+[ext_resource type="PackedScene" uid="uid://duvrrvgq7w05c" path="res://Entities/Lights/bulb.gltf" id="4_sl7hi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5n4v"]
 transparency = 1
@@ -40,12 +41,30 @@ omni_range = 3.3276727
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.311705, -0.14516973)
 
-[node name="blockbench_export2" parent="Head" instance=ExtResource("3_foqtr")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-
 [node name="LightShaft" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.71733093, -13.826674)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.71733093, -13.826675)
 mesh = SubResource("CylinderMesh_m1fl6")
 skeleton = NodePath("../../..")
 
-[node name="blockbench_export" parent="." instance=ExtResource("2_3pjsr")]
+[node name="LightArrayBack" parent="Head" instance=ExtResource("3_foqtr")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Lights2" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.99241304, 0.4599619, -0.3660035)
+
+[node name="Lights3" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.14175671, 1.0131178, -0.3660035)
+
+[node name="Lights4" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.14175671, 0.4599619, -0.3660035)
+
+[node name="Lights5" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -0.833045, 1.0131178, -0.3660035)
+
+[node name="Lights6" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -0.833045, 0.4599619, -0.3660035)
+
+[node name="Lights7" parent="Head" instance=ExtResource("4_sl7hi")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0.99241304, 1.0131178, -0.36600256)
+
+[node name="Pole" parent="." instance=ExtResource("2_3pjsr")]
