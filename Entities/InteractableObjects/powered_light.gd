@@ -1,4 +1,4 @@
-class_name PoweredLight extends StaticBody3D
+class_name PoweredLight extends Node3D
 
 @export var power_generator: PowerGenerator
 @export var light_mesh: MeshInstance3D
@@ -11,12 +11,14 @@ func _ready() -> void:
 
 func handle_generator_turned_off() -> void:
 	light.hide()
-	var mat = light_mesh.mesh.material as StandardMaterial3D
-	if mat:
-		mat.emission_enabled = false
+	if light_mesh != null:
+		var mat = light_mesh.mesh.material as StandardMaterial3D
+		if mat:
+			mat.emission_enabled = false
 	
 func handle_generator_turned_on() -> void:
 	light.show()
-	var mat = light_mesh.mesh.material as StandardMaterial3D
-	if mat:
-		mat.emission_enabled = true
+	if light_mesh != null:
+		var mat = light_mesh.mesh.material as StandardMaterial3D
+		if mat:
+			mat.emission_enabled = true

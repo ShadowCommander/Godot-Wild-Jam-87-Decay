@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://djkwkj7a4ber5"]
+[gd_scene load_steps=9 format=3 uid="uid://djkwkj7a4ber5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ysha1"]
 size = Vector2(92, 92)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ysha1"]
+load_path = "res://.godot/imported/asphalt.png-6884e42666fa12ac8b0d5081dea6bce1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pckr"]
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_ysha1")
+uv1_scale = Vector3(8, 8, 16)
+texture_filter = 0
+
 [sub_resource type="BoxMesh" id="BoxMesh_ysha1"]
+material = SubResource("StandardMaterial3D_6pckr")
 size = Vector3(20, 16, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jja01"]
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_ysha1")
+uv1_scale = Vector3(8, 8, 16)
+texture_filter = 0
+
 [sub_resource type="BoxMesh" id="BoxMesh_dlxyc"]
+material = SubResource("StandardMaterial3D_jja01")
 size = Vector3(20, 20, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjawq"]
+specular_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_ysha1")
+uv1_scale = Vector3(8, 8, 16)
+texture_filter = 0
+
 [sub_resource type="BoxMesh" id="BoxMesh_xfv2e"]
+material = SubResource("StandardMaterial3D_tjawq")
 size = Vector3(20, 24, 20)
 
 [node name="BuildingSection" type="Node3D"]
