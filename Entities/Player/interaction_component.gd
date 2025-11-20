@@ -119,14 +119,27 @@ func can_interact() -> bool:
 #region Focus
 
 var previous_focused_node: Node3D
+var interaction_range: float = 5:
+	set(value):
+		interaction_range = value
+		interaction_range_sq = value * value
+var interaction_range_sq: float = interaction_range * interaction_range
 
 func handle_mouse_movement() -> void:
 	var result = raycast()
 	focused_node = result.get("collider")
+	var intersection_point = result.get("position")
+	
+	if intersection_point != null:
+		var distance_sq = player_body.global_position.distance_squared_to(intersection_point)
+		print(distance_sq <= interaction_range_sq, focused_node)
+		if distance_sq > interaction_range_sq:
+			focused_node = null
 	
 	if focused_node != previous_focused_node:
 		if previous_focused_node != null and previous_focused_node.has_user_signal("unfocused"):
 			previous_focused_node.emit_signal("unfocused")
+		
 		previous_focused_node = focused_node
 		if focused_node != null and focused_node.has_user_signal("focused"):
 			focused_node.emit_signal("focused")
