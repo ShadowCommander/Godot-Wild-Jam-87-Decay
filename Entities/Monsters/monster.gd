@@ -8,7 +8,7 @@ const radius: float = 3.0
 @export var attack_timer: Timer
 @export var ATK_DAMAGE: int = 700
 
-@export_range(1.0,5.0) var MOVEMENT_SPEED: float = 1.0
+@export_range(1.0,40.0) var MOVEMENT_SPEED: float = 1.0
 
 
 var moving_direction: Vector3

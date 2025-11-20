@@ -75,7 +75,7 @@ script = ExtResource("1_ao0gl")
 health_component = NodePath("HealthComponent")
 hurtbox_component = NodePath("Hurtbox")
 attack_timer = NodePath("AttackSpeed")
-MOVEMENT_SPEED = 4.0
+MOVEMENT_SPEED = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_rhkak")
