@@ -35,6 +35,7 @@ func spawn_wave(n: int) -> void:
 		spawn_points[randi() % spawn_points.size()]
 		
 		o.global_transform.origin = get_spawn_position(rdm_spawn_point)
+		o.reset_physics_interpolation()
 		
 		o.spawn_info =\
 		BaseMonster.SpawnData.new(rdm_spawn_point, rdm_spawn_point.target_wall)
