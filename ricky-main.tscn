@@ -81,18 +81,19 @@ visible = false
 mesh = SubResource("CylinderMesh_m1fl6")
 
 [node name="Floodlight" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.100444)
 power_generator = NodePath("../PowerGenerator")
 
 [node name="Floodlight2" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.58348, 0, 0)
 power_generator = NodePath("../PowerGenerator")
 
 [node name="Floodlight3" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 9.279943)
 power_generator = NodePath("../PowerGenerator")
 
 [node name="Floodlight4" parent="World" node_paths=PackedStringArray("power_generator") instance=ExtResource("1_8u4bj")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.82, 0, 0)
 power_generator = NodePath("../PowerGenerator")
 
 [node name="PlayerScene" parent="World" instance=ExtResource("1_kx3w5")]
@@ -172,6 +173,8 @@ power_generator = NodePath("../PowerGenerator")
 
 [node name="PowerGenerator" parent="World" instance=ExtResource("9_usvvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.576741, 0.5, -4.859321)
+min_time = 5.0
+max_time = 10.0
 
 [connection signal="dead_wall" from="World/Wall" to="World/WaveSpawner" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/Wall2" to="World/WaveSpawner" method="_on_wall_dead_wall"]
