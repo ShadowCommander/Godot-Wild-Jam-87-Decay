@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmbgxf1jbj4g8"]
+
+[ext_resource type="Script" uid="uid://23ywu66ocwjw" path="res://Globals/global_vars.gd" id="1_wcy7q"]
+
+[node name="GlobalVars" type="Node"]
+script = ExtResource("1_wcy7q")
+debug = true

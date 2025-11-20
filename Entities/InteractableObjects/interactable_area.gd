@@ -61,26 +61,34 @@ func connect_signals_on_parent() -> void:
 #region Can Override
 
 func handle_can_interact(_event: InteractionSystem.InteractionAttemptEvent) -> void:
-	print("Can interact: ", self)
+	if GlobalVars.debug:
+		print("Can interact: ", self)
 	pass
 
 func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
-	print("Start interact: ", self)
+	if GlobalVars.debug:
+		print("Start interact: ", self)
 	pass
 
 func handle_end_interact(_event: InteractionSystem.InteractionData) -> void:
-	print("End interact: ", self)
+	if GlobalVars.debug:
+		print("End interact: ", self)
 	pass
 
 func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
-	print("Pressed interact: ", self)
+	if GlobalVars.debug:
+		print("Pressed interact: ", self)
 	pass
 
 func handle_focused() -> void:
+	if GlobalVars.debug:
+		print("Focused interact: ", self)
 	mesh.material_overlay = OUTLINE_SHADER_MATERIAL
 	pass
 
 func handle_unfocused() -> void:
+	if GlobalVars.debug:
+		print("Unfocused interact: ", self)
 	mesh.material_overlay = null
 	pass
 
