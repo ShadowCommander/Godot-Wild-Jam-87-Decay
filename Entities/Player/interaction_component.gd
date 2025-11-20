@@ -132,7 +132,6 @@ func handle_mouse_movement() -> void:
 	
 	if intersection_point != null:
 		var distance_sq = player_body.global_position.distance_squared_to(intersection_point)
-		print(distance_sq <= interaction_range_sq, focused_node)
 		if distance_sq > interaction_range_sq:
 			focused_node = null
 	
