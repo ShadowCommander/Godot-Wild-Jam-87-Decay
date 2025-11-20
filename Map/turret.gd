@@ -29,12 +29,15 @@ func _on_enemy_detection_area_area_shape_entered(area_rid: RID, area: Area3D, _a
 
 func _on_enemy_detection_area_area_shape_exited(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
 	targets.erase(area_rid)
+	if target_rid == area_rid:
+		held = false
 
 # Fire at target until dead
 # Turn to enemy that takes the least amount of rotation.
 
 # Preditive targeting
 var old_target_pos: Vector3
+var target_rid: RID = RID()
 
 func _physics_process(delta: float) -> void:
 	turret_process()
@@ -43,9 +46,10 @@ func turret_process() -> void:
 	if targets.size() <= 0:
 		return
 	var target: Node3D = null
-	for area in targets:
+	for rid in targets:
 		if target == null:
-			target = targets[area]
+			target = targets[rid]
+			target_rid = rid
 			break
 	
 	# Disable when target dies
@@ -98,10 +102,13 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-var damage: int = 5000
-var pierce_count: int = 1
+@export var damage: int = 2000
+@export var pierce_count: int = 1
 
-var rounds_per_minute: float = 1200
+@export var rounds_per_minute: float = 240:
+	set(value):
+		milliseconds_per_round = int(60000 / value)
+		rounds_per_minute = value
 var milliseconds_per_round: int = int(60000 / rounds_per_minute)
 var shots_fired: int = 0
 var next_fire_time: int = 0
@@ -111,6 +118,9 @@ var held: bool = false
 var tracer_rate: int = 1
 var bullets_fired: int = 0
 
+
+@export var visual_accuracy_drift = 0.3
+
 func handle_shoot(target_vector: Vector3) -> void:
 	if Time.get_ticks_msec() < next_fire_time:
 		return
@@ -118,6 +128,7 @@ func handle_shoot(target_vector: Vector3) -> void:
 		next_fire_time += milliseconds_per_round
 	else:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
+	print("msec: %d, next_fire_time: %d, ms_per_round: %d, held: %s" % [Time.get_ticks_msec(), next_fire_time, milliseconds_per_round, held])
 	held = true
 	
 	if not can_fire():
@@ -144,6 +155,9 @@ func show_shoot_visuals(target_point: Vector3) -> void:
 	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
 		return
 	shots_fired += 1
+	
+	target_point += Vector3(randf_range(-visual_accuracy_drift, visual_accuracy_drift), randf_range(-visual_accuracy_drift, visual_accuracy_drift), randf_range(-visual_accuracy_drift, visual_accuracy_drift))
+	
 	#var tracer: BulletTracer = BULLET_TRACER.instantiate()
 	#tracer.target_pos = target_point
 	#tracer.look_at_from_position(muzzle.global_position, target_point)
