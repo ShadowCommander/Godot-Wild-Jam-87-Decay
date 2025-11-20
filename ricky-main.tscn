@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ckq145gedwee7" path="res://Systems/spawn_marker.gd" id="6_l5n4v"]
 [ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="7_usvvm"]
 [ext_resource type="PackedScene" uid="uid://d1m06n063nqxn" path="res://Entities/Lights/light_pole.tscn" id="8_l5n4v"]
-[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/generator.tscn" id="9_usvvm"]
+[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/Generator/generator.tscn" id="9_usvvm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1fl6"]
 sky_top_color = Color(0.6510485, 0.3365267, 0.40604553, 1)

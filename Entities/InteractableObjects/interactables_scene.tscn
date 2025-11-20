@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cuoxeqfkqxmny"]
 
-[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/generator.tscn" id="1_ptvhj"]
+[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/Generator/generator.tscn" id="1_ptvhj"]
 [ext_resource type="PackedScene" uid="uid://dse4nfhb7y6sc" path="res://Entities/InteractableObjects/ammo_crate.tscn" id="2_r3on0"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="3_x1elf"]
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="4_ptvhj"]

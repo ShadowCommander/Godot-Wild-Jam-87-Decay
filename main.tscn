@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/generator.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/Generator/generator.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://dse4nfhb7y6sc" path="res://Entities/InteractableObjects/ammo_crate.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://duh6j84uthplp" path="res://Entities/Lights/floodlight.tscn" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://d1m06n063nqxn" path="res://Entities/Lights/light_pole.tscn" id="9_4c57u"]

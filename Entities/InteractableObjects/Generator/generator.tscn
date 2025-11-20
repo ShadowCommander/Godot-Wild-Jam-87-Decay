@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://wxkfr2kif5n3"]
+[gd_scene load_steps=11 format=3 uid="uid://wxkfr2kif5n3"]
 
-[ext_resource type="Script" uid="uid://cr5fui6kvyrxk" path="res://Entities/InteractableObjects/generator.gd" id="1_jryob"]
+[ext_resource type="Script" uid="uid://cr5fui6kvyrxk" path="res://Entities/InteractableObjects/Generator/generator.gd" id="1_jryob"]
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_usr04"]
+[ext_resource type="CylinderMesh" uid="uid://cw28hfg52b3jh" path="res://Entities/InteractableObjects/Generator/generator_on_mesh.tres" id="2_f4vll"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
 size = Vector3(2, 1, 1)
@@ -30,23 +31,13 @@ top_radius = 0.015
 bottom_radius = 0.015
 height = 0.28
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1sbe"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_5gdqg"]
-material = SubResource("StandardMaterial3D_f1sbe")
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.05
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
 size = Vector3(2.1, 1, 1.1)
 
-[node name="PowerGenerator" type="StaticBody3D"]
+[node name="PowerGenerator" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_jryob")
+light_mesh = NodePath("MeshInstance3D/MeshInstance3D3/LightMesh")
+light = NodePath("MeshInstance3D/MeshInstance3D3/LightMesh/OmniLight3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -65,12 +56,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.64, 0)
 mesh = SubResource("CylinderMesh_jryob")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D3"]
+[node name="LightMesh" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16000003, 0)
-mesh = SubResource("CylinderMesh_5gdqg")
+mesh = ExtResource("2_f4vll")
 skeleton = NodePath("OmniLight3D")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D/MeshInstance3D3/MeshInstance3D2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D/MeshInstance3D3/LightMesh"]
 light_color = Color(1, 0, 0, 1)
 light_energy = 1.5
 light_bake_mode = 1

@@ -1,0 +1,9 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=3 uid="uid://djt3vs0rk2c4j"]
+
+[ext_resource type="Material" uid="uid://c4rrkih3o36lh" path="res://Entities/InteractableObjects/Generator/generator_light_on_material.tres" id="1_5i61q"]
+
+[resource]
+material = ExtResource("1_5i61q")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.05
