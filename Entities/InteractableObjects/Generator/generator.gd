@@ -15,7 +15,7 @@ signal generator_turned_on
 @export var light: Light3D
 
 func _ready() -> void:
-	set_random_wait_time()
+	turn_generator_on()
 	
 	interactable_area.connect("pressed", handle_pressed)
 
