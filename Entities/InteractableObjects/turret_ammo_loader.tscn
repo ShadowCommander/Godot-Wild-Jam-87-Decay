@@ -21,13 +21,16 @@ size = Vector3(0.6, 1, 0.6)
 script = ExtResource("1_85w54")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ptvhj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_37oqe")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_tx10y")
 mesh = NodePath("../MeshInstance3D")
 metadata/_custom_type_script = "uid://chthxqwjmw8p4"

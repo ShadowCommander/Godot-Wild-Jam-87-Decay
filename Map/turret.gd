@@ -18,6 +18,8 @@ var viewport: Viewport
 var query: PhysicsRayQueryParameters3D
 
 func _ready() -> void:
+	assert(ammo_loader != null, "ERROR: ammo_loader must be set. %s" % get_path())
+	
 	space_state = get_world_3d().direct_space_state
 	viewport = get_viewport()
 	query = PhysicsRayQueryParameters3D.create(Vector3.ZERO, Vector3.ZERO, BULLET_COLLISION_MASK)

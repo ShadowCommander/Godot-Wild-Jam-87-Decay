@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv1hxef0j080b"]
+
+[ext_resource type="PackedScene" uid="uid://c6yohiluunk14" path="res://Map/sidewalk.gltf" id="1_1vfye"]
+
+[node name="SidewalkMesh" instance=ExtResource("1_1vfye")]
+
+[node name="cube" parent="Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.063, 0.125, 0.063)

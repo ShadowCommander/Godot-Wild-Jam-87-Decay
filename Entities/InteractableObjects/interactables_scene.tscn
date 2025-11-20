@@ -10,6 +10,8 @@
 
 [node name="Generator" parent="." instance=ExtResource("1_ptvhj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.788, 0.5, 0)
+min_time = 1.0
+max_time = 1.0
 
 [node name="AmmoCrate" parent="." instance=ExtResource("2_r3on0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.949741)

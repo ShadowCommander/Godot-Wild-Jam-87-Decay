@@ -29,23 +29,22 @@ height = 0.4
 
 [node name="LightPole" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_i8xqe")
-light_mesh = NodePath("Light")
-light = NodePath("OmniLight3D")
+light_mesh = NodePath("Pole/Light")
+light = NodePath("Pole/Light/OmniLight3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_ptvhj")
 
 [node name="Pole" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("CylinderMesh_37oqe")
 
-[node name="Light" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+[node name="Light" type="MeshInstance3D" parent="Pole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_l6dfc")
-skeleton = NodePath("../Pole")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+[node name="OmniLight3D" type="OmniLight3D" parent="Pole/Light"]
 light_color = Color(1, 1, 0.8235294, 1)
 light_energy = 8.0
 light_size = 0.15

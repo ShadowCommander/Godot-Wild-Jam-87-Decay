@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duh6j84uthplp"]
+[gd_scene load_steps=5 format=3 uid="uid://duh6j84uthplp"]
 
 [ext_resource type="Script" uid="uid://cc38a0tay6d8w" path="res://floodlight.gd" id="1_y5j84"]
 
@@ -14,9 +14,10 @@ top_radius = 0.0
 bottom_radius = 11.027
 height = 26.885
 
-[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("power_generator", "light_mesh", "light")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_y5j84"]
+
+[node name="Floodlight" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_y5j84")
-power_generator = NodePath("")
 light_mesh = NodePath("LightShaft")
 light = NodePath("SpotLight3D")
 
@@ -36,3 +37,7 @@ spot_angle = 30.11
 transform = Transform3D(1, 0, 0, 0, 0.57304734, -0.81952226, 0, 0.81952226, 0.57304734, 0.3539176, 2.7379646, -21.617731)
 mesh = SubResource("CylinderMesh_m1fl6")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -10)
+shape = SubResource("SphereShape3D_y5j84")

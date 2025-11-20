@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=6 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cuoxeqfkqxmny" path="res://Entities/InteractableObjects/interactables_scene.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 
@@ -12,4 +14,76 @@
 
 [node name="MapScene" parent="World" instance=ExtResource("2_lquwl")]
 
-[node name="InteractablesScene" parent="World" instance=ExtResource("3_7mycd")]
+[node name="DynamicObjects" type="Node3D" parent="World"]
+
+[node name="Turrets" type="Node3D" parent="World/DynamicObjects"]
+
+[node name="Turret" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
+ammo_loader = NodePath("../TurretAmmoLoader")
+
+[node name="Turret2" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+ammo_loader = NodePath("../TurretAmmoLoader2")
+
+[node name="TurretAmmoLoader" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
+
+[node name="TurretAmmoLoader2" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+
+[node name="Turret3" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+ammo_loader = NodePath("../TurretAmmoLoader5")
+
+[node name="Turret4" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+ammo_loader = NodePath("../TurretAmmoLoader6")
+
+[node name="TurretAmmoLoader5" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+
+[node name="TurretAmmoLoader6" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="Turret5" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
+ammo_loader = NodePath("../TurretAmmoLoader3")
+
+[node name="Turret6" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
+ammo_loader = NodePath("../TurretAmmoLoader4")
+
+[node name="TurretAmmoLoader3" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="TurretAmmoLoader4" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+
+[node name="Turret7" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+ammo_loader = NodePath("../TurretAmmoLoader7")
+
+[node name="Turret8" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+ammo_loader = NodePath("../TurretAmmoLoader8")
+
+[node name="TurretAmmoLoader7" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[node name="TurretAmmoLoader8" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="Walls" type="Node3D" parent="World/DynamicObjects"]
+
+[node name="Wall" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, -1)
+
+[node name="Wall2" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1.192488e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 1.192488e-08, -1, 0, 16)
+
+[node name="Wall3" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 1, 0, -16)
+
+[node name="Wall4" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://btxy8vtw6al06"]
+
+[ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_0axfb"]
+[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_onlr8"]
+
+[node name="Turrets" type="Node3D"]
+
+[node name="Turret" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
+
+[node name="Turret2" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+
+[node name="TurretAmmoLoader" parent="." instance=ExtResource("2_onlr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.777, 0.5, -13.066)
+
+[node name="TurretAmmoLoader2" parent="." instance=ExtResource("2_onlr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -12)
+
+[node name="Turret3" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+
+[node name="Turret4" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+
+[node name="Turret5" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
+
+[node name="Turret6" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
+
+[node name="Turret7" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+
+[node name="Turret8" parent="." instance=ExtResource("1_0axfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
