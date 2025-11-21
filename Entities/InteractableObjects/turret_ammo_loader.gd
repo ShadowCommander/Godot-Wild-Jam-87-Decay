@@ -9,9 +9,13 @@ func add_ammo(amount: int) -> int:
 	
 	if total > ammo_max:
 		ammo = ammo_max
+		if GlobalVars.debug:
+			print("Ammo total: %d" % ammo)
 		return total - ammo_max
 	else:
 		ammo = total
+		if GlobalVars.debug:
+			print("Ammo total: %d" % ammo)
 		return 0
 
 func remove_ammo(amount: int) -> bool:
