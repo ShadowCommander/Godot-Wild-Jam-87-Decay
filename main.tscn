@@ -65,11 +65,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
 
 [node name="Turret3" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14, 0, -6)
 ammo_loader = NodePath("../TurretAmmoLoader5")
 
 [node name="Turret4" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14, 0, 6)
 ammo_loader = NodePath("../TurretAmmoLoader6")
 
 [node name="TurretAmmoLoader5" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
@@ -79,11 +79,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
 
 [node name="Turret5" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6, 0, 14)
 ammo_loader = NodePath("../TurretAmmoLoader3")
 
 [node name="Turret6" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 0, 14)
 ammo_loader = NodePath("../TurretAmmoLoader4")
 
 [node name="TurretAmmoLoader3" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
@@ -93,11 +93,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
 
 [node name="Turret7" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -6)
 ammo_loader = NodePath("../TurretAmmoLoader7")
 
 [node name="Turret8" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, 6)
 ammo_loader = NodePath("../TurretAmmoLoader8")
 
 [node name="TurretAmmoLoader7" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
