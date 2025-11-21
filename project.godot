@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://addons/fmod/banks/Desktop"
+
 [application]
 
 config/name="Godot Wild Jam 87 Decay"

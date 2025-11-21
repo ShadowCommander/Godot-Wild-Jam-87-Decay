@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1m06n063nqxn"]
+[gd_scene load_steps=7 format=3 uid="uid://d1m06n063nqxn"]
 
 [ext_resource type="Script" uid="uid://its5y1qhcuou" path="res://Entities/InteractableObjects/powered_light.gd" id="1_i8xqe"]
+[ext_resource type="Script" uid="uid://dj7w50mewtxqa" path="res://Entities/Lights/pole.gd" id="2_xr7de"]
 [ext_resource type="ArrayMesh" uid="uid://c3pam0hlfw2b" path="res://Entities/Lights/bulbmesh.res" id="3_xr7de"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
@@ -28,6 +29,12 @@ shape = SubResource("BoxShape3D_ptvhj")
 [node name="Pole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("CylinderMesh_37oqe")
+script = ExtResource("2_xr7de")
+
+[node name="ElectricHum" type="FmodEventEmitter3D" parent="Pole"]
+event_name = "event:/Ambient/ElectricHum"
+event_guid = "{a70f0924-e988-40a1-99e3-0c7a1ca66863}"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Pole"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=20 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://bnoeudy3ij5wv" path="res://world.gd" id="1_yaehf"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="4_lquwl"]
@@ -31,6 +32,14 @@ metadata/_custom_type_script = "uid://dbqhefmivyiw4"
 [node name="Main" type="Node"]
 
 [node name="World" type="Node3D" parent="."]
+script = ExtResource("1_yaehf")
+
+[node name="Ambience" type="FmodEventEmitter3D" parent="World"]
+event_guid = "{ca4b889e-84aa-4ccf-bb2e-3202ff0d8482}"
+volume = 0.6
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="World"]
+bank_paths = ["res://addons/fmod/banks/Desktop/Master.strings.bank", "res://addons/fmod/banks/Desktop/Master.bank"]
 
 [node name="DebugLight" type="Node3D" parent="World"]
 visible = false
