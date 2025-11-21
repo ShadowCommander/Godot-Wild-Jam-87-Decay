@@ -1,0 +1,193 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgvyuxqo8valu"]
+
+[ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_jaw6m"]
+[ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_fh5mk"]
+[ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="3_u2g8t"]
+[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="4_dfuav"]
+[ext_resource type="PackedScene" uid="uid://b42f2wvuq44tc" path="res://Entities/Wall/wall.tscn" id="5_86e4x"]
+[ext_resource type="PackedScene" uid="uid://wxkfr2kif5n3" path="res://Entities/InteractableObjects/Generator/generator.tscn" id="6_kiwfd"]
+[ext_resource type="PackedScene" uid="uid://dse4nfhb7y6sc" path="res://Entities/InteractableObjects/ammo_crate.tscn" id="7_hk0li"]
+[ext_resource type="Script" uid="uid://nm600q1gbrx4" path="res://dimming_light.gd" id="8_plm6y"]
+[ext_resource type="PackedScene" uid="uid://duh6j84uthplp" path="res://Entities/Lights/floodlight.tscn" id="9_5j40j"]
+[ext_resource type="PackedScene" uid="uid://d1m06n063nqxn" path="res://Entities/Lights/light_pole.tscn" id="10_766hj"]
+[ext_resource type="PackedScene" uid="uid://c4esj6tprgijl" path="res://Systems/wave_spawner.tscn" id="11_4yvo7"]
+[ext_resource type="Script" uid="uid://ckq145gedwee7" path="res://Systems/spawn_marker.gd" id="12_c3850"]
+[ext_resource type="PackedScene" uid="uid://b54cfdq4yv4p6" path="res://Systems/object_pooler.tscn" id="13_togt6"]
+[ext_resource type="PackedScene" uid="uid://b5pdi8ncpveux" path="res://Entities/Monsters/Monster.tscn" id="14_5x40k"]
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DebugLight" type="Node3D" parent="World"]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/DebugLight"]
+transform = Transform3D(0.9916059, 0.027524445, 0.12633386, -0.1292975, 0.21108994, 0.9688773, 5.1320975e-10, -0.97707903, 0.21287687, 0, 24, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="World/DebugLight"]
+transform = Transform3D(0.99483323, 0.049492124, -0.0886427, 0.093114085, -0.09686485, 0.9909324, 0.040456988, -0.9940663, -0.10097279, 0, 24, 0)
+light_energy = 0.2
+
+[node name="PlayerScene" parent="World" instance=ExtResource("1_jaw6m")]
+
+[node name="MapScene" parent="World" instance=ExtResource("2_fh5mk")]
+
+[node name="DynamicObjects" type="Node3D" parent="World"]
+
+[node name="Turrets" type="Node3D" parent="World/DynamicObjects"]
+
+[node name="Turret" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
+ammo_loader = NodePath("../TurretAmmoLoader")
+
+[node name="Turret2" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+ammo_loader = NodePath("../TurretAmmoLoader2")
+
+[node name="TurretAmmoLoader" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
+
+[node name="TurretAmmoLoader2" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+
+[node name="Turret3" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+ammo_loader = NodePath("../TurretAmmoLoader5")
+
+[node name="Turret4" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+ammo_loader = NodePath("../TurretAmmoLoader6")
+
+[node name="TurretAmmoLoader5" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+
+[node name="TurretAmmoLoader6" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="Turret5" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
+ammo_loader = NodePath("../TurretAmmoLoader3")
+
+[node name="Turret6" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
+ammo_loader = NodePath("../TurretAmmoLoader4")
+
+[node name="TurretAmmoLoader3" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="TurretAmmoLoader4" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+
+[node name="Turret7" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+ammo_loader = NodePath("../TurretAmmoLoader7")
+
+[node name="Turret8" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_u2g8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+ammo_loader = NodePath("../TurretAmmoLoader8")
+
+[node name="TurretAmmoLoader7" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[node name="TurretAmmoLoader8" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_dfuav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="Walls" type="Node3D" parent="World/DynamicObjects"]
+
+[node name="Wall" parent="World/DynamicObjects/Walls" instance=ExtResource("5_86e4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, -16)
+
+[node name="Wall2" parent="World/DynamicObjects/Walls" instance=ExtResource("5_86e4x")]
+transform = Transform3D(0.9999999, 0, 5.563626e-08, 0, 1, 0, -5.563626e-08, 0, 0.9999999, 16, 0, 1)
+
+[node name="Wall3" parent="World/DynamicObjects/Walls" instance=ExtResource("5_86e4x")]
+transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, -1, 0, 16)
+
+[node name="Wall4" parent="World/DynamicObjects/Walls" instance=ExtResource("5_86e4x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, -1)
+
+[node name="PowerGenerator" parent="World/DynamicObjects" instance=ExtResource("6_kiwfd")]
+transform = Transform3D(0.7289686, 0, -0.6845471, 0, 1, 0, 0.6845471, 0, 0.7289686, -5.7007933, -4.7683716e-07, 5.6904774)
+
+[node name="AmmoCrate" parent="World/DynamicObjects" instance=ExtResource("7_hk0li")]
+transform = Transform3D(0.7094231, 0, 0.7047828, 0, 1, 0, -0.7047828, 0, 0.7094231, 6.2928667, 0, 5.2400174)
+
+[node name="Lights" type="Node3D" parent="World/DynamicObjects"]
+
+[node name="GlobalDimmingLight" type="Node3D" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator", "light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9009318, 0)
+script = ExtResource("8_plm6y")
+power_generator = NodePath("../../PowerGenerator")
+light = NodePath("OmniLight3D")
+metadata/_custom_type_script = "uid://its5y1qhcuou"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/DynamicObjects/Lights/GlobalDimmingLight"]
+light_energy = 2.0
+omni_range = 24.0
+
+[node name="Floodlight" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_5j40j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="Floodlight2" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_5j40j")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 0)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="Floodlight3" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_5j40j")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 12)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="Floodlight4" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("9_5j40j")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -12, 0, 0)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="LightPole" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("10_766hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5485868, 0, -7.600704)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="LightPole2" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("10_766hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.831624, 0, 7.3435364)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="LightPole3" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("10_766hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.579646, 0, 10.25462)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="LightPole4" parent="World/DynamicObjects/Lights" node_paths=PackedStringArray("power_generator") instance=ExtResource("10_766hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.254399, 0, 0.8422394)
+power_generator = NodePath("../../PowerGenerator")
+
+[node name="EnemySpawners" type="Node3D" parent="World"]
+
+[node name="WaveSpawner" parent="World/EnemySpawners" node_paths=PackedStringArray("pool") instance=ExtResource("11_4yvo7")]
+pool = NodePath("../ObjectPooler")
+spawn_delay = 0.3
+wave_spawn_count = 20
+
+[node name="SpawnPoint" type="Marker3D" parent="World/EnemySpawners/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+script = ExtResource("12_c3850")
+target_wall = NodePath("../../../DynamicObjects/Walls/Wall")
+metadata/_custom_type_script = "uid://ckq145gedwee7"
+
+[node name="SpawnPoint2" type="Marker3D" parent="World/EnemySpawners/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+script = ExtResource("12_c3850")
+target_wall = NodePath("../../../DynamicObjects/Walls/Wall2")
+metadata/_custom_type_script = "uid://ckq145gedwee7"
+
+[node name="SpawnPoint3" type="Marker3D" parent="World/EnemySpawners/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80)
+script = ExtResource("12_c3850")
+target_wall = NodePath("../../../DynamicObjects/Walls/Wall3")
+metadata/_custom_type_script = "uid://ckq145gedwee7"
+
+[node name="SpawnPoint4" type="Marker3D" parent="World/EnemySpawners/WaveSpawner" node_paths=PackedStringArray("target_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 0)
+script = ExtResource("12_c3850")
+target_wall = NodePath("../../../DynamicObjects/Walls/Wall4")
+metadata/_custom_type_script = "uid://ckq145gedwee7"
+
+[node name="ObjectPooler" parent="World/EnemySpawners" instance=ExtResource("13_togt6")]
+pooled_scene = ExtResource("14_5x40k")

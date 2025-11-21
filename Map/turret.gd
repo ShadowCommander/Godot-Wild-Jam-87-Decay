@@ -7,6 +7,7 @@ const RAY_LENGTH = 1000
 const BULLET_TRACER = preload("uid://bwwahw1qukqlr")
 const HITSCAN_TRACER = preload("uid://cbt8wa4rdgia4")
 
+@export var ap_player: AnimationPlayer
 @export var pivot: Node3D
 @export var muzzle: Node3D
 @export var player_body: CharacterBody3D
@@ -65,6 +66,7 @@ func turret_process() -> void:
 
 func aim_at_target(target: Node3D) -> void:
 	pivot.look_at(target.global_position)
+	pivot.rotation.y += PI
 
 #region Utilities
 
@@ -115,7 +117,16 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 var milliseconds_per_round: int = int(60000 / rounds_per_minute)
 var shots_fired: int = 0
 var next_fire_time: int = 0
-var held: bool = false
+var held: bool = false:
+	set(new_value):
+		held=new_value
+		
+		#if held:
+			#ap_player.play("turret fire")
+		#else:
+			#ap_player.stop()
+			
+		pass
 # When new firing set new next_fire_time to `Time.get_ticks_msec() + milliseconds_per_round`
 # When continuous fire set next_fire_time to `next_fire_time + milliseconds_per_round`
 var tracer_rate: int = 1
@@ -128,6 +139,7 @@ func handle_shoot(target_vector: Vector3) -> void:
 		held = true
 		return
 	if held:
+		
 		next_fire_time += milliseconds_per_round
 	else:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
