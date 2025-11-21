@@ -44,7 +44,7 @@ func setup_signals_on_parent() -> void:
 
 	add_user_signal("focused")
 	add_user_signal("unfocused")
-	print(has_user_signal("focused"))
+	#print(has_user_signal("focused"))
 
 func connect_signals_on_parent() -> void:
 	connect("can_interact", handle_can_interact)
