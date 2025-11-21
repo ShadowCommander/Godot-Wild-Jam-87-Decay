@@ -105,10 +105,10 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-@export var damage: int = 2000
-@export var pierce_count: int = 1
+@export var damage: int = GlobalVars.turret_damage
+@export var pierce_count: int = GlobalVars.turret_pierce
 
-@export var rounds_per_minute: float = 600:
+@export var rounds_per_minute: float = GlobalVars.turret_fire_rate:
 	set(value):
 		milliseconds_per_round = int(60000 / value)
 		rounds_per_minute = value
@@ -125,6 +125,7 @@ var bullets_fired: int = 0
 
 func handle_shoot(target_vector: Vector3) -> void:
 	if Time.get_ticks_msec() < next_fire_time:
+		held = true
 		return
 	if held:
 		next_fire_time += milliseconds_per_round

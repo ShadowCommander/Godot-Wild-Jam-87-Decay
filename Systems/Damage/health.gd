@@ -1,7 +1,7 @@
 class_name HealthComponent extends Node
 signal health_changed
 # Health will be a fixed decimal 2 integer 100.00
-@export var MAX_HEALTH: int = 10000
+@export var MAX_HEALTH: int = 0
 var health: int = MAX_HEALTH
 
 

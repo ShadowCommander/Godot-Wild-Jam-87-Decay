@@ -5,6 +5,8 @@ signal dead_wall
 
 func _ready() -> void:
 	if health_component:
+		health_component.MAX_HEALTH = GlobalVars.wall_health
+		health_component.health = GlobalVars.wall_health
 		health_component.health_changed.connect(_on_health_changed)
 
 func get_health_component():

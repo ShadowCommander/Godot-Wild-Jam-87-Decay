@@ -6,9 +6,9 @@ const radius: float = 3.0
 @export var health_component: HealthComponent
 @export var hurtbox_component: Hurtbox
 @export var attack_timer: Timer
-@export var ATK_DAMAGE: int = 700
+@export var ATK_DAMAGE: int = GlobalVars.monster_damage
 
-@export_range(1.0,40.0) var MOVEMENT_SPEED: float = 1.0
+@export_range(1.0,40.0) var MOVEMENT_SPEED: float = GlobalVars.monster_speed
 
 
 var moving_direction: Vector3
@@ -46,8 +46,11 @@ var spawn_info: SpawnData = null:
 
 func _ready() -> void:
 	if health_component:
+		health_component.MAX_HEALTH = GlobalVars.monster_health
+		health_component.health = GlobalVars.monster_health
 		health_component.health_changed.connect(_on_health_changed)
 	if attack_timer:
+		attack_timer.wait_time = GlobalVars.monster_attack_delay
 		attack_timer.timeout.connect(_start_attack)
 	pass
 

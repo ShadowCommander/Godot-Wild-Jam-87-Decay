@@ -68,7 +68,7 @@ static func multi_raycast(_space_state: PhysicsDirectSpaceState3D, _query: Physi
 
 #region Shoot
 
-var damage: int = 1000
+var damage: int = 10000
 var pierce_count: int = 1
 
 var rounds_per_minute: float = 600
