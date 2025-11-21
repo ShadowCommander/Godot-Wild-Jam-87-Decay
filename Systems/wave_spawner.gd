@@ -12,22 +12,30 @@ var spawn_points: Array
 var wave_timer: Timer = Timer.new()
 
 func _ready() -> void:
-	spawn_points = get_children().filter(func(n): return n is Marker3D)
+	spawn_points = get_children().filter(func(n): return (n is Marker3D and n.visible))
 	assert(len(spawn_points) != 0, "There must be at least one spawn point.")
 	assert(pool, "WaveSpawner requires a NodePool")
 	
-	
-	
-	wave_timer.autostart = true
+	#wave_timer.autostart = true
 	add_child(wave_timer)
-	wave_timer.timeout.connect(spawn_wave.bind(1))
-	
-	
-	pass
 
+#region Public
+
+func start_spawning(data: WaveData) -> void:
+	wave_timer.start(data.spawn_delay)
+	wave_timer.timeout.connect(spawn_wave.bind(data))
+
+func stop_spawning() -> void:
+	wave_timer.stop()
+	wave_timer.timeout.disconnect(spawn_wave)
+
+#endregion
 
 # Spawns n amount of an enemy
-func spawn_wave(n: int) -> void:
+func spawn_wave(data: WaveData) -> void:
+	if pool.active_counter[0] >= data.max_active:
+		return
+	var n: int = data.spawn_count
 	for _i in range(n):
 		var o = pool.get_pooled() as BaseMonster
 		
@@ -39,12 +47,6 @@ func spawn_wave(n: int) -> void:
 		
 		o.spawn_info =\
 		BaseMonster.SpawnData.new(rdm_spawn_point, rdm_spawn_point.target_wall)
-		
-		
-	pass
-
-
-
 
 # Gets a random spawn position aligned to a cardinal direction grid.
 func get_spawn_position(spawn_point: SpawnPoint) -> Vector3:
