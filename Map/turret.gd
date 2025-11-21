@@ -130,7 +130,7 @@ func handle_shoot(target_vector: Vector3) -> void:
 		next_fire_time += milliseconds_per_round
 	else:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
-	print("msec: %d, next_fire_time: %d, ms_per_round: %d, held: %s" % [Time.get_ticks_msec(), next_fire_time, milliseconds_per_round, held])
+	#print("msec: %d, next_fire_time: %d, ms_per_round: %d, held: %s" % [Time.get_ticks_msec(), next_fire_time, milliseconds_per_round, held])
 	held = true
 	
 	if not can_fire():

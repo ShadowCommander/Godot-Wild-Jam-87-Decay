@@ -17,6 +17,6 @@ func add_ammo(amount: int) -> int:
 func remove_ammo(amount: int) -> bool:
 	if ammo > amount:
 		ammo -= amount
-		print("Ammo count: ", ammo)
+		#print("Ammo count: ", ammo)
 		return true
 	return false

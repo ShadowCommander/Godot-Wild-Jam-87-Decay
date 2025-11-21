@@ -12,10 +12,9 @@ size = Vector3(2, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6eqs"]
 size = Vector3(2.1, 1, 1.1)
 
-[node name="AmmoCrate" type="StaticBody3D" node_paths=PackedStringArray("ammo_crate_animation_player", "ammo_crate_flap")]
+[node name="AmmoCrate" type="StaticBody3D" node_paths=PackedStringArray("ammo_crate_animation_player")]
 script = ExtResource("1_kq8e0")
 ammo_crate_animation_player = NodePath("blockbench_export/AnimationPlayer")
-ammo_crate_flap = NodePath("blockbench_export/flap")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
