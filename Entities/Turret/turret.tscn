@@ -42,10 +42,11 @@ height = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_h037i"]
 radius = 20.0
 
-[node name="Turret" type="Node3D" node_paths=PackedStringArray("ap_player", "pivot", "muzzle", "player_body")]
+[node name="Turret" type="Node3D" node_paths=PackedStringArray("ap_player", "pivot", "aim_node", "muzzle", "player_body")]
 script = ExtResource("1_svg48")
 ap_player = NodePath("blockbench_export/AnimationPlayer")
 pivot = NodePath("blockbench_export/turret/turret1")
+aim_node = NodePath("blockbench_export/turret/TurretPivot")
 muzzle = NodePath("blockbench_export/turret/turret1/group/TurretMuzzle")
 player_body = NodePath("CharacterBody3D")
 
@@ -93,14 +94,17 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="turret" parent="blockbench_export" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0.0625)
 
-[node name="turret1" parent="blockbench_export/turret" index="0"]
-transform = Transform3D(0.99939084, 0.03489418, 0.0006090802, -0.034899496, 0.99923867, 0.017441774, -1.1641532e-10, -0.017452406, 0.9998477, 0, 0.375, 0.05)
+[node name="TurretPivot" type="Node3D" parent="blockbench_export/turret" index="0"]
+transform = Transform3D(0.99999976, -5.9247527e-09, -1.612861e-10, -9.652324e-09, 1, -1.8626451e-09, 1.4397727e-10, -7.450581e-09, 0.99999976, -8.881784e-16, 0.6455263, 0.060000002)
+
+[node name="turret1" parent="blockbench_export/turret" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.05)
 
 [node name="fire" parent="blockbench_export/turret/turret1" index="2"]
 visible = false
 
 [node name="TurretMuzzle" type="Node3D" parent="blockbench_export/turret/turret1/group" index="1"]
-transform = Transform3D(0.9999999, 2.0317274e-12, -1.1639757e-10, -3.724393e-09, 1, -1.8626451e-09, 6.7974897e-12, -3.7252903e-09, 0.9999999, 3.7252903e-09, -0.017398953, 0.9967805)
+transform = Transform3D(0.99999976, -5.9247527e-09, -1.612861e-10, -9.652324e-09, 1, -1.8626451e-09, 1.4397727e-10, -7.450581e-09, 0.99999976, -0.0020642478, 0.04307854, 1.0573049)
 
 [node name="EnemyDetectionArea" type="Area3D" parent="."]
 collision_layer = 0

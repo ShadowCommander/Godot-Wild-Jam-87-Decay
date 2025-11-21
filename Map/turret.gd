@@ -9,6 +9,7 @@ const HITSCAN_TRACER = preload("uid://cbt8wa4rdgia4")
 
 @export var ap_player: AnimationPlayer
 @export var pivot: Node3D
+@export var aim_node: Node3D
 @export var muzzle: Node3D
 @export var player_body: CharacterBody3D
 
@@ -28,7 +29,7 @@ func _ready() -> void:
 func _on_enemy_detection_area_area_shape_entered(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
 	targets[area_rid] = area
 
-func _on_enemy_detection_area_area_shape_exited(area_rid: RID, area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
+func _on_enemy_detection_area_area_shape_exited(area_rid: RID, _area: Area3D, _area_shape_index: int, _local_shape_index: int) -> void:
 	targets.erase(area_rid)
 	if target_rid == area_rid:
 		handle_shoot_completed()
@@ -41,7 +42,7 @@ var old_target_pos: Vector3
 var target_rid: RID = RID()
 var target: Node3D = null
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	turret_process()
 
 func turret_process() -> void:
@@ -64,15 +65,14 @@ func turret_process() -> void:
 	else:
 		handle_shoot_completed()
 
-func aim_at_target(target: Node3D) -> void:
-	pivot.look_at(target.global_position)
-	pivot.rotation.y += PI
+func aim_at_target(aim_target: Node3D) -> void:
+	aim_node.look_at(aim_target.global_position, Vector3.UP, true)
+	#pivot.look_at(target.global_position, Vector3.UP, true)
+	pivot.quaternion = aim_node.quaternion
 
 #region Utilities
 
 func raycast(target_vector: Vector3, max_iterations: int = 1) -> Array[Dictionary]:
-	#var new_pos = cursor.value_axis_3d
-	var mousepos = get_viewport().get_visible_rect().size / 2
 	var origin = muzzle.global_position
 	var end = origin + target_vector
 	#var end = origin + new_pos * RAY_LENGTH
