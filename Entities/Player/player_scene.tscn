@@ -64,6 +64,27 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.090625, 0.75, -0.29375)
 [node name="Muzzle" type="Node3D" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group/group2/plane" index="0"]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
+[node name="Skeleton3D" parent="Player/CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/armature" index="0"]
+bones/0/position = Vector3(-0.1, 0.7562544, -1.5878274)
+bones/0/rotation = Quaternion(0.6747735, 0.11898078, 0.2610248, 0.6799929)
+bones/1/position = Vector3(0, 0.425, 0.025000002)
+bones/1/rotation = Quaternion(0.17547394, 0.88212955, 0.0135186035, 0.4368909)
+bones/2/rotation = Quaternion(-0.17628452, 0.073019445, 0.042817976, 0.98069286)
+bones/3/rotation = Quaternion(-0.087155744, 0, 0, 0.9961947)
+bones/4/rotation = Quaternion(0, 0, 0.9848077, 0.17364818)
+bones/5/position = Vector3(0.01875, 0.10625, 0.01875)
+bones/5/rotation = Quaternion(0.45890233, -0.38914582, 0.23382239, 0.7637417)
+bones/6/position = Vector3(0, 0.04375, 0.0125)
+bones/6/rotation = Quaternion(-0.34202015, 0, 0, 0.9396926)
+bones/7/position = Vector3(0, 0.14375, -0.03125)
+bones/7/rotation = Quaternion(0, 0, 0.09584575, 0.9953962)
+bones/8/position = Vector3(0.01875, 0.1125, -0.0125)
+bones/8/rotation = Quaternion(0.27202776, -0.107154585, 0.88976276, 0.35048687)
+bones/9/position = Vector3(0, 0.1375, 0.04375)
+bones/9/rotation = Quaternion(0.11874585, -0.027414639, -0.22327432, 0.9671073)
+bones/10/position = Vector3(0, 0.09546375, -0.024443125)
+bones/10/rotation = Quaternion(0.018988093, 0.018019022, 0.6881187, 0.72512585)
+
 [node name="InteractionSystem" type="Node" parent="Player" node_paths=PackedStringArray("camera", "player_body")]
 script = ExtResource("4_e4pf2")
 interact = ExtResource("5_cgmrs")
