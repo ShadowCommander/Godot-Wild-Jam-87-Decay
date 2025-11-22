@@ -85,6 +85,9 @@ bones/9/rotation = Quaternion(0.11874585, -0.027414639, -0.22327432, 0.9671073)
 bones/10/position = Vector3(0, 0.09546375, -0.024443125)
 bones/10/rotation = Quaternion(0.018988093, 0.018019022, 0.6881187, 0.72512585)
 
+[node name="HandItemPosition" type="Marker3D" parent="Player/CameraYawPivot/CameraPitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23025525, -1.2708907)
+
 [node name="InteractionSystem" type="Node" parent="Player" node_paths=PackedStringArray("camera", "player_body")]
 script = ExtResource("4_e4pf2")
 interact = ExtResource("5_cgmrs")
@@ -99,8 +102,9 @@ camera = NodePath("../CameraYawPivot/CameraPitchPivot/Camera3D")
 player_body = NodePath("..")
 origin_node = NodePath("../CameraYawPivot/CameraPitchPivot/Hand/Node3D/blockbench_export/group/group2/plane/Muzzle")
 
-[node name="HandSystem" type="Node" parent="Player"]
+[node name="HandSystem" type="Node" parent="Player" node_paths=PackedStringArray("hand_position")]
 script = ExtResource("9_5e743")
+hand_position = NodePath("../CameraYawPivot/CameraPitchPivot/HandItemPosition")
 
 [node name="GUIDEInit" type="Node" parent="."]
 script = ExtResource("4_1ggpk")

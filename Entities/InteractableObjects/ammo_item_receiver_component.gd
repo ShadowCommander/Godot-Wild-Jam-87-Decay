@@ -20,6 +20,7 @@ func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
 		return
 
 	var drop_into_event: HandSystem.HandDropIntoEvent = HandSystem.HandDropIntoEvent.new()
+	drop_into_event.target = entity
 	user.emit_signal("hand_drop_into", drop_into_event)
 	
 	user.emit_signal("change_ammo", item.ammo_count)
