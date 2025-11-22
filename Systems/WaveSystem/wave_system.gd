@@ -1,5 +1,7 @@
 extends Node
 
+signal game_win
+
 # 2-3 minute wave
 # 1-2 minute break
 # 
@@ -42,6 +44,7 @@ func end_wave() -> void:
 	
 	if wave_count >= waves.size() - 1:
 		print("No more rounds. Win?")
+		game_win.emit()
 		if not data.infinite:
 			enemy_spawner.stop_spawning()
 			return
