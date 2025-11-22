@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://tm0qf2uc663m"]
+
+[ext_resource type="Script" uid="uid://cveb8at3ish02" path="res://Entities/Wall/wall_panel.gd" id="1_mgkr3"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_vhqcx"]
+[ext_resource type="Script" uid="uid://607ysa6hietf" path="res://Entities/Items/item_component.gd" id="3_qvnks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eh6av"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh6av"]
+albedo_color = Color(0.20286599, 0.1953133, 0.18204388, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vhqcx"]
+material = SubResource("StandardMaterial3D_eh6av")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhqcx"]
+size = Vector3(1.1, 1.1, 0.2)
+
+[node name="WallPanel" type="RigidBody3D"]
+mass = 20.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_mgkr3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eh6av")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vhqcx")
+
+[node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_vhqcx")
+mesh = NodePath("../MeshInstance3D")
+metadata/_custom_type_script = "uid://chthxqwjmw8p4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_vhqcx")
+
+[node name="ItemComponent" type="Node" parent="InteractableArea" node_paths=PackedStringArray("item_node")]
+script = ExtResource("3_qvnks")
+item_node = NodePath("../..")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

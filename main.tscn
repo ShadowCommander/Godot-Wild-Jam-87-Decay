@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=20 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
@@ -108,17 +108,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
 
 [node name="Walls" type="Node3D" parent="World/DynamicObjects"]
 
-[node name="Wall" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+[node name="Wall" parent="World/DynamicObjects/Walls" node_paths=PackedStringArray("wall_panel_container") instance=ExtResource("5_lquwl")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, -16)
+wall_panel_container = NodePath("../WallPanelContainer")
 
-[node name="Wall2" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+[node name="Wall2" parent="World/DynamicObjects/Walls" node_paths=PackedStringArray("wall_panel_container") instance=ExtResource("5_lquwl")]
 transform = Transform3D(0.9999999, 0, 5.563626e-08, 0, 1, 0, -5.563626e-08, 0, 0.9999999, 16, 0, 1)
+wall_panel_container = NodePath("../WallPanelContainer")
 
-[node name="Wall3" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+[node name="Wall3" parent="World/DynamicObjects/Walls" node_paths=PackedStringArray("wall_panel_container") instance=ExtResource("5_lquwl")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.371138e-08, -1, 0, 16)
+wall_panel_container = NodePath("../WallPanelContainer")
 
-[node name="Wall4" parent="World/DynamicObjects/Walls" instance=ExtResource("5_lquwl")]
+[node name="Wall4" parent="World/DynamicObjects/Walls" node_paths=PackedStringArray("wall_panel_container") instance=ExtResource("5_lquwl")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, -1)
+wall_panel_container = NodePath("../WallPanelContainer")
+
+[node name="WallPanelContainer" type="Node3D" parent="World/DynamicObjects/Walls"]
 
 [node name="PowerGenerator" parent="World/DynamicObjects" instance=ExtResource("6_272bh")]
 transform = Transform3D(0.7289686, 0, -0.6845471, 0, 1, 0, 0.6845471, 0, 0.7289686, -5.7007933, -4.7683716e-07, 5.6904774)

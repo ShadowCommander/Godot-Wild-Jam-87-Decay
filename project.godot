@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/guide/pl
 
 [physics]
 
+common/physics_ticks_per_second=90
 common/physics_interpolation=true
 
 [rendering]
