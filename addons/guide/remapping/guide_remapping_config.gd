@@ -8,11 +8,11 @@ extends Resource
 
 ## Dictionary with remapped inputs. Structure is:
 ## { 
-##    mapping_context : {
-##         action : {
-##            index : bound input
-##             ...
-##         }, ...
+##	mapping_context : {
+##		 action : {
+##			index : bound input
+##			 ...
+##		 }, ...
 ## }		
 ## The bound input can be NULL which means that this was deliberately unbound.	
 @export var remapped_inputs:Dictionary = {}
