@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=26 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
@@ -16,6 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://828l7s8bk6lt" path="res://Entities/Monsters/Walker.tscn" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://dcy7nfjsnqarp" path="res://Systems/WaveSystem/wave_system.gd" id="15_vivmo"]
 [ext_resource type="Script" uid="uid://dbqhefmivyiw4" path="res://Systems/WaveSystem/wave_spawn_data.gd" id="16_2cqfq"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="17_074og"]
+[ext_resource type="Script" uid="uid://dn72w1rbrcf1g" path="res://win_lose_signals_manager.gd" id="17_getpj"]
+[ext_resource type="Script" uid="uid://cn8wv5xm370fa" path="res://new_game_transition.gd" id="17_yaehf"]
+[ext_resource type="PackedScene" uid="uid://dnie4vqmp5wsq" path="res://UI/scenes/windows/game_won_window.tscn" id="18_82xsv"]
+[ext_resource type="PackedScene" uid="uid://ba08ojf5wvdou" path="res://UI/scenes/windows/level_lost_window.tscn" id="19_getpj"]
 
 [sub_resource type="Resource" id="Resource_yaehf"]
 script = ExtResource("16_2cqfq")
@@ -27,6 +32,12 @@ metadata/_custom_type_script = "uid://dbqhefmivyiw4"
 script = ExtResource("16_2cqfq")
 spawn_delay = 0.02
 metadata/_custom_type_script = "uid://dbqhefmivyiw4"
+
+[sub_resource type="Gradient" id="Gradient_2cqfq"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yaehf"]
+gradient = SubResource("Gradient_2cqfq")
 
 [node name="Main" type="Node"]
 
@@ -205,8 +216,37 @@ metadata/_custom_type_script = "uid://ckq145gedwee7"
 [node name="ObjectPooler" parent="World/EnemySpawners" instance=ExtResource("11_dg77c")]
 pooled_scene = ExtResource("14_2cqfq")
 
-[node name="WaveSystem" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner")]
+[node name="WaveSystem" type="Node" parent="." node_paths=PackedStringArray("win_lose_manager", "enemy_spawner")]
 script = ExtResource("15_vivmo")
+win_lose_manager = NodePath("../WinLoseManager")
 prep_time = 0.0
 waves = Array[ExtResource("16_2cqfq")]([SubResource("Resource_yaehf"), SubResource("Resource_074og")])
 enemy_spawner = NodePath("../World/EnemySpawners/WaveSpawner")
+
+[node name="WinLoseSignalsManager" type="Node" parent="."]
+script = ExtResource("17_getpj")
+
+[node name="WinLoseManager" type="Node" parent="."]
+script = ExtResource("17_074og")
+game_won_scene = ExtResource("18_82xsv")
+game_lost_scene = ExtResource("19_getpj")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="FadeInTexture" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_yaehf")
+script = ExtResource("17_yaehf")
+
+[connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall2" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall3" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
+[connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall4" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
+[connection signal="game_win" from="WaveSystem" to="WinLoseSignalsManager" method="_on_wave_system_game_win"]

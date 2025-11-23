@@ -2,6 +2,8 @@ extends Node
 
 signal game_win
 
+@export var win_lose_manager: Node
+
 # 2-3 minute wave
 # 1-2 minute break
 # 
@@ -9,6 +11,7 @@ signal game_win
 
 func _ready() -> void:
 	assert(enemy_spawner != null, "enemy_spawner is not set. %s" % get_path())
+	assert(win_lose_manager != null, "win_lose_manager is not set. %s" % get_path())
 	begin_prep()
 
 @export_category("Settings")
@@ -45,6 +48,7 @@ func end_wave() -> void:
 	if wave_count >= waves.size() - 1:
 		print("No more rounds. Win?")
 		game_win.emit()
+		win_lose_manager.game_won()
 		if not data.infinite:
 			enemy_spawner.stop_spawning()
 			return
