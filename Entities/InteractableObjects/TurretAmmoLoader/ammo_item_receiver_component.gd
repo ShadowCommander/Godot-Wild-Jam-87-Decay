@@ -23,7 +23,8 @@ func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
 	drop_into_event.target = entity
 	user.emit_signal("hand_drop_into", drop_into_event)
 	
-	user.emit_signal("change_ammo", item.ammo_count)
+	if user.has_user_signal("change_ammo"):
+		user.emit_signal("change_ammo", item.ammo_count)
 	print("Inserting ammo %d" % item.ammo_count)
 	turret_ammo_loader.add_ammo(item.ammo_count)
 	#item.queue_free()
