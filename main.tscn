@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=33 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
@@ -21,6 +21,9 @@
 [ext_resource type="Script" uid="uid://cn8wv5xm370fa" path="res://UI/Game/new_game_transition.gd" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://dnie4vqmp5wsq" path="res://UI/scenes/windows/game_won_window.tscn" id="18_82xsv"]
 [ext_resource type="PackedScene" uid="uid://ba08ojf5wvdou" path="res://UI/scenes/windows/level_lost_window.tscn" id="19_getpj"]
+[ext_resource type="AudioStream" uid="uid://6uhbiykr2u2l" path="res://Globals/Music/DYNAMIC GAMEPLAY - BEFORE WAVE.mp3" id="22_1u8w0"]
+[ext_resource type="AudioStream" uid="uid://dpwuudbieyj0e" path="res://Globals/Music/DYNAMIC GAMEPLAY - WAVE.mp3" id="23_0odxb"]
+[ext_resource type="Script" uid="uid://bhlrrto67jjru" path="res://music_audio_stream_player.gd" id="24_lswn8"]
 
 [sub_resource type="Resource" id="Resource_yaehf"]
 script = ExtResource("16_2cqfq")
@@ -52,6 +55,13 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_yaehf"]
 gradient = SubResource("Gradient_2cqfq")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_a6jrf"]
+stream_count = 2
+stream_0/stream = ExtResource("22_1u8w0")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("23_0odxb")
+stream_1/volume = 0.0
 
 [node name="Main" type="Node"]
 
@@ -98,10 +108,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14, 
 ammo_loader = NodePath("../TurretAmmoLoader6")
 
 [node name="TurretAmmoLoader5" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, -6)
 
 [node name="TurretAmmoLoader6" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, 6)
 
 [node name="Turret5" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6, 0, 14)
@@ -112,10 +122,10 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 0
 ammo_loader = NodePath("../TurretAmmoLoader4")
 
 [node name="TurretAmmoLoader3" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6, 0, 12)
 
 [node name="TurretAmmoLoader4" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 0, 12)
 
 [node name="Turret7" parent="World/DynamicObjects/Turrets" node_paths=PackedStringArray("ammo_loader") instance=ExtResource("3_1bvp3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -6)
@@ -126,10 +136,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14,
 ammo_loader = NodePath("../TurretAmmoLoader8")
 
 [node name="TurretAmmoLoader7" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -6)
 
 [node name="TurretAmmoLoader8" parent="World/DynamicObjects/Turrets" instance=ExtResource("4_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 6)
 
 [node name="Walls" type="Node3D" parent="World/DynamicObjects"]
 
@@ -233,10 +243,9 @@ pooled_scene = ExtResource("14_2cqfq")
 [node name="WaveSystem" type="Node" parent="." node_paths=PackedStringArray("win_lose_manager", "enemy_spawner")]
 script = ExtResource("15_vivmo")
 win_lose_manager = NodePath("../WinLoseManager")
-wave_count = 2
-prep_time = 0.0
-wave_time = 120.0
-break_time = 30.0
+prep_time = 20.0
+wave_time = 90.0
+break_time = 20.0
 waves = Array[ExtResource("16_2cqfq")]([SubResource("Resource_yaehf"), SubResource("Resource_074og"), SubResource("Resource_ryguw"), SubResource("Resource_d13ii"), SubResource("Resource_getpj")])
 enemy_spawner = NodePath("../World/EnemySpawners/WaveSpawner")
 
@@ -262,8 +271,18 @@ mouse_filter = 2
 texture = SubResource("GradientTexture1D_yaehf")
 script = ExtResource("17_yaehf")
 
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_a6jrf")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("24_lswn8")
+
 [connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall2" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall3" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
 [connection signal="dead_wall" from="World/DynamicObjects/Walls/Wall4" to="WinLoseSignalsManager" method="_on_wall_dead_wall"]
 [connection signal="game_win" from="WaveSystem" to="WinLoseSignalsManager" method="_on_wave_system_game_win"]
+[connection signal="prep" from="WaveSystem" to="MusicAudioStreamPlayer" method="_on_wave_system_prep"]
+[connection signal="wave_begin" from="WaveSystem" to="MusicAudioStreamPlayer" method="_on_wave_system_wave_begin"]
+[connection signal="wave_end" from="WaveSystem" to="MusicAudioStreamPlayer" method="_on_wave_system_wave_end"]

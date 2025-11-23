@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://huvkls66yf6n"]
+[gd_scene load_steps=20 format=3 uid="uid://huvkls66yf6n"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_ewgru"]
 [ext_resource type="Script" uid="uid://djecsy2pqfxpv" path="res://UI/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_pycad"]
 [ext_resource type="PackedScene" uid="uid://dp30j5tslgvqi" path="res://UI/scenes/windows/main_menu_options_window.tscn" id="3_54mvg"]
 [ext_resource type="PackedScene" uid="uid://bxabo6mtwuf47" path="res://UI/scenes/windows/main_menu_credits_window.tscn" id="4_wofft"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_ijc5o"]
+[ext_resource type="AudioStream" uid="uid://bhx0q6t21lnrf" path="res://Globals/Music/OFFICIAL THEME MUSIC.mp3" id="5_pycad"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -332,14 +333,16 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
+[node name="BackgroundMusicPlayer" parent="." index="3"]
+stream = ExtResource("5_pycad")
+volume_db = -10.0
+parameters/looping = true
+
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
-
-[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-text = "Godot Wild Jam 87 Decay"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)

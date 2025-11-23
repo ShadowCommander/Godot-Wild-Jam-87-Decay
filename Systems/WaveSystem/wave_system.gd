@@ -2,6 +2,10 @@ extends Node
 
 signal game_win
 
+signal wave_begin
+signal wave_end
+signal prep
+
 @export var win_lose_manager: Node
 
 # 2-3 minute wave
@@ -28,11 +32,13 @@ func _ready() -> void:
 
 
 func begin_prep() -> void:
+	prep.emit()
 	print("Starting prep. Waiting: %s" % prep_time)
 	var timer = get_tree().create_timer(prep_time, false, true)
 	timer.timeout.connect(begin_wave)
 
 func begin_wave() -> void:
+	wave_begin.emit()
 	print("Starting wave. Waiting: %s" % wave_time)
 	var timer = get_tree().create_timer(wave_time, false, true)
 	timer.timeout.connect(end_wave)
@@ -41,6 +47,7 @@ func begin_wave() -> void:
 	enemy_spawner.start_spawning(data)
 	
 func end_wave() -> void:
+	wave_end.emit()
 	print("Starting break. Waiting: %s" % break_time)
 	
 	var data: WaveData = waves[wave_count]
