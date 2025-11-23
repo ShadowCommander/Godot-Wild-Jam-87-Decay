@@ -2,19 +2,13 @@
 ## Collaborators
 
 ### Role
-iwearavoid
-Ricky
-Logical Matrix
-Rob
-[ShadowCommander](https://shadowcommander.itch.io)
+[iwearavoid - Modelling](https://iwearavoid.itch.io/)
+Ricky - Programming and Modelling 
+Logical Matrix - Programming
+Rob - Audio
+[ShadowCommander - Programming](https://shadowcommander.itch.io)
 
 ## Sourced
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
-
 ### Godot Wild Jam Logos
 Author: [Dawk](https://coreyaroberts.com/)  
 Source: [godotwildjam.com](https://godotwildjam.com/branding/)  
@@ -43,3 +37,9 @@ License: [GNU General Public License version 2](https://opensource.org/licenses/
 ![FMOD Logo](/UI/assets/fmod_logo/FMOD-Logo-White-Transparent-Background.svg)  
 Made using FMOD Studio by Firelight Technologies Pty Ltd.
 Source: [fmod.com](https://www.fmod.com/)  
+
+#### G.U.I.D.E.
+![G.U.I.D.E - Godot Unified Input Detection Engine Logo](/addons/guide/guide_internal.svg)  
+Author: [Godotneers ](https://github.com/godotneers)  
+Source: [G.U.I.D.E](https://github.com/godotneers/G.U.I.D.E)  
+License: [MIT License](https://github.com/godotneers/G.U.I.D.E?tab=MIT-1-ov-file#readme)  
