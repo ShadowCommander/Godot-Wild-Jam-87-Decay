@@ -22,6 +22,8 @@
 [node name="PlayerScene" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("yaw_pivot", "pitch_pivot") groups=["player_body"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_yew1x")
 look_relative = ExtResource("2_txgsh")
 movement = ExtResource("3_1ggpk")
