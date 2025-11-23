@@ -2097,7 +2097,7 @@ _subresources={
 },
 "generator on": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://generator_on_animation.res",
+"save_to_file/fallback_path": "res://Entities/InteractableObjects/Generator/generator_on_animation.res",
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "uid://c615ojfhxu2x8",
 "settings/loop_mode": 1,
