@@ -56,7 +56,7 @@ func get_spawn_position(spawn_point: SpawnPoint) -> Vector3:
 	
 	var left = Vector3.UP.cross(dir_to_center) * randf_range(-spawn_radius,spawn_radius)
 	var right = dir_to_center.cross(Vector3.UP) * randf_range(-spawn_radius,spawn_radius)
-	var offset: Vector3 = Vector3.UP
+	var offset: Vector3 = Vector3.ZERO
 	
 	if randi() % 2:
 		offset += left
