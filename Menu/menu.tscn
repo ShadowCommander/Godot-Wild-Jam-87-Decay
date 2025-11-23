@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://btrga5olcgi3n"]
+
+[ext_resource type="StyleBox" uid="uid://y4vwoysdvio8" path="res://Menu/ButtonStyleNormal.tres" id="1_jf1j2"]
+[ext_resource type="Script" uid="uid://drtvcurlnig1b" path="res://Menu/menu.gd" id="1_w32jx"]
+[ext_resource type="StyleBox" uid="uid://5hssjpkdot1o" path="res://Menu/ButtonStyleHover.tres" id="2_e56cd"]
+[ext_resource type="StyleBox" uid="uid://oemj6tjxsx4v" path="res://Menu/ButtonStylePressed.tres" id="2_u03px"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cjs20"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w32jx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cjs20")
+
+[node name="Game Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -196.0
+offset_right = 44.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Alien Glitch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -76.5
+offset_right = 175.0
+offset_bottom = 76.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 9
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_jf1j2")
+theme_override_styles/pressed = ExtResource("2_u03px")
+theme_override_styles/hover = ExtResource("2_e56cd")
+text = "Play"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_jf1j2")
+theme_override_styles/pressed = ExtResource("2_u03px")
+theme_override_styles/hover = ExtResource("2_e56cd")
+text = "Options"
+
+[node name="Achievements" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_jf1j2")
+theme_override_styles/pressed = ExtResource("2_u03px")
+theme_override_styles/hover = ExtResource("2_e56cd")
+text = "Achievements"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_jf1j2")
+theme_override_styles/pressed = ExtResource("2_u03px")
+theme_override_styles/hover = ExtResource("2_e56cd")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
