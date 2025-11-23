@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcvdri21pmetk"
 path.s3tc="res://.godot/imported/Generator One Object_Image_0.png-bd97375a4dfa5ed75f61948b5571e2fa.s3tc.ctex"
+path.etc2="res://.godot/imported/Generator One Object_Image_0.png-bd97375a4dfa5ed75f61948b5571e2fa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Entities/InteractableObjects/Generator/Generator One Object_Image_0.png"
-dest_files=["res://.godot/imported/Generator One Object_Image_0.png-bd97375a4dfa5ed75f61948b5571e2fa.s3tc.ctex"]
+dest_files=["res://.godot/imported/Generator One Object_Image_0.png-bd97375a4dfa5ed75f61948b5571e2fa.s3tc.ctex", "res://.godot/imported/Generator One Object_Image_0.png-bd97375a4dfa5ed75f61948b5571e2fa.etc2.ctex"]
 
 [params]
 

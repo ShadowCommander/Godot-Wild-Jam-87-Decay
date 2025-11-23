@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq4tlupf3kddu"
 path.s3tc="res://.godot/imported/bulb_0.png-a80db312d5f633a76186f3c3a63020cd.s3tc.ctex"
+path.etc2="res://.godot/imported/bulb_0.png-a80db312d5f633a76186f3c3a63020cd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Entities/Lights/bulb_0.png"
-dest_files=["res://.godot/imported/bulb_0.png-a80db312d5f633a76186f3c3a63020cd.s3tc.ctex"]
+dest_files=["res://.godot/imported/bulb_0.png-a80db312d5f633a76186f3c3a63020cd.s3tc.ctex", "res://.godot/imported/bulb_0.png-a80db312d5f633a76186f3c3a63020cd.etc2.ctex"]
 
 [params]
 
