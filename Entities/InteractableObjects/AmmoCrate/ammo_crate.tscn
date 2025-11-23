@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dse4nfhb7y6sc"]
 
-[ext_resource type="Script" uid="uid://bfqnugynq0dj0" path="res://Entities/InteractableObjects/ammo_crate.gd" id="1_kq8e0"]
-[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_q0maj"]
-[ext_resource type="Script" uid="uid://c3c8e24u6o68c" path="res://Entities/InteractableObjects/dispenser_component.gd" id="2_0ueow"]
+[ext_resource type="Script" uid="uid://bfqnugynq0dj0" path="res://Entities/InteractableObjects/AmmoCrate/ammo_crate.gd" id="1_kq8e0"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_q0maj"]
+[ext_resource type="Script" uid="uid://c3c8e24u6o68c" path="res://Entities/InteractableObjects/AmmoCrate/dispenser_component.gd" id="2_0ueow"]
 [ext_resource type="PackedScene" uid="uid://brgxyu1ya7lhb" path="res://Entities/Items/AmmoBox/ammo_box.tscn" id="3_p7jop"]
-[ext_resource type="PackedScene" uid="uid://dgtcql25l2qie" path="res://Entities/InteractableObjects/ammocrate.gltf" id="4_vaj07"]
+[ext_resource type="PackedScene" uid="uid://dgtcql25l2qie" path="res://Entities/InteractableObjects/AmmoCrate/ammocrate.gltf" id="4_vaj07"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ueow"]
 size = Vector3(2, 1, 1)

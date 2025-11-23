@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fclwlb44db18"
-path.s3tc="res://.godot/imported/ammocrate_1.png-c67ce5dc9e04b22cb8d57353090f80d6.s3tc.ctex"
+uid="uid://bvd8xqrxw1o75"
+path.s3tc="res://.godot/imported/ammocrate_2.png-49566b82301fd99b3e636c999bfe9075.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bd5e620b60d90aaae8c43e5b904c97dc"
+"md5": "26ecc574c8e925e93648539eccb006b0"
 }
 
 [deps]
 
-source_file="res://Entities/InteractableObjects/ammocrate_1.png"
-dest_files=["res://.godot/imported/ammocrate_1.png-c67ce5dc9e04b22cb8d57353090f80d6.s3tc.ctex"]
+source_file="res://Entities/InteractableObjects/AmmoCrate/ammocrate_2.png"
+dest_files=["res://.godot/imported/ammocrate_2.png-49566b82301fd99b3e636c999bfe9075.s3tc.ctex"]
 
 [params]
 

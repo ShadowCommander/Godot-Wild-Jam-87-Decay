@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://crqfkdoxh4oi"]
 
-[ext_resource type="Script" uid="uid://bndfo2x0f3f4g" path="res://Entities/InteractableObjects/turret_ammo_loader.gd" id="1_85w54"]
-[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_tx10y"]
-[ext_resource type="Script" uid="uid://cjka1bwdkciop" path="res://Entities/InteractableObjects/ammo_item_receiver_component.gd" id="2_85w54"]
+[ext_resource type="Script" uid="uid://bndfo2x0f3f4g" path="res://Entities/InteractableObjects/TurretAmmoLoader/turret_ammo_loader.gd" id="1_85w54"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_tx10y"]
+[ext_resource type="Script" uid="uid://cjka1bwdkciop" path="res://Entities/InteractableObjects/TurretAmmoLoader/ammo_item_receiver_component.gd" id="2_85w54"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptvhj"]
 size = Vector3(0.5, 1, 0.5)

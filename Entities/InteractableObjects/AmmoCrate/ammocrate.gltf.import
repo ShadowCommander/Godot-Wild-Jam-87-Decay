@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dgtcql25l2qie"
-path="res://.godot/imported/ammocrate.gltf-bc0f3fedb40fe25ce348ae74a7c590c7.scn"
+path="res://.godot/imported/ammocrate.gltf-59a2ad3cb809561743846387f4b16eca.scn"
 
 [deps]
 
-source_file="res://Entities/InteractableObjects/ammocrate.gltf"
-dest_files=["res://.godot/imported/ammocrate.gltf-bc0f3fedb40fe25ce348ae74a7c590c7.scn"]
+source_file="res://Entities/InteractableObjects/AmmoCrate/ammocrate.gltf"
+dest_files=["res://.godot/imported/ammocrate.gltf-59a2ad3cb809561743846387f4b16eca.scn"]
 
 [params]
 

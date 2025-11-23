@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btxy8vtw6al06"]
 
 [ext_resource type="PackedScene" uid="uid://ctut5dwy4so7y" path="res://Entities/Turret/turret.tscn" id="1_0axfb"]
-[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/turret_ammo_loader.tscn" id="2_onlr8"]
+[ext_resource type="PackedScene" uid="uid://crqfkdoxh4oi" path="res://Entities/InteractableObjects/TurretAmmoLoader/turret_ammo_loader.tscn" id="2_onlr8"]
 
 [node name="Turrets" type="Node3D"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://wxkfr2kif5n3"]
 
 [ext_resource type="Script" uid="uid://cr5fui6kvyrxk" path="res://Entities/InteractableObjects/Generator/generator.gd" id="1_jryob"]
-[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_usr04"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_usr04"]
 [ext_resource type="CylinderMesh" uid="uid://cw28hfg52b3jh" path="res://Entities/InteractableObjects/Generator/generator_on_mesh.tres" id="2_f4vll"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
