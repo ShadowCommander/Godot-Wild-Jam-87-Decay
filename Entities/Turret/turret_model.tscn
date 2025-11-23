@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cieq4go3ty06u"]
+
+[ext_resource type="PackedScene" uid="uid://n7or0o33ad27" path="res://Entities/Turret/turret.gltf" id="1_fc13h"]
+[ext_resource type="AnimationLibrary" uid="uid://bp4xlpeu5lbg5" path="res://Entities/Turret/turret_animation.tres" id="2_77bfu"]
+
+[node name="blockbench_export" instance=ExtResource("1_fc13h")]
+
+[node name="turret1" parent="turret" index="0"]
+transform = Transform3D(0.99939084, 0.03489418, 0.0006090802, -0.034899496, 0.99923867, 0.017441774, -1.1641532e-10, -0.017452406, 0.9998477, 0, 0.375, 0.05)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": ExtResource("2_77bfu")
+}

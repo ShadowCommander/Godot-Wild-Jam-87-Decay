@@ -47,6 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func turret_process() -> void:
 	if targets.size() <= 0:
+		ap_player.play("turret idle")
 		return
 	if target == null:
 		for rid in targets:
@@ -124,9 +125,8 @@ var held: bool = false:
 		#if held:
 			#ap_player.play("turret fire")
 		#else:
-			#ap_player.stop()
-			
-		pass
+			#ap_player.play("turret idle")
+
 # When new firing set new next_fire_time to `Time.get_ticks_msec() + milliseconds_per_round`
 # When continuous fire set next_fire_time to `next_fire_time + milliseconds_per_round`
 var tracer_rate: int = 1
@@ -135,11 +135,11 @@ var bullets_fired: int = 0
 @export var visual_accuracy_drift = 0.2
 
 func handle_shoot(target_vector: Vector3) -> void:
+	ap_player.play("turret fire")
 	if Time.get_ticks_msec() < next_fire_time:
 		held = true
 		return
 	if held:
-		
 		next_fire_time += milliseconds_per_round
 	else:
 		next_fire_time = Time.get_ticks_msec() + milliseconds_per_round
