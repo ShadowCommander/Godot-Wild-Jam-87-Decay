@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4e5c5vuxmh3q"]
+[gd_scene load_steps=11 format=3 uid="uid://4e5c5vuxmh3q"]
 
 [ext_resource type="Texture2D" uid="uid://dcqsnvrnifcqt" path="res://Map/asphalt.png" id="3_26tof"]
 [ext_resource type="PackedScene" uid="uid://dv1hxef0j080b" path="res://Map/sidewalk_mesh.tscn" id="3_q4rai"]
@@ -24,10 +24,6 @@ ambient_light_energy = 0.02
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rulln"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_rulln"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_q4rai"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4rai"]
 specular_mode = 1
 albedo_texture = ExtResource("3_26tof")
@@ -49,28 +45,6 @@ environment = SubResource("Environment_q1sw5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorCollision"]
 shape = SubResource("WorldBoundaryShape3D_rulln")
-
-[node name="Decoration" type="Node3D" parent="."]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Decoration"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.621627, 0.5, -11.303)
-mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Decoration"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.765879, 0.5, 3.9618282)
-mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Decoration"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0627527, 0.5, -4.7511168)
-mesh = SubResource("BoxMesh_rulln")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="Decoration"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.90089, 0, 15.740192)
-mesh = SubResource("BoxMesh_q4rai")
-skeleton = NodePath("../..")
 
 [node name="Street" type="Node3D" parent="."]
 
