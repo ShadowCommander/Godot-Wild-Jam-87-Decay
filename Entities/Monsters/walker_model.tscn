@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2m83232dodsu"]
+
+[ext_resource type="PackedScene" uid="uid://b4etp3a77cyi" path="res://Entities/Monsters/monster.gltf" id="1_sx1wb"]
+
+[node name="blockbench_export" instance=ExtResource("1_sx1wb")]
