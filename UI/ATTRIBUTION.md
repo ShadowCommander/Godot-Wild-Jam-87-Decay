@@ -2,9 +2,11 @@
 ## Collaborators
 
 ### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+iwearavoid
+Ricky
+Logical Matrix
+Rob
+[ShadowCommander](https://shadowcommander.itch.io)
 
 ## Sourced
 ### Asset Type
@@ -36,3 +38,8 @@ License: [MIT License](LICENSE.txt)
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
+#### FMOD
+![FMOD Logo](/UI/assets/fmod_logo/FMOD-Logo-White-Transparent-Background.svg)  
+Made using FMOD Studio by Firelight Technologies Pty Ltd.
+Source: [fmod.com](https://www.fmod.com/)  

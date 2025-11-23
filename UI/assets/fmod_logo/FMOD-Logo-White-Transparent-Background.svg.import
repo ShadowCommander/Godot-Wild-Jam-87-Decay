@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2vydko60b3mp"
-path="res://.godot/imported/FMOD Logo White - Transparent Background.png-301a4c24ac8920606564c7df5ecc46d5.ctex"
+uid="uid://bqor48u27323a"
+path="res://.godot/imported/FMOD-Logo-White-Transparent-Background.svg-d9fcd372f17d68af89f70f5c36b2ce1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/assets/fmod_logo/FMOD Logo White - Transparent Background.png"
-dest_files=["res://.godot/imported/FMOD Logo White - Transparent Background.png-301a4c24ac8920606564c7df5ecc46d5.ctex"]
+source_file="res://UI/assets/fmod_logo/FMOD-Logo-White-Transparent-Background.svg"
+dest_files=["res://.godot/imported/FMOD-Logo-White-Transparent-Background.svg-d9fcd372f17d68af89f70f5c36b2ce1e.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=14.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
