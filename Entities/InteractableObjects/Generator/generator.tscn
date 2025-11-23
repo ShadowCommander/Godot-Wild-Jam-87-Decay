@@ -50,16 +50,16 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("4_0agpx")
 
 [node name="group" parent="generator_model" index="0"]
-transform = Transform3D(-1.0411615, 0, 1.5721102e-07, 0, 1.024697, 0, -1.5721102e-07, 0, -1.0411615, 0.007, 0.688, -0.037)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.007, 0.688, -0.037)
 
 [node name="generator_model_single_object" parent="generator_model/group" index="0" instance=ExtResource("4_iefje")]
-transform = Transform3D(-0.9604658, 0, -1.4502629e-07, 0, 0.9758983, 0, 1.4502629e-07, 0, -0.9604658, 0.0067232554, -0.6714181, -0.035537235)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.007, -0.68, -0.037)
 
 [node name="group" parent="generator_model/group/generator_model_single_object" index="0"]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.007, 0.688, -0.037)
 
 [node name="group3" parent="generator_model/group/generator_model_single_object/group" index="1"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.0625, -0.1875, -0.1)
+transform = Transform3D(0.94, 0, 0, 0, 0.94, 0, 0, 0, 0.94, -1.0625, -0.1875, -0.1)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="generator_model/group" index="1"]
 transform = Transform3D(0.9604658, 0, 6.105971e-08, 0, 0.9758983, 0, -6.105971e-08, 0, 0.9604658, 0.4470672, 0.558015, -0.035537265)
@@ -77,9 +77,6 @@ light_energy = 1.5
 light_bake_mode = 1
 omni_range = 4.0
 omni_attenuation = 0.5
-
-[node name="group3" parent="generator_model/group" index="9"]
-transform = Transform3D(0.3673643, -0.14095545, 0.33577996, -0.32370612, 0.09209986, 0.3928169, -0.16682617, -0.4891036, -0.022800134, -1.1186819, 0.542865, -0.1)
 
 [node name="Node3D" type="Node3D" parent="."]
 
