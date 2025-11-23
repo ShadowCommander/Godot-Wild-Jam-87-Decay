@@ -26,3 +26,4 @@ func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
 	user.emit_signal("change_ammo", item.ammo_count)
 	print("Inserting ammo %d" % item.ammo_count)
 	turret_ammo_loader.add_ammo(item.ammo_count)
+	#item.queue_free()

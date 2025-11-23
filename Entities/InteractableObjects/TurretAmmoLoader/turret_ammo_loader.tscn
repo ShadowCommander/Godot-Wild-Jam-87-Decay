@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crqfkdoxh4oi"]
+[gd_scene load_steps=11 format=3 uid="uid://crqfkdoxh4oi"]
 
 [ext_resource type="Script" uid="uid://bndfo2x0f3f4g" path="res://Entities/InteractableObjects/TurretAmmoLoader/turret_ammo_loader.gd" id="1_85w54"]
 [ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_tx10y"]
@@ -17,8 +17,20 @@ size = Vector3(0.5, 1, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1g38i"]
 size = Vector3(0.6, 1, 0.6)
 
-[node name="TurretAmmoLoader" type="StaticBody3D"]
+[sub_resource type="QuadMesh" id="QuadMesh_b47rc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uh4x1"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrqqy"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_uh4x1")
+
+[node name="TurretAmmoLoader" type="StaticBody3D" node_paths=PackedStringArray("ammo_count_label")]
 script = ExtResource("1_85w54")
+ammo_count_label = NodePath("SubViewport/Control/AmmoCountLabel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -41,3 +53,38 @@ shape = SubResource("BoxShape3D_1g38i")
 [node name="AmmoItemReceiverComponent" type="Node" parent="InteractableArea" node_paths=PackedStringArray("turret_ammo_loader")]
 script = ExtResource("2_85w54")
 turret_ammo_loader = NodePath("../..")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AmmoCountLabel" type="Label" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "500/800"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2263511, 0)
+mesh = SubResource("QuadMesh_b47rc")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrqqy")
