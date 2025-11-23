@@ -14,7 +14,7 @@ min_time = 1.0
 max_time = 1.0
 
 [node name="AmmoCrate" parent="." instance=ExtResource("2_3ft2d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.949741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7736692, 0, -0.086090565)
 
 [node name="TurretAmmoLoader" parent="." instance=ExtResource("3_4t723")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2662466, 0, 0)

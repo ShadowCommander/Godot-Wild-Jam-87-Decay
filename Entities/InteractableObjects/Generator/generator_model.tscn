@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://colnbntm8svq3"]
+
+[ext_resource type="PackedScene" uid="uid://dycpui2k6210f" path="res://Entities/InteractableObjects/Generator/generator.gltf" id="1_jvp45"]
+[ext_resource type="AnimationLibrary" uid="uid://w7fnx5eunxll" path="res://Entities/InteractableObjects/Generator/generator_animation.tres" id="2_n2u3q"]
+
+[node name="blockbench_export" instance=ExtResource("1_jvp45")]
+
+[node name="group" parent="." index="0"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.0625, 0.6875, 0.1)
+
+[node name="group3" parent="group" index="7"]
+transform = Transform3D(0.94, 0, 0, 0, 0.94, 0, 0, 0, 0.94, -1.0625, -0.1875, -0.1)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": ExtResource("2_n2u3q")
+}
