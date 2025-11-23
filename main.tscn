@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dbqhefmivyiw4" path="res://Systems/WaveSystem/wave_spawn_data.gd" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="17_074og"]
 [ext_resource type="Script" uid="uid://dn72w1rbrcf1g" path="res://win_lose_signals_manager.gd" id="17_getpj"]
-[ext_resource type="Script" uid="uid://cn8wv5xm370fa" path="res://new_game_transition.gd" id="17_yaehf"]
+[ext_resource type="Script" uid="uid://cn8wv5xm370fa" path="res://UI/Game/new_game_transition.gd" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://dnie4vqmp5wsq" path="res://UI/scenes/windows/game_won_window.tscn" id="18_82xsv"]
 [ext_resource type="PackedScene" uid="uid://ba08ojf5wvdou" path="res://UI/scenes/windows/level_lost_window.tscn" id="19_getpj"]
 
