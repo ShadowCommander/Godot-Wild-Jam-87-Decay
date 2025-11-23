@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b24pt2qxsorjk"]
+[gd_scene load_steps=29 format=3 uid="uid://b24pt2qxsorjk"]
 
 [ext_resource type="PackedScene" uid="uid://cmxrn4vki27cn" path="res://Entities/Player/player_scene.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4e5c5vuxmh3q" path="res://Map/map_scene.tscn" id="2_lquwl"]
@@ -24,13 +24,27 @@
 
 [sub_resource type="Resource" id="Resource_yaehf"]
 script = ExtResource("16_2cqfq")
-spawn_delay = 0.1
-spawn_count = 2
+spawn_delay = 0.05
 metadata/_custom_type_script = "uid://dbqhefmivyiw4"
 
 [sub_resource type="Resource" id="Resource_074og"]
 script = ExtResource("16_2cqfq")
 spawn_delay = 0.02
+metadata/_custom_type_script = "uid://dbqhefmivyiw4"
+
+[sub_resource type="Resource" id="Resource_ryguw"]
+script = ExtResource("16_2cqfq")
+spawn_delay = 0.06
+metadata/_custom_type_script = "uid://dbqhefmivyiw4"
+
+[sub_resource type="Resource" id="Resource_d13ii"]
+script = ExtResource("16_2cqfq")
+spawn_delay = 0.018
+metadata/_custom_type_script = "uid://dbqhefmivyiw4"
+
+[sub_resource type="Resource" id="Resource_getpj"]
+script = ExtResource("16_2cqfq")
+spawn_delay = 0.016
 metadata/_custom_type_script = "uid://dbqhefmivyiw4"
 
 [sub_resource type="Gradient" id="Gradient_2cqfq"]
@@ -219,8 +233,11 @@ pooled_scene = ExtResource("14_2cqfq")
 [node name="WaveSystem" type="Node" parent="." node_paths=PackedStringArray("win_lose_manager", "enemy_spawner")]
 script = ExtResource("15_vivmo")
 win_lose_manager = NodePath("../WinLoseManager")
+wave_count = 2
 prep_time = 0.0
-waves = Array[ExtResource("16_2cqfq")]([SubResource("Resource_yaehf"), SubResource("Resource_074og")])
+wave_time = 120.0
+break_time = 30.0
+waves = Array[ExtResource("16_2cqfq")]([SubResource("Resource_yaehf"), SubResource("Resource_074og"), SubResource("Resource_ryguw"), SubResource("Resource_d13ii"), SubResource("Resource_getpj")])
 enemy_spawner = NodePath("../World/EnemySpawners/WaveSpawner")
 
 [node name="WinLoseSignalsManager" type="Node" parent="."]
