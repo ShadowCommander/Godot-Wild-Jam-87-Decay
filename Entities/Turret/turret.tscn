@@ -137,12 +137,6 @@ skeleton = NodePath("../../../..")
 [node name="TurretAimStart" type="Node3D" parent="Turret2/turret" index="0"]
 transform = Transform3D(0.99999976, -5.924753e-09, 8.726147e-08, -9.652324e-09, 1, -1.8626451e-09, -8.727878e-08, -7.45058e-09, 0.99999976, 1.07092895e-08, 0.6455263, 0.059486374)
 
-[node name="turret1" parent="Turret2/turret/turret_pivot" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="fire" parent="Turret2/turret/turret_pivot/turret1" index="2"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.125, 1.375)
-
 [node name="plane" parent="Turret2/turret/turret_pivot/turret1/fire" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_e7nts")
