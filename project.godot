@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GUIDE="*res://addons/guide/guide.gd"
 GlobalVars="*res://Globals/global_vars.tscn"
-FmodManager="*res://addons/fmod/FmodManager.gd"
 AppConfig="*res://addons/maaacks_game_template/base/nodes/autoloads/app_config/app_config.tscn"
 SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/nodes/autoloads/music_controller/project_music_controller.tscn"
@@ -31,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/guide/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
 
 [gui]
 

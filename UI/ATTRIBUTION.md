@@ -33,11 +33,6 @@ Author: [Linus Torvalds](https://github.com/torvalds)
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
 
-#### FMOD
-![FMOD Logo](/UI/assets/fmod_logo/FMOD-Logo-White-Transparent-Background.svg)  
-Made using FMOD Studio by Firelight Technologies Pty Ltd.
-Source: [fmod.com](https://www.fmod.com/)  
-
 #### G.U.I.D.E.
 ![G.U.I.D.E - Godot Unified Input Detection Engine Logo](/addons/guide/guide_internal.svg)  
 Author: [Godotneers ](https://github.com/godotneers)  
