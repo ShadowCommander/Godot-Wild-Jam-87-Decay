@@ -116,5 +116,6 @@ func handle_item_picked_up(item: Node3D) -> void:
 
 func handle_item_dropped(item: Node3D) -> void:
 	item.reparent(root, true)
+	item.queue_free()
 
 #endregion
