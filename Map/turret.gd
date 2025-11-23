@@ -166,8 +166,12 @@ var min_distance_sq = 3 * 3
 func handle_shoot_completed() -> void:
 	held = false
 	target = null
+	
+@onready var light_animation_player: AnimationPlayer = $Turret2/LightAnimationPlayer
 
 func show_shoot_visuals(target_point: Vector3) -> void:
+	light_animation_player.seek(0)
+	light_animation_player.play("fire")
 	return
 	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ctut5dwy4so7y"]
+[gd_scene load_steps=19 format=4 uid="uid://ctut5dwy4so7y"]
 
 [ext_resource type="Script" uid="uid://bwypdgs8pavc3" path="res://Map/turret.gd" id="1_svg48"]
 [ext_resource type="PackedScene" uid="uid://c7jqwe01fhf1c" path="res://Entities/Turret/turret_2_model.tscn" id="2_fry5m"]
@@ -83,6 +83,66 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pk3lg")
 
+[sub_resource type="Animation" id="Animation_fahyi"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret/turret_pivot/turret1/OmniLight3D:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [5.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("turret/turret_pivot/turret1/OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fry5m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turret/turret_pivot/turret1/OmniLight3D:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("turret/turret_pivot/turret1/OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7nts"]
+_data = {
+&"RESET": SubResource("Animation_fry5m"),
+&"fire": SubResource("Animation_fahyi")
+}
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_h037i"]
 radius = 20.0
 
@@ -135,7 +195,13 @@ skeleton = NodePath("../../../..")
 [node name="Turret2" parent="." instance=ExtResource("2_fry5m")]
 
 [node name="TurretAimStart" type="Node3D" parent="Turret2/turret" index="0"]
-transform = Transform3D(0.99999976, -5.924753e-09, 8.726147e-08, -9.652324e-09, 1, -1.8626451e-09, -8.727878e-08, -7.45058e-09, 0.99999976, 1.07092895e-08, 0.6455263, 0.059486374)
+transform = Transform3D(1, 9.652326e-09, 8.72788e-08, -9.652327e-09, 1, 7.450581e-09, -8.72788e-08, -7.4505815e-09, 1, 1.07092895e-08, 0.6455263, 0.059486374)
+
+[node name="turret1" parent="Turret2/turret/turret_pivot" index="0"]
+transform = Transform3D(0.99939084, 0.03489418, 0.0006090802, -0.034899496, 0.99923867, 0.017441774, -1.1641532e-10, -0.017452406, 0.9998477, 0, 0, 0)
+
+[node name="fire" parent="Turret2/turret/turret_pivot/turret1" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 1.375)
 
 [node name="plane" parent="Turret2/turret/turret_pivot/turret1/fire" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -144,8 +210,15 @@ mesh = SubResource("ArrayMesh_e7nts")
 [node name="TurretMuzzle" type="Node3D" parent="Turret2/turret/turret_pivot/turret1/fire/plane" index="0"]
 transform = Transform3D(0.99999887, 2.0317285e-12, -4.0743575e-10, -2.98087e-08, 0.99999994, 0, 7.422288e-11, -1.4901161e-08, 0.9999988, 0, -0.0054745674, 0.3136443)
 
-[node name="red" parent="Turret2/turret/turret_pivot/turret1" index="4"]
-transform = Transform3D(0.21600837, 0, 0, 0, 0.21600837, 0, 0, 0, 0.21600837, -0.075, 0.21249998, -0.38125)
+[node name="OmniLight3D" type="OmniLight3D" parent="Turret2/turret/turret_pivot/turret1" index="5"]
+transform = Transform3D(-1, 0, 1.2246469e-16, 0, 1, 0, -1.2246469e-16, 0, -1, -1.3997386e-16, 0.12242687, 1.0804733)
+light_color = Color(1, 0.8, 0.5, 1)
+light_energy = 0.0
+
+[node name="LightAnimationPlayer" type="AnimationPlayer" parent="Turret2"]
+libraries = {
+&"": SubResource("AnimationLibrary_e7nts")
+}
 
 [node name="EnemyDetectionArea" type="Area3D" parent="."]
 collision_layer = 0
