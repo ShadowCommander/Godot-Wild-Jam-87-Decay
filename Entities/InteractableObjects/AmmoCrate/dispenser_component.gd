@@ -4,9 +4,9 @@ class_name DispenserComponent extends Component
 @export var spawn_position: Node3D
 
 func connect_signals_on_parent() -> void:
-	entity.connect("pressed", handle_pressed)
+	entity.connect("start_interact", handle_start_interact)
 
-func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
+func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
 	var can_pickup_event: HandSystem.HandCanPickupEvent = HandSystem.HandCanPickupEvent.new()
 	var user: Node = _event.user
 	if not user.has_user_signal("hand_can_pickup"):

@@ -7,10 +7,9 @@ extends StaticBody3D
 
 
 func _ready() -> void:
-	interactable_area.connect("pressed", handle_pressed)
+	interactable_area.connect("start_interact", handle_start_interact)
 
-func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
-	
+func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
 	var tween = create_tween()
 	tween.tween_property(ammo_crate_flap, "rotation:x", PI/1.5,1.5).\
 	set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)

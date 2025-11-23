@@ -3,9 +3,9 @@ class_name AmmoItemReceiverComponent extends Component
 @export var turret_ammo_loader: TurretAmmoLoader
 
 func connect_signals_on_parent() -> void:
-	entity.connect("pressed", handle_pressed)
+	entity.connect("start_interact", handle_start_interact)
 
-func handle_pressed(_event: InteractionSystem.InteractionData) -> void:
+func handle_start_interact(_event: InteractionSystem.InteractionData) -> void:
 	var user: Node = _event.user
 
 	var can_drop_into_event: HandSystem.HandCanDropIntoEvent = HandSystem.HandCanDropIntoEvent.new()
