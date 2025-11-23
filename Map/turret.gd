@@ -168,6 +168,7 @@ func handle_shoot_completed() -> void:
 	target = null
 
 func show_shoot_visuals(target_point: Vector3) -> void:
+	return
 	if muzzle.global_position.distance_squared_to(target_point) < min_distance_sq:
 		return
 	shots_fired += 1
