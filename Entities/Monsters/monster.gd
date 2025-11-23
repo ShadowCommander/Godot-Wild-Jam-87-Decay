@@ -11,6 +11,7 @@ const radius: float = 3.0
 
 @export_range(1.0,40.0) var MOVEMENT_SPEED: float = GlobalVars.monster_speed
 
+var attack_time: float = 1.0
 
 var moving_direction: Vector3
 var final_pos: Vector3 
@@ -73,14 +74,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		animation.play("attack", -1, 2)
 		if attack_timer.is_stopped():
-			attack_timer.start()
+			attack_timer.start(attack_time)
 	pass
 
 
 func _start_attack():
 	animation.play("attack", -1, 2)
 	_attack()
-	attack_timer.start()
+	attack_timer.start(attack_time)
 	pass
 
 
@@ -105,6 +106,7 @@ func _on_health_changed(health: int):
 		emit_signal("return_to_pool", self)
 		health_component.reset()
 		spawn_info = null
+		attack_timer.stop()
 	pass
 
 
