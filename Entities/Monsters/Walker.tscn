@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://828l7s8bk6lt"]
 
 [ext_resource type="Script" uid="uid://dcs0hjajg25kj" path="res://Entities/Monsters/monster.gd" id="1_1xpug"]
-[ext_resource type="PackedScene" uid="uid://c2m83232dodsu" path="res://Entities/Monsters/walker_model.tscn" id="1_6d4kv"]
+[ext_resource type="PackedScene" uid="uid://b4etp3a77cyi" path="res://Entities/Monsters/monster.gltf" id="2_1xpug"]
 [ext_resource type="Script" uid="uid://bfysm32vw1klr" path="res://Systems/Damage/hurtbox.gd" id="3_3pam4"]
 [ext_resource type="Script" uid="uid://b1rw4oecqfq61" path="res://Systems/Damage/health.gd" id="4_kvv3p"]
 
@@ -12,26 +12,20 @@ script = ExtResource("1_1xpug")
 health_component = NodePath("Hurtbox/HealthComponent")
 hurtbox_component = NodePath("Hurtbox")
 attack_timer = NodePath("AttackTimer")
-animation = NodePath("Model/AnimationPlayer")
+animation = NodePath("blockbench_export/AnimationPlayer")
 
-[node name="Model" parent="." instance=ExtResource("1_6d4kv")]
-transform = Transform3D(0.86, 0, 0, 0, 0.86, 0, 0, 0, 0.86, 0, 0, 0)
+[node name="blockbench_export" parent="." instance=ExtResource("2_1xpug")]
 
-[node name="Skeleton3D" parent="Model/monster/body/armature" index="0"]
-bones/0/position = Vector3(0, 0.375, 0)
-bones/0/rotation = Quaternion(-0.065403126, 0, 0, 0.99785894)
-bones/2/rotation = Quaternion(0.07871606, -0.6722982, 0.73001343, 0.09433662)
-bones/3/rotation = Quaternion(-0.14851746, -0.032925524, 0.21392058, 0.9649334)
-bones/4/rotation = Quaternion(-0.064843595, 0.008536821, -0.13024673, 0.9893222)
-bones/5/rotation = Quaternion(-3.7252907e-09, -0.6087614, 0.7813006, -0.13776435)
-bones/6/rotation = Quaternion(-0.1729874, 0.015134437, -0.08583166, 0.9810603)
-bones/7/rotation = Quaternion(0.25881904, 0, 0, 0.9659259)
-bones/8/rotation = Quaternion(0.9848078, 0, 0, 0.1736482)
-bones/9/rotation = Quaternion(-0.2176984, -0.027456846, -0.15765403, 0.96280783)
-bones/10/rotation = Quaternion(0.7286965, 0.12461219, 0.08725439, 0.66772735)
-bones/11/rotation = Quaternion(0.9238796, 0, 0, -0.3826835)
-bones/12/rotation = Quaternion(-0.3007058, 0, 0, 0.95371693)
-bones/13/rotation = Quaternion(0.6087614, 0, 0, 0.7933534)
+[node name="Skeleton3D" parent="blockbench_export/monster/body/armature" index="0"]
+bones/0/rotation = Quaternion(-0.06104854, 0, 0, 0.9981348)
+bones/1/rotation = Quaternion(-0.043619387, 0, 0, 0.99904823)
+bones/2/rotation = Quaternion(0.35591206, -0.92011, 0.15185013, 0.06054574)
+bones/3/rotation = Quaternion(-0.043609, -0.0009515517, 0.40236333, 0.9144403)
+bones/4/rotation = Quaternion(0.07013168, 0.532703, -0.110084675, 0.83617616)
+bones/5/rotation = Quaternion(-0.17266214, -0.9765367, 0.12234979, -0.039931454)
+bones/6/rotation = Quaternion(0, 0, -0.1736482, 0.9848078)
+bones/7/rotation = Quaternion(-0.03468259, -0.26360747, 0.12175914, 0.956286)
+bones/9/rotation = Quaternion(-0.11158661, -0.044456948, -0.15372789, 0.98078537)
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -50,4 +44,4 @@ shape = SubResource("CapsuleShape3D_hdv4v")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[editable path="Model"]
+[editable path="blockbench_export"]

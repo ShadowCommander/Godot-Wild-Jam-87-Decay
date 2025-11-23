@@ -58,7 +58,7 @@ func _ready() -> void:
 	if attack_timer:
 		attack_timer.wait_time = GlobalVars.monster_attack_delay
 		attack_timer.timeout.connect(_start_attack)
-	animation.play("walk", -1, 5)
+	animation.play("running", -1, 1)
 	pass
 
 
@@ -71,15 +71,16 @@ func _physics_process(delta: float) -> void:
 	if dis > MIN_DISTANCE:
 		_move(moving_direction, delta)
 	else:
+		animation.play("attack", -1, 2)
 		if attack_timer.is_stopped():
 			attack_timer.start()
 	pass
 
 
 func _start_attack():
+	animation.play("attack", -1, 2)
 	_attack()
 	attack_timer.start()
-	animation.play("attack")
 	pass
 
 
