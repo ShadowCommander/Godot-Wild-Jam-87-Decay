@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://by1w7ojh0axl6"]
 
-[ext_resource type="PackedScene" path="res://UI/scenes/credits/scrolling_credits.tscn" id="1_553xl"]
-[ext_resource type="Script" path="res://UI/scenes/end_credits/end_credits.gd" id="2_c54g3"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_n8of8"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_ax6e8"]
+[ext_resource type="PackedScene" uid="uid://db6j1jxa7w16o" path="res://UI/scenes/credits/scrolling_credits.tscn" id="1_553xl"]
+[ext_resource type="Script" uid="uid://cey2bvyopy6fd" path="res://UI/scenes/end_credits/end_credits.gd" id="2_c54g3"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_n8of8"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_ax6e8"]
 
 [node name="EndCredits" instance=ExtResource("1_553xl")]
 script = ExtResource("2_c54g3")
 main_menu_scene_path = ""
-force_mouse_mode_visible = false
+force_mouse_mode_visible = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_n8of8")]
 
@@ -31,6 +31,18 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="ScrollContainer" parent="." index="3"]
+scroll_vertical = 1877
+
+[node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 648)
+
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(1152, 0)
+
+[node name="FooterSpace" parent="ScrollContainer/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 648)
+
 [node name="CenterContainer" type="CenterContainer" parent="." index="4"]
 layout_mode = 0
 anchor_right = 1.0
@@ -41,7 +53,6 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
 

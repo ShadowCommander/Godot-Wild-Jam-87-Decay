@@ -40,10 +40,10 @@ materials/extract_path=""
 _subresources={
 "animations": {
 "generator off": {
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Entities/InteractableObjects/Generator/generator_off_animation.res",
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "uid://cmrd64dhokiam",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -2096,10 +2096,10 @@ _subresources={
 "slices/amount": 0
 },
 "generator on": {
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://generator_on_animation.res",
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "uid://c615ojfhxu2x8",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
