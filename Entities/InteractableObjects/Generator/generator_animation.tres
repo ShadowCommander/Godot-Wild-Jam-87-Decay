@@ -1,0 +1,129 @@
+[gd_resource type="AnimationLibrary" load_steps=4 format=3 uid="uid://w7fnx5eunxll"]
+
+[sub_resource type="Animation" id="Animation_v6o0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("group/group3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("group")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("group/group3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("group/group3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("group/group3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.94, 0.94, 0.94)
+
+[sub_resource type="Animation" id="Animation_jigdq"]
+resource_name = "generator off"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("group/group3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.0625, -0.1875, -0.1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("group/group3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("group/group3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/3/type = "scale_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("group")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_5lhpw"]
+resource_name = "generator on"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("group")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.06666667, 1, 1.0396683, 1.023801, 1.0396683, 0.1, 1, 1.0404985, 1.0242991, 1.0404985, 0.16666667, 1, 1.000835, 1.0005009, 1.000835, 0.2, 1, 1.0189991, 1.0113995, 1.0189991, 0.23333333, 1, 1.0388334, 1.0233, 1.0388334, 0.26666668, 1, 1.0413324, 1.0247995, 1.0413324, 0.33333334, 1, 1.001664, 1.0009985, 1.001664, 0.36666667, 1, 1.018168, 1.0109007, 1.018168, 0.4, 1, 1.0379997, 1.0227998, 1.0379997, 0.43333334, 1, 1.0421674, 1.0253005, 1.0421674, 0.5, 1, 1.0024991, 1.0014994, 1.0024991, 0.53333336, 1, 1.017333, 1.0103998, 1.017333, 0.58824, 1, 1.05, 1.03, 1.05)
+tracks/1/type = "position_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("group/group3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.0625, -0.1875, -0.1, 0.58959526, 1, -1.1875, 1.4375, -0.1, 0.7, 1, -1.1875, 1.4375, -0.1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("group/group3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.26666668, 1, -0.6318482, 0.36009005, -0.130931, 0.6737656, 0.3, 1, -0.68362385, 0.39495882, -0.1307061, 0.5996516, 0.4, 1, -0.73774606, 0.51564413, 0.041617002, 0.43371657, 0.5, 1, -0.736741, 0.5977985, 0.2108303, 0.23537256, 0.58959526, 1, -0.6900325, 0.6333158, 0.34744895, 0.045227118, 0.7, 1, -0.6900325, 0.6333158, 0.34744895, 0.045227118)
+tracks/3/type = "scale_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("group/group3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.94, 0.94, 0.94, 0.16666667, 1, 0.801169, 0.801169, 0.801169, 0.2, 1, 0.7062745, 0.7062745, 0.7062745, 0.4, 1, 0.11920589, 0.11920589, 0.11920589, 0.43333334, 1, 0.05530077, 0.05530077, 0.05530077, 0.58959526, 1, 0.001, 0.001, 0.001, 0.7, 1, 0, 0, 0)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("group/group3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0060984334, 0.56666666, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+
+[resource]
+_data = {
+&"RESET": SubResource("Animation_v6o0p"),
+&"generator off": SubResource("Animation_jigdq"),
+&"generator on": SubResource("Animation_5lhpw")
+}

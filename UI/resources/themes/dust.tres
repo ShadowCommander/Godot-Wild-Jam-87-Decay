@@ -1,0 +1,64 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://4hd5tyve43mt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0sbc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.35, 0.3465, 0.343, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.1882353, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krvwn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.26266733, 0.25011334, 0.23502928, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.1882353, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfyr3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.1882353, 0.1764706, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.1882353, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tytr8"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_g0sbc")
+Button/styles/normal = SubResource("StyleBoxFlat_krvwn")
+Button/styles/pressed = SubResource("StyleBoxFlat_gfyr3")
+Panel/styles/panel = SubResource("StyleBoxFlat_tytr8")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tytr8")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_tytr8")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_g0sbc")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_g0sbc")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_krvwn")

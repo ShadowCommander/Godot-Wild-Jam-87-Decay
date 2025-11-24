@@ -7,9 +7,11 @@ const radius: float = 3.0
 @export var hurtbox_component: Hurtbox
 @export var attack_timer: Timer
 @export var ATK_DAMAGE: int = GlobalVars.monster_damage
+@export var animation: AnimationPlayer
 
 @export_range(1.0,40.0) var MOVEMENT_SPEED: float = GlobalVars.monster_speed
 
+var attack_time: float = 1.0
 
 var moving_direction: Vector3
 var final_pos: Vector3 
@@ -40,11 +42,16 @@ var spawn_info: SpawnData = null:
 		
 		final_pos = Helpers.flatten(target_pos) + offset
 		moving_direction = Helpers.flatten(origin).direction_to(final_pos)
-		
+		look_at(final_pos, Vector3.UP, true)
 		pass
 
 
 func _ready() -> void:
+	assert(health_component != null, "ERROR: health_component must be set. %s" % get_path())
+	assert(hurtbox_component != null, "ERROR: hurtbox_component must be set. %s" % get_path())
+	assert(attack_timer != null, "ERROR: attack_timer must be set. %s" % get_path())
+	assert(animation != null, "ERROR: animation must be set. %s" % get_path())
+	
 	if health_component:
 		health_component.MAX_HEALTH = GlobalVars.monster_health
 		health_component.health = GlobalVars.monster_health
@@ -52,6 +59,7 @@ func _ready() -> void:
 	if attack_timer:
 		attack_timer.wait_time = GlobalVars.monster_attack_delay
 		attack_timer.timeout.connect(_start_attack)
+	animation.play("running", -1, 1)
 	pass
 
 
@@ -64,14 +72,16 @@ func _physics_process(delta: float) -> void:
 	if dis > MIN_DISTANCE:
 		_move(moving_direction, delta)
 	else:
+		animation.play("attack", -1, 2)
 		if attack_timer.is_stopped():
-			attack_timer.start()
+			attack_timer.start(attack_time)
 	pass
 
 
 func _start_attack():
+	animation.play("attack", -1, 2)
 	_attack()
-	attack_timer.start()
+	attack_timer.start(attack_time)
 	pass
 
 
@@ -96,6 +106,7 @@ func _on_health_changed(health: int):
 		emit_signal("return_to_pool", self)
 		health_component.reset()
 		spawn_info = null
+		attack_timer.stop()
 	pass
 
 

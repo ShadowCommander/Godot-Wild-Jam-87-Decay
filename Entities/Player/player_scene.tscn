@@ -22,6 +22,8 @@
 [node name="PlayerScene" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("yaw_pivot", "pitch_pivot") groups=["player_body"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_yew1x")
 look_relative = ExtResource("2_txgsh")
 movement = ExtResource("3_1ggpk")
@@ -105,7 +107,7 @@ bones/10/position = Vector3(0, 0.09546375, -0.024443125)
 bones/10/rotation = Quaternion(0.018988093, 0.018019022, 0.6881187, 0.72512585)
 
 [node name="HandItemPosition" type="Marker3D" parent="Player/CameraYawPivot/CameraPitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23025525, -1.2708907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34773943, -0.5238217, -0.90178853)
 
 [node name="InteractionSystem" type="Node" parent="Player" node_paths=PackedStringArray("camera", "player_body")]
 script = ExtResource("4_e4pf2")

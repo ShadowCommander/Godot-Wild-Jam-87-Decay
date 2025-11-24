@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://dse4nfhb7y6sc"]
+
+[ext_resource type="Script" uid="uid://bfqnugynq0dj0" path="res://Entities/InteractableObjects/AmmoCrate/ammo_crate.gd" id="1_kq8e0"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_q0maj"]
+[ext_resource type="Script" uid="uid://c3c8e24u6o68c" path="res://Entities/InteractableObjects/AmmoCrate/dispenser_component.gd" id="2_0ueow"]
+[ext_resource type="PackedScene" uid="uid://brgxyu1ya7lhb" path="res://Entities/Items/AmmoBox/ammo_box.tscn" id="3_p7jop"]
+[ext_resource type="PackedScene" uid="uid://dgtcql25l2qie" path="res://Entities/InteractableObjects/AmmoCrate/ammocrate.gltf" id="4_vaj07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ueow"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6eqs"]
+size = Vector3(2.1, 1, 1.1)
+
+[sub_resource type="Animation" id="Animation_ycvur"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("flap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.230296, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.0943952, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_morcw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("flap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ct2t"]
+_data = {
+&"RESET": SubResource("Animation_morcw"),
+&"open": SubResource("Animation_ycvur")
+}
+
+[node name="AmmoCrate" type="StaticBody3D" node_paths=PackedStringArray("ammo_crate_animation_player", "ammo_crate_flap")]
+script = ExtResource("1_kq8e0")
+ammo_crate_animation_player = NodePath("blockbench_export/AnimationPlayer")
+ammo_crate_flap = NodePath("blockbench_export/flap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_0ueow")
+
+[node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_q0maj")
+mesh = NodePath("../blockbench_export/box/cube")
+metadata/_custom_type_script = "uid://chthxqwjmw8p4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_x6eqs")
+
+[node name="DispenserComponent" type="Node" parent="InteractableArea" node_paths=PackedStringArray("spawn_position")]
+script = ExtResource("2_0ueow")
+dispensed_scene = ExtResource("3_p7jop")
+spawn_position = NodePath("../../AmmoBoxSpawnPosition")
+
+[node name="blockbench_export" parent="." instance=ExtResource("4_vaj07")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="blockbench_export"]
+libraries = {
+&"": SubResource("AnimationLibrary_1ct2t")
+}
+
+[node name="AmmoBoxSpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8054639, 0)
+
+[editable path="blockbench_export"]

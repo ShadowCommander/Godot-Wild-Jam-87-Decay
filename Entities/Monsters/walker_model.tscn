@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2m83232dodsu"]
+
+[ext_resource type="PackedScene" uid="uid://b4etp3a77cyi" path="res://Entities/Monsters/monster.gltf" id="1_sx1wb"]
+
+[node name="blockbench_export" instance=ExtResource("1_sx1wb")]
+
+[node name="Skeleton3D" parent="monster/body/armature" index="0"]
+bones/0/rotation = Quaternion(-0.043619387, 0, 0, 0.99904823)
+bones/2/rotation = Quaternion(0.35591206, -0.92011, 0.15185013, 0.06054574)
+bones/3/rotation = Quaternion(-0.043609, -0.0009515517, 0.40236333, 0.9144403)
+bones/4/rotation = Quaternion(0.07013168, 0.532703, -0.110084675, 0.83617616)
+bones/5/rotation = Quaternion(-0.17266214, -0.9765367, 0.12234979, -0.039931454)
+bones/6/rotation = Quaternion(0, 0, -0.1736482, 0.9848078)
+bones/7/rotation = Quaternion(-0.03468259, -0.26360747, 0.12175914, 0.956286)
+bones/9/rotation = Quaternion(-0.11158661, -0.044456948, -0.15372789, 0.98078537)

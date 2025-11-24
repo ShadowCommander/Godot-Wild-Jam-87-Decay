@@ -15,7 +15,7 @@ General/banks_path="res://addons/fmod/banks/Desktop"
 [application]
 
 config/name="Godot Wild Jam 87 Decay"
-run/main_scene="uid://b24pt2qxsorjk"
+run/main_scene="res://UI/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,11 +23,26 @@ config/icon="res://icon.svg"
 
 GUIDE="*res://addons/guide/guide.gd"
 GlobalVars="*res://Globals/global_vars.tscn"
-FmodManager="*res://addons/fmod/FmodManager.gd"
+AppConfig="*res://addons/maaacks_game_template/base/nodes/autoloads/app_config/app_config.tscn"
+SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_game_template/base/nodes/autoloads/music_controller/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/project_ui_sound_controller.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/guide/plugin.cfg")
+enabled=PackedStringArray("res://addons/guide/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
+
+[gui]
+
+theme/custom="res://UI/resources/themes/dust.tres"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
 
 [layer_names]
 
@@ -35,6 +50,13 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/guide/pl
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
 3d_physics/layer_8="Interactable"
+
+[maaacks_game_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://UI/"
 
 [physics]
 
@@ -44,4 +66,5 @@ common/physics_interpolation=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=3

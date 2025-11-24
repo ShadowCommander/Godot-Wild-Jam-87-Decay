@@ -1,29 +1,21 @@
 [gd_scene load_steps=11 format=3 uid="uid://wxkfr2kif5n3"]
 
 [ext_resource type="Script" uid="uid://cr5fui6kvyrxk" path="res://Entities/InteractableObjects/Generator/generator.gd" id="1_jryob"]
-[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/interactable_area.gd" id="1_usr04"]
+[ext_resource type="Script" uid="uid://chthxqwjmw8p4" path="res://Entities/InteractableObjects/InteractableComponents/interactable_area.gd" id="1_usr04"]
 [ext_resource type="CylinderMesh" uid="uid://cw28hfg52b3jh" path="res://Entities/InteractableObjects/Generator/generator_on_mesh.tres" id="2_f4vll"]
+[ext_resource type="Script" uid="uid://ckejv2sm1gwjj" path="res://Entities/InteractableObjects/Generator/generator_model.gd" id="4_0agpx"]
+[ext_resource type="PackedScene" uid="uid://colnbntm8svq3" path="res://Entities/InteractableObjects/Generator/generator_model.tscn" id="4_ft7ak"]
+[ext_resource type="PackedScene" uid="uid://cgiruvd1dmcqj" path="res://Entities/InteractableObjects/Generator/generator_model_single_object.tscn" id="4_iefje"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3on0"]
-size = Vector3(2, 1, 1)
+size = Vector3(1.69, 1.376, 1.37)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jryob"]
-albedo_color = Color(0.51, 0.51, 0.10199999, 1)
-metallic = 0.8
-
-[sub_resource type="BoxMesh" id="BoxMesh_x1elf"]
-material = SubResource("StandardMaterial3D_jryob")
-size = Vector3(2, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
+size = Vector3(2.1, 1, 1.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usr04"]
 albedo_color = Color(0.34781694, 0.34781697, 0.3478169, 1)
 metallic = 0.8
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_f1sbe"]
-material = SubResource("StandardMaterial3D_usr04")
-top_radius = 0.2
-bottom_radius = 0.2
-height = 0.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jryob"]
 material = SubResource("StandardMaterial3D_usr04")
@@ -31,47 +23,19 @@ top_radius = 0.015
 bottom_radius = 0.015
 height = 0.28
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x1elf"]
-size = Vector3(2.1, 1, 1.1)
-
 [node name="PowerGenerator" type="StaticBody3D" node_paths=PackedStringArray("light_mesh", "light")]
 script = ExtResource("1_jryob")
-light_mesh = NodePath("MeshInstance3D/MeshInstance3D3/LightMesh")
-light = NodePath("MeshInstance3D/MeshInstance3D3/LightMesh/OmniLight3D")
+light_mesh = NodePath("generator_model/group/MeshInstance3D3/LightMesh")
+light = NodePath("generator_model/group/MeshInstance3D3/LightMesh/OmniLight3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.688, 0)
 shape = SubResource("BoxShape3D_r3on0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_x1elf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.6, 0)
-mesh = SubResource("CylinderMesh_f1sbe")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.64, 0)
-mesh = SubResource("CylinderMesh_jryob")
-skeleton = NodePath("")
-
-[node name="LightMesh" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16000003, 0)
-mesh = ExtResource("2_f4vll")
-skeleton = NodePath("OmniLight3D")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D/MeshInstance3D3/LightMesh"]
-light_color = Color(1, 0, 0, 1)
-light_energy = 1.5
-light_bake_mode = 1
-omni_range = 4.0
-omni_attenuation = 0.5
 
 [node name="InteractableArea" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_usr04")
-mesh = NodePath("../MeshInstance3D")
+mesh = NodePath("../generator_model/group/generator_model_single_object/group/cuboid")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("BoxShape3D_x1elf")
@@ -81,4 +45,50 @@ process_callback = 0
 one_shot = true
 autostart = true
 
+[node name="generator_model" parent="." instance=ExtResource("4_ft7ak")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("4_0agpx")
+
+[node name="group" parent="generator_model" index="0"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.007, 0.688, -0.037)
+
+[node name="generator_model_single_object" parent="generator_model/group" index="0" instance=ExtResource("4_iefje")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.007, -0.68, -0.037)
+
+[node name="group" parent="generator_model/group/generator_model_single_object" index="0"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.007, 0.688, -0.037)
+
+[node name="group3" parent="generator_model/group/generator_model_single_object/group" index="1"]
+transform = Transform3D(0.94, 0, 0, 0, 0.94, 0, 0, 0, 0.94, -1.0625, -0.1875, -0.1)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="generator_model/group" index="1"]
+transform = Transform3D(0.9604658, 0, 6.105971e-08, 0, 0.9758983, 0, -6.105971e-08, 0, 0.9604658, 0.4470672, 0.558015, -0.035537265)
+mesh = SubResource("CylinderMesh_jryob")
+skeleton = NodePath("")
+
+[node name="LightMesh" type="MeshInstance3D" parent="generator_model/group/MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16000003, 0)
+mesh = ExtResource("2_f4vll")
+skeleton = NodePath("OmniLight3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="generator_model/group/MeshInstance3D3/LightMesh"]
+light_color = Color(1, 0, 0, 1)
+light_energy = 1.5
+light_bake_mode = 1
+omni_range = 4.0
+omni_attenuation = 0.5
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8445664, 1.3758318, -0.6888759)
+
+[node name="Marker3D2" type="Marker3D" parent="Node3D/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6872714, 0, 1.3749061)
+
+[connection signal="generator_turned_off" from="." to="generator_model" method="_on_power_generator_generator_turned_off"]
+[connection signal="generator_turned_on" from="." to="generator_model" method="_on_power_generator_generator_turned_on"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="generator_model"]
+[editable path="generator_model/group/generator_model_single_object"]

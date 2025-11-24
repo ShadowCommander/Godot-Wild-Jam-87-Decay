@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjnfaww5k0duo"
 path.s3tc="res://.godot/imported/handgun_2.png-0ddd6a2c347e9431408fbe7dfe7ea6bb.s3tc.ctex"
+path.etc2="res://.godot/imported/handgun_2.png-0ddd6a2c347e9431408fbe7dfe7ea6bb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Entities/Player/Hand/handgun_2.png"
-dest_files=["res://.godot/imported/handgun_2.png-0ddd6a2c347e9431408fbe7dfe7ea6bb.s3tc.ctex"]
+dest_files=["res://.godot/imported/handgun_2.png-0ddd6a2c347e9431408fbe7dfe7ea6bb.s3tc.ctex", "res://.godot/imported/handgun_2.png-0ddd6a2c347e9431408fbe7dfe7ea6bb.etc2.ctex"]
 
 [params]
 

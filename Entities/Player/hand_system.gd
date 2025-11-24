@@ -74,7 +74,8 @@ func handle_drop_into(event: HandDropIntoEvent) -> void:
 	event.item = hand
 	animate_item_movement(hand, event.target, handle_item_dropped.bind(hand))
 	hand = null
-	event.item.emit_signal("dropped")
+	if event.item.has_user_signal("dropped"):
+		event.item.emit_signal("dropped")
 	print("Dropped ", event.item, event.item.name)
 
 #endregion
@@ -116,5 +117,6 @@ func handle_item_picked_up(item: Node3D) -> void:
 
 func handle_item_dropped(item: Node3D) -> void:
 	item.reparent(root, true)
+	item.queue_free()
 
 #endregion

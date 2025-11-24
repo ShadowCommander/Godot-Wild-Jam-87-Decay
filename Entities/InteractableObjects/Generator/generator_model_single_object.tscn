@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgiruvd1dmcqj"]
+
+[ext_resource type="PackedScene" uid="uid://cp1qseetqt2ab" path="res://Entities/InteractableObjects/Generator/generator_model_single_object.glb" id="1_akehb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akehb"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="generator_model_single_object" instance=ExtResource("1_akehb")]
+
+[node name="group" parent="." index="0"]
+transform = Transform3D(-1.0470808, 0, 9.153871e-08, 0, 1.0282484, 0, -9.153871e-08, 0, -1.0470808, -0.0625, 0.6875, 0.1)
+
+[node name="cuboid" parent="group" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_akehb")
+
+[node name="group3" parent="group" index="1"]
+transform = Transform3D(-5.6903096e-05, -0.0016017372, -0.0007067653, -0.0014705637, -0.00033998923, 0.0008889133, -0.0009500113, 0.00062222383, -0.0013336542, -1.1864574, 1.4239454, -0.09999998)
+visible = false
+
+[node name="plane" parent="group/group3" index="0"]
+visible = false
